@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { signIn } from 'next-auth/react';
 import { 
@@ -9,14 +9,11 @@ import {
   useForm
 } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
-import { AiFillGithub } from "react-icons/ai";
 import { useRouter } from "next/navigation";
 
 import useLoginModal from "@/app/hooks/useLoginModal";
 
 import SlimModal from "./SlimModal";
-import Input from "../inputs/Input";
-import Heading from "../Heading";
 import Button from "../Button";
 
 const LoginModal = () => {
@@ -77,7 +74,6 @@ const LoginModal = () => {
       disabled={isLoading}
       isOpen={loginModal.isOpen}
       title="כניסה"
-      actionLabel="הבא"
       onClose={loginModal.onClose}
       onSubmit={handleSubmit(onSubmit)}
       body={bodyContent}
