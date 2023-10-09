@@ -65,7 +65,7 @@ const LoginModal = () => {
       <hr />
       <Button 
         outline 
-        label="Continue with Google"
+        label="כניסה עם גוגל"
         icon={FcGoogle}
         onClick={() => signIn('google')}
       />
@@ -76,7 +76,8 @@ const LoginModal = () => {
     <SlimModal
       disabled={isLoading}
       isOpen={loginModal.isOpen}
-      title="Login"
+      title="כניסה"
+      actionLabel="הבא"
       onClose={loginModal.onClose}
       onSubmit={handleSubmit(onSubmit)}
       body={bodyContent}

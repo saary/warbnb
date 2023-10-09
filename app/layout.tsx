@@ -12,8 +12,8 @@ import ClientOnly from './components/ClientOnly';
 import getCurrentUser from './actions/getCurrentUser';
 
 export const metadata = {
-  title: 'Airbnb',
-  description: 'Airbnb Clone',
+  title: 'Warbnb',
+  description: 'אירוח לתושבי הדרום',
 }
 
 const font = Nunito({ 
@@ -28,7 +28,7 @@ export default async function RootLayout({
   const currentUser = await getCurrentUser();
 
   return (
-    <html lang="en">
+    <html lang="en" dir="rtl">
       <body className={font.className}>
         <ClientOnly>
           <ToasterProvider />

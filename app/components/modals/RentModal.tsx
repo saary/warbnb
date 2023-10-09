@@ -98,14 +98,14 @@ const RentModal = () => {
 
     axios.post('/api/listings', data)
     .then(() => {
-      toast.success('Listing created!');
+      toast.success('המודעה נקלטה. תודה!');
       router.refresh();
       reset();
       setStep(STEPS.CATEGORY)
       rentModal.onClose();
     })
     .catch(() => {
-      toast.error('Something went wrong.');
+      toast.error('משהו השתבש.');
     })
     .finally(() => {
       setIsLoading(false);
@@ -114,10 +114,10 @@ const RentModal = () => {
 
   const actionLabel = useMemo(() => {
     if (step === STEPS.PRICE) {
-      return 'Create'
+      return 'יצירה'
     }
 
-    return 'Next'
+    return 'הבא'
   }, [step]);
 
   const secondaryActionLabel = useMemo(() => {
@@ -125,14 +125,14 @@ const RentModal = () => {
       return undefined
     }
 
-    return 'Back'
+    return 'חזרה'
   }, [step]);
 
   let bodyContent = (
     <div className="flex flex-col gap-8">
       <Heading
-        title="Which of these best describes your place?"
-        subtitle="Pick a category"
+        title="מאפיינים רלוונטיים"
+        subtitle="יש לבחור קטגוריות רלוונטיות"
       />
       <div 
         className="
@@ -163,8 +163,8 @@ const RentModal = () => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="Where is your place located?"
-          subtitle="Help guests find you!"
+          title="איפה הבית נמצא?"
+          subtitle=""
         />
         <CountrySelect 
           value={location} 
@@ -179,28 +179,28 @@ const RentModal = () => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="Share some basics about your place"
-          subtitle="What amenitis do you have?"
+          title="פרטי הבית"
+          subtitle=""
         />
         <Counter 
           onChange={(value) => setCustomValue('guestCount', value)}
           value={guestCount}
-          title="Guests" 
-          subtitle="How many guests do you allow?"
+          title="תפוסה" 
+          subtitle="כמה נפשות אפשר ניתן לארח?"
         />
         <hr />
         <Counter 
           onChange={(value) => setCustomValue('roomCount', value)}
           value={roomCount}
-          title="Rooms" 
-          subtitle="How many rooms do you have?"
+          title="חדרים" 
+          subtitle="כמה חדרים פנויים לאירוח?"
         />
         <hr />
         <Counter 
           onChange={(value) => setCustomValue('bathroomCount', value)}
           value={bathroomCount}
-          title="Bathrooms" 
-          subtitle="How many bathrooms do you have?"
+          title="חדרי רחצה" 
+          subtitle="כמה חדרי רחצה זמינים לשימוש?"
         />
       </div>
     )
@@ -225,12 +225,12 @@ const RentModal = () => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="How would you describe your place?"
-          subtitle="Short and sweet works best!"
+          title="כותרת"
+          subtitle="כותרת המודעה"
         />
         <Input
           id="title"
-          label="Title"
+          label="כותרת"
           disabled={isLoading}
           register={register}
           errors={errors}
@@ -239,11 +239,10 @@ const RentModal = () => {
         <hr />
         <Input
           id="description"
-          label="Description"
+          label="הערות נוספות"
           disabled={isLoading}
           register={register}
           errors={errors}
-          required
         />
       </div>
     )
@@ -253,7 +252,7 @@ const RentModal = () => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="Now, set your price"
+          title="REMOVE ME"
           subtitle="How much do you charge per night?"
         />
         <Input
@@ -274,7 +273,7 @@ const RentModal = () => {
     <Modal
       disabled={isLoading}
       isOpen={rentModal.isOpen}
-      title="Airbnb your home!"
+      title="אירוח בביתי"
       actionLabel={actionLabel}
       onSubmit={handleSubmit(onSubmit)}
       secondaryActionLabel={secondaryActionLabel}
