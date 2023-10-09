@@ -20,6 +20,20 @@ export const authOptions: AuthOptions = {
     strategy: "jwt",
   },
   secret: process.env.NEXTAUTH_SECRET,
+  callbacks: {
+    session: async (params) => {
+      const email = params.session.user?.email;
+      // todo: replace this with actual spreadsheet verification
+      if (email?.includes("rewire")) {
+        if (!params.session.user) {
+          params.session.user = params.user;
+        }
+        // @ts-expect-error
+        params.session.user.isHost = true;
+      }
+      return params.session;
+    },
+  },
 };
 
 export default NextAuth(authOptions);

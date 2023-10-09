@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useCallback, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
@@ -13,12 +13,10 @@ import MenuItem from "./MenuItem";
 import Avatar from "../Avatar";
 
 interface UserMenuProps {
-  currentUser?: SafeUser | null
+  currentUser?: SafeUser | null;
 }
 
-const UserMenu: React.FC<UserMenuProps> = ({
-  currentUser
-}) => {
+const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
   const router = useRouter();
 
   const loginModal = useLoginModal();
@@ -38,10 +36,81 @@ const UserMenu: React.FC<UserMenuProps> = ({
     rentModal.onOpen();
   }, [loginModal, rentModal, currentUser]);
 
-  return ( 
+  // todo: fix style to wrap text
+  if (!currentUser?.isHost) {
+    return (
+      <div className="relative">
+        <div className="flex flex-row items-center gap-3">
+          
+          <div
+            onClick={toggleOpen}
+            className="
+            p-4
+            md:py-1
+            md:px-2
+            border-[1px] 
+            border-neutral-200 
+            flex 
+            flex-row 
+            items-center 
+            gap-3 
+            rounded-full 
+            cursor-pointer 
+            hover:shadow-md 
+            transition
+            "
+          >
+            <AiOutlineMenu />
+            <div className="hidden md:block">
+              <Avatar src={currentUser?.image} />
+            </div>
+          </div>
+        </div>
+        {isOpen && (
+          <div
+            className="
+              absolute 
+              rounded-xl 
+              shadow-md
+              w-[40vw]
+              md:w-3/4 
+              bg-white 
+              overflow-hidden 
+              right-0 
+              top-12 
+              text-sm
+            "
+          >
+            <div className="flex flex-col cursor-pointer">
+              {currentUser ? (
+                <>
+                  <MenuItem
+                    label="מקומות בהם התארחתי/אתארח"
+                    onClick={() => router.push("/trips")}
+                  />
+                  <MenuItem
+                    label="המקומות שלי"
+                    onClick={() => router.push("/properties")}
+                  />
+                  <hr />
+                  <MenuItem label="התנתקות" onClick={() => signOut()} />
+                </>
+              ) : (
+                <>
+                  <MenuItem label="כניסה" onClick={loginModal.onOpen} />
+                </>
+              )}
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  return (
     <div className="relative">
       <div className="flex flex-row items-center gap-3">
-        <div 
+        <div
           onClick={onRent}
           className="
             hidden
@@ -58,9 +127,9 @@ const UserMenu: React.FC<UserMenuProps> = ({
         >
           רוצה לארח
         </div>
-        <div 
-        onClick={toggleOpen}
-        className="
+        <div
+          onClick={toggleOpen}
+          className="
           p-4
           md:py-1
           md:px-2
@@ -83,7 +152,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
         </div>
       </div>
       {isOpen && (
-        <div 
+        <div
           className="
             absolute 
             rounded-xl 
@@ -100,41 +169,32 @@ const UserMenu: React.FC<UserMenuProps> = ({
           <div className="flex flex-col cursor-pointer">
             {currentUser ? (
               <>
-                <MenuItem 
-                  label="מקומות בהם התארחתי/אתארח" 
-                  onClick={() => router.push('/trips')}
+                <MenuItem
+                  label="מקומות בהם התארחתי/אתארח"
+                  onClick={() => router.push("/trips")}
                 />
-                <MenuItem 
-                  label="בקשות אירוח אצלי" 
-                  onClick={() => router.push('/reservations')}
+                <MenuItem
+                  label="בקשות אירוח אצלי"
+                  onClick={() => router.push("/reservations")}
                 />
-                <MenuItem 
-                  label="המקומות שלי" 
-                  onClick={() => router.push('/properties')}
+                <MenuItem
+                  label="המקומות שלי"
+                  onClick={() => router.push("/properties")}
                 />
-                <MenuItem 
-                  label="רוצה לארח" 
-                  onClick={rentModal.onOpen}
-                />
+                <MenuItem label="רוצה לארח" onClick={rentModal.onOpen} />
                 <hr />
-                <MenuItem 
-                  label="התנתקות" 
-                  onClick={() => signOut()}
-                />
+                <MenuItem label="התנתקות" onClick={() => signOut()} />
               </>
             ) : (
               <>
-                <MenuItem 
-                  label="כניסה" 
-                  onClick={loginModal.onOpen}
-                />
+                <MenuItem label="כניסה" onClick={loginModal.onOpen} />
               </>
             )}
           </div>
         </div>
       )}
     </div>
-   );
-}
- 
+  );
+};
+
 export default UserMenu;

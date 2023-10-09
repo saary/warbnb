@@ -3,9 +3,11 @@ import { NextResponse } from "next/server";
 import prisma from "@/app/libs/prismadb";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 
+// user create reservation
 export async function POST(
   request: Request, 
 ) {
+  // add check to ensure user session
   const currentUser = await getCurrentUser();
 
   if (!currentUser) {
