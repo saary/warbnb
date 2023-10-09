@@ -1,7 +1,8 @@
 'use client';
 
 import { usePathname, useSearchParams } from 'next/navigation';
-import { BsHouse } from 'react-icons/bs';
+import { TbMoodKid, TbAccessible } from 'react-icons/tb';
+import { MdOutlineVilla } from 'react-icons/md';
 
 import CategoryBox from "../CategoryBox";
 import Container from '../Container';
@@ -9,9 +10,24 @@ import Container from '../Container';
 
 export const categories = [
   {
-    label: 'Apartments',
-    icon: BsHouse,
-    description: 'This property is close to the beach!',
+    label: 'נגיש',
+    icon: TbAccessible,
+    description: 'מקום נגיש',
+  },
+  {
+    label: 'ילדים',
+    icon: TbMoodKid,
+    description: 'מקום ידידותי לילדים',
+  },
+  {
+    label: 'כשר',
+    icon: MdOutlineVilla,
+    description: 'מקום שומר כשרות'
+  },
+  {
+    label: 'בעלי חיים',
+    icon: MdOutlineVilla,
+    description: 'מותר בעלי חיים'
   },
 ]
 
@@ -33,7 +49,7 @@ const Categories = () => {
           flex 
           flex-row 
           items-center 
-          justify-between
+          justify-center
           overflow-x-auto
         "
       >

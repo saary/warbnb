@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { signIn } from 'next-auth/react';
 import { 
@@ -9,14 +9,11 @@ import {
   useForm
 } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
-import { AiFillGithub } from "react-icons/ai";
 import { useRouter } from "next/navigation";
 
 import useLoginModal from "@/app/hooks/useLoginModal";
 
 import SlimModal from "./SlimModal";
-import Input from "../inputs/Input";
-import Heading from "../Heading";
 import Button from "../Button";
 
 const LoginModal = () => {
@@ -65,7 +62,7 @@ const LoginModal = () => {
       <hr />
       <Button 
         outline 
-        label="Continue with Google"
+        label="כניסה עם גוגל"
         icon={FcGoogle}
         onClick={() => signIn('google')}
       />
@@ -76,7 +73,7 @@ const LoginModal = () => {
     <SlimModal
       disabled={isLoading}
       isOpen={loginModal.isOpen}
-      title="Login"
+      title="כניסה"
       onClose={loginModal.onClose}
       onSubmit={handleSubmit(onSubmit)}
       body={bodyContent}

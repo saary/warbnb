@@ -23,7 +23,7 @@ const Search = () => {
       return getByValue(locationValue as string)?.label;
     }
 
-    return 'Anywhere';
+    return 'כל איזור';
   }, [locationValue, getByValue]);
 
   const durationLabel = useMemo(() => {
@@ -36,18 +36,18 @@ const Search = () => {
         diff = 1;
       }
 
-      return `${diff} Days`;
+      return `ימים ${diff}`;
     }
 
-    return 'Any Week'
+    return 'מה שזמין'
   }, [startDate, endDate]);
 
   const guestLabel = useMemo(() => {
     if (guestCount) {
-      return `${guestCount} Guests`;
+      return `${guestCount} אורחים`;
     }
 
-    return 'Add Guests';
+    return 'הוספת אורחים';
   }, [guestCount]);
 
   return ( 
