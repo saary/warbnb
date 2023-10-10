@@ -36,81 +36,12 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
     rentModal.onOpen();
   }, [loginModal, rentModal, currentUser]);
 
-  // todo: fix style to wrap text
-  if (!currentUser?.isHost) {
-    return (
-      <div className="relative">
-        <div className="flex flex-row items-center gap-3">
-          
-          <div
-            onClick={toggleOpen}
-            className="
-            p-4
-            md:py-1
-            md:px-2
-            border-[1px] 
-            border-neutral-200 
-            flex 
-            flex-row 
-            items-center 
-            gap-3 
-            rounded-full 
-            cursor-pointer 
-            hover:shadow-md 
-            transition
-            "
-          >
-            <AiOutlineMenu />
-            <div className="hidden md:block">
-              <Avatar src={currentUser?.image} />
-            </div>
-          </div>
-        </div>
-        {isOpen && (
-          <div
-            className="
-              absolute 
-              rounded-xl 
-              shadow-md
-              w-[40vw]
-              md:w-3/4 
-              bg-white 
-              overflow-hidden 
-              left-0 
-              top-12 
-              text-sm
-            "
-          >
-            <div className="flex flex-col cursor-pointer">
-              {currentUser ? (
-                <>
-                  <MenuItem
-                    label="מקומות בהם התארחתי/אתארח"
-                    onClick={() => router.push("/trips")}
-                  />
-                  <MenuItem
-                    label="המקומות שלי"
-                    onClick={() => router.push("/properties")}
-                  />
-                  <hr />
-                  <MenuItem label="התנתקות" onClick={() => signOut()} />
-                </>
-              ) : (
-                <>
-                  <MenuItem label="כניסה" onClick={loginModal.onOpen} />
-                </>
-              )}
-            </div>
-          </div>
-        )}
-      </div>
-    );
-  }
-
+  // Hide listing creation button from non-hosts (for fixed width rendering). Actual authorization is checked in api.
   return (
     <div className="relative">
       <div className="flex flex-row items-center gap-3">
-        <div
+        {currentUser?.isHost &&
+         <div
           onClick={onRent}
           className="
             hidden
@@ -126,7 +57,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
           "
         >
           רוצה לארח
-        </div>
+        </div>}
         <div
           onClick={toggleOpen}
           className="
@@ -181,7 +112,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                   label="המקומות שלי"
                   onClick={() => router.push("/properties")}
                 />
-                <MenuItem label="רוצה לארח" onClick={rentModal.onOpen} />
+                { currentUser?.isHost && <MenuItem label="רוצה לארח" onClick={rentModal.onOpen} /> }
                 <hr />
                 <MenuItem label="התנתקות" onClick={() => signOut()} />
               </>

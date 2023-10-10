@@ -11,7 +11,11 @@ export async function POST(
   const currentUser = await getCurrentUser();
 
   if (!currentUser) {
-    return NextResponse.error();
+    return new NextResponse(null, { status: 401});
+  }
+
+  if (!currentUser.isHost) {
+    return new NextResponse(null, { status: 403});
   }
 
   const body = await request.json();
@@ -29,7 +33,7 @@ export async function POST(
 
   Object.keys(body).forEach((value: any) => {
     if (!body[value]) {
-      NextResponse.error();
+      return new NextResponse(null, { status: 400 });
     }
   });
 
