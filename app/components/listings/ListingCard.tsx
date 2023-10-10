@@ -36,6 +36,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
   const { getByValue } = useBureaus();
 
   const location = getByValue(data.locationValue);
+  const title = getByValue(data.title);
 
   const handleCancel = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -66,6 +67,9 @@ const ListingCard: React.FC<ListingCardProps> = ({
     >
       <div className="flex flex-col gap-2 w-full">
         <div className="font-semibold text-lg">
+          {data.title}
+        </div>
+        <div className="font-normal">
           {location?.region}, {location?.label}
         </div>
         <div className="font-light text-neutral-500">

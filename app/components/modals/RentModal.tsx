@@ -217,6 +217,7 @@ const RentModal = () => {
           register={register}
           errors={errors}
           required
+          defaultValue={location?.label + ", " + guestCount}
         />
         <hr />
         <Input
