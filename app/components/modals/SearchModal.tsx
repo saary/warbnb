@@ -12,9 +12,9 @@ import useSearchModal from "@/app/hooks/useSearchModal";
 import Modal from "./Modal";
 import Calendar from "../inputs/Calendar";
 import Counter from "../inputs/Counter";
-import CountrySelect, { 
-  CountrySelectValue
-} from "../inputs/CountrySelect";
+import BureauSelect, { 
+  BureauSelectValue
+} from "../inputs/BureauSelect";
 import Heading from '../Heading';
 
 enum STEPS {
@@ -30,7 +30,7 @@ const SearchModal = () => {
 
   const [step, setStep] = useState(STEPS.LOCATION);
 
-  const [location, setLocation] = useState<CountrySelectValue>();
+  const [location, setLocation] = useState<BureauSelectValue>();
   const [guestCount, setGuestCount] = useState(1);
   const [roomCount, setRoomCount] = useState(1);
   const [bathroomCount, setBathroomCount] = useState(1);
@@ -120,13 +120,13 @@ const SearchModal = () => {
   let bodyContent = (
     <div className="flex flex-col gap-8">
       <Heading
-        title="Where do you wanna go?"
-        subtitle="Find the perfect location!"
+        title="מיקום מועדף?"
+        subtitle=""
       />
-      <CountrySelect 
+      <BureauSelect 
         value={location} 
         onChange={(value) => 
-          setLocation(value as CountrySelectValue)} 
+          setLocation(value as BureauSelectValue)} 
       />
       <hr />
       <Map center={location?.latlng} />

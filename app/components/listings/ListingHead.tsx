@@ -1,7 +1,7 @@
 'use client';
 
 
-import useCountries from "@/app/hooks/useCountries";
+import useBureaus from "@/app/hooks/useBureaus";
 import { SafeUser } from "@/app/types";
 
 import Heading from "../Heading";
@@ -16,7 +16,7 @@ interface ListingHeadProps {
 const ListingHead: React.FC<ListingHeadProps> = ({
   title,
   locationValue}) => {
-  const { getByValue } = useCountries();
+  const { getByValue } = useBureaus();
 
   const location = getByValue(locationValue);
 

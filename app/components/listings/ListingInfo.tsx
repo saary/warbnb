@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 import { IconType } from "react-icons";
 
-import useCountries from "@/app/hooks/useCountries";
+import useBureaus from "@/app/hooks/useBureaus";
 import { SafeUser } from "@/app/types";
 
 import Avatar from "../Avatar";
@@ -36,7 +36,7 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
   category,
   locationValue,
 }) => {
-  const { getByValue } = useCountries();
+  const { getByValue } = useBureaus();
 
   const coordinates = getByValue(locationValue)?.latlng
 

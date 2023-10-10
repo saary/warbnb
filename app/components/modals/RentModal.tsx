@@ -16,7 +16,7 @@ import useRentModal from '@/app/hooks/useRentModal';
 import Modal from "./Modal";
 import Counter from "../inputs/Counter";
 import CategoryInput from '../inputs/CategoryInput';
-import CountrySelect from "../inputs/CountrySelect";
+import BureauSelect from "../inputs/BureauSelect";
 import { categories } from '../navbar/Categories';
 import Input from '../inputs/Input';
 import Heading from '../Heading';
@@ -163,7 +163,7 @@ const RentModal = () => {
           title="איפה הבית נמצא?"
           subtitle=""
         />
-        <CountrySelect 
+        <BureauSelect 
           value={location} 
           onChange={(value) => setCustomValue('location', value)} 
         />
