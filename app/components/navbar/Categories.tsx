@@ -6,7 +6,7 @@ import CategoryBox from "../CategoryBox";
 import Container from '../Container';
 
 
-export const categories = [
+export const allCategories = [
   {
     label: 'נגיש',
     icon: TbAccessible,
@@ -41,7 +41,7 @@ export const categories = [
 
 const Categories = () => {
   const params = useSearchParams();
-  const category = params?.get('category');
+  const categories = params?.getAll('categories');
   const pathname = usePathname();
   const isMainPage = pathname === '/';
 
@@ -61,12 +61,12 @@ const Categories = () => {
           overflow-x-auto
         "
       >
-        {categories.map((item) => (
+        {allCategories.map((item) => (
           <CategoryBox 
             key={item.label}
             label={item.label}
             icon={item.icon}
-            selected={category === item.label}
+            selected={categories?.includes(item.label)}
           />
         ))}
       </div>

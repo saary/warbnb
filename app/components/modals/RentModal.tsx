@@ -17,9 +17,10 @@ import Modal from "./Modal";
 import Counter from "../inputs/Counter";
 import CategoryInput from '../inputs/CategoryInput';
 import BureauSelect from "../inputs/BureauSelect";
-import { categories } from '../navbar/Categories';
+import { allCategories } from '../navbar/Categories';
 import Input from '../inputs/Input';
 import Heading from '../Heading';
+import { toggleCategoryFilter } from '../CategoryBox';
 
 enum STEPS {
   CATEGORY = 0,
@@ -46,24 +47,22 @@ const RentModal = () => {
     reset,
   } = useForm<FieldValues>({
     defaultValues: {
-      category: '',
       location: null,
       guestCount: 1,
       roomCount: 1,
       bathroomCount: 1,
       imageSrc: '',
-      price: 0,
       title: '',
       description: '',
+      categories: [],
     }
   });
 
   const location = watch('location');
-  const category = watch('category');
   const guestCount = watch('guestCount');
   const roomCount = watch('roomCount');
   const bathroomCount = watch('bathroomCount');
-  const imageSrc = watch('imageSrc');
+  const filters = watch('categories');
 
   const Map = useMemo(() => dynamic(() => import('../Map'), { 
     ssr: false 
@@ -77,7 +76,6 @@ const RentModal = () => {
       shouldValidate: true
     })
   }
-
   const onBack = () => {
     setStep((value) => value - 1);
   }
@@ -141,12 +139,12 @@ const RentModal = () => {
           overflow-y-auto
         "
       >
-        {categories.map((item) => (
+        {allCategories.map((item) => (
           <div key={item.label} className="col-span-1">
             <CategoryInput
               onClick={(category) => 
-                setCustomValue('category', category)}
-              selected={category === item.label}
+                setCustomValue('categories', toggleCategoryFilter(filters, category))}
+              selected={filters.includes(item.label)}
               label={item.label}
               icon={item.icon}
             />
@@ -248,3 +246,4 @@ const RentModal = () => {
 }
 
 export default RentModal;
+

@@ -23,12 +23,12 @@ export async function POST(
     title,
     description,
     imageSrc,
-    category,
+    categories,
     roomCount,
     bathroomCount,
     guestCount,
     location,
-    price,
+    phoneNumber
    } = body;
 
   Object.keys(body).forEach((value: any) => {
@@ -42,13 +42,13 @@ export async function POST(
       title,
       description,
       imageSrc,
-      category,
+      categories,
       roomCount,
       bathroomCount,
       guestCount,
       locationValue: location.value,
-      price: parseInt(price, 10),
-      userId: currentUser.id
+      userId: currentUser.id,
+      phoneNumber
     }
   });
 
