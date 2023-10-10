@@ -19,6 +19,7 @@ const publicKeys: Array<keyof Listing> = [
   "roomCount",
   "guestCount",
   "category",
+  "id",
 ];
 
 export default async function getListings(params: IListingsParams) {
