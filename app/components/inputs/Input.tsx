@@ -10,22 +10,22 @@ interface InputProps {
   id: string;
   label: string;
   type?: string;
+  maxLength?: number
   disabled?: boolean;
   required?: boolean;
   register: UseFormRegister<FieldValues>,
   errors: FieldErrors,
-  defaultValue?: string,
 }
 
 const Input: React.FC<InputProps> = ({
   id,
   label,
   type = "text", 
+  maxLength = 500,
   disabled, 
   register,
   required,
   errors,
-  defaultValue
 }) => {
   return (
     <div className="w-full relative">
@@ -33,7 +33,7 @@ const Input: React.FC<InputProps> = ({
         id={id}
         disabled={disabled}
         {...register(id, { required })}
-        value={ defaultValue || ""}
+        maxLength={maxLength}
         placeholder= " "
         type={type}
         className={`

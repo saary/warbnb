@@ -40,10 +40,9 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
   return (
     <div className="relative">
       <div className="flex flex-row items-center gap-3">
-        {currentUser?.isHost &&
          <div
           onClick={onRent}
-          className="
+          className={`
             hidden
             md:block
             text-sm 
@@ -54,10 +53,11 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
             hover:bg-neutral-100 
             transition 
             cursor-pointer
-          "
+            ${currentUser?.isHost ? 'visible' : 'invisible' }
+          `}
         >
           רוצה לארח
-        </div>}
+        </div>
         <div
           onClick={toggleOpen}
           className="

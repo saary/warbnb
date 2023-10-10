@@ -213,11 +213,11 @@ const RentModal = () => {
         <Input
           id="title"
           label="כותרת"
+          maxLength={20}
           disabled={isLoading}
           register={register}
           errors={errors}
           required
-          defaultValue={location?.label + ", " + guestCount}
         />
         <hr />
         <Input
@@ -226,6 +226,7 @@ const RentModal = () => {
           disabled={isLoading}
           register={register}
           errors={errors}
+          maxLength={500}
         />
       </div>
     )
