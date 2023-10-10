@@ -12,13 +12,14 @@ export interface IListingsParams {
   endDate?: string;
   locationValue?: string;
   categories?: string[];
+  phoneNumber?: string;
 }
 
 const publicKeys: Array<keyof Listing> = [
   "title",
   "roomCount",
   "guestCount",
-  "category",
+  "categories",
   "id",
 ];
 
@@ -32,7 +33,8 @@ export default async function getListings(params: IListingsParams) {
       locationValue,
       startDate,
       endDate,
-      categories
+      categories,
+      phoneNumber
     } = params;
 
     let query: any = {};

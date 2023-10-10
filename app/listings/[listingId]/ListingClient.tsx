@@ -59,7 +59,6 @@ const ListingClient: React.FC<ListingClientProps> = ({
   }, [listing.categories]);
 
   const [isLoading, setIsLoading] = useState(false);
-  const [totalPrice, setTotalPrice] = useState(listing.price);
   const [dateRange, setDateRange] = useState<Range>(initialDateRange);
 
   const onCreateReservation = useCallback(() => {
@@ -69,7 +68,6 @@ const ListingClient: React.FC<ListingClientProps> = ({
       setIsLoading(true);
 
       axios.post('/api/reservations', {
-        totalPrice,
         startDate: dateRange.startDate,
         endDate: dateRange.endDate,
         listingId: listing?.id
@@ -87,28 +85,12 @@ const ListingClient: React.FC<ListingClientProps> = ({
       })
   },
   [
-    totalPrice, 
     dateRange, 
     listing?.id,
     router,
     currentUser,
     loginModal
   ]);
-
-  useEffect(() => {
-    if (dateRange.startDate && dateRange.endDate) {
-      const dayCount = differenceInDays(
-        dateRange.endDate, 
-        dateRange.startDate
-      );
-      
-      if (dayCount && listing.price) {
-        setTotalPrice(dayCount * listing.price);
-      } else {
-        setTotalPrice(listing.price);
-      }
-    }
-  }, [dateRange, listing.price]);
 
   return ( 
     <Container>
