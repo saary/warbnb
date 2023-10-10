@@ -125,7 +125,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
             id={listing.id}
             currentUser={currentUser}
           />
-          <div 
+          {!!currentUser ? <div 
             className="
               grid 
               grid-cols-1 
@@ -159,7 +159,9 @@ const ListingClient: React.FC<ListingClientProps> = ({
                 disabledDates={disabledDates}
               />
             </div>
-          </div>
+          </div> : <div>
+            על מנת להגן על פרטיותכם עליכם להתחבר באמצעות חשבון gmail תקין למערכת
+            </div>}
         </div>
       </div>
     </Container>
