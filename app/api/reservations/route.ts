@@ -38,18 +38,20 @@ export async function POST(request: Request) {
     },
   };
 
-  const listingAndReservation = await prisma.listing.update({
-    where: query,
-    data: {
-      reservations: {
-        create: {
-          userId: currentUser.id,
-          startDate,
-          endDate,
-        },
+  // $transaction calls operations in order and rolls back if any operation fails (db transaction)
+  const listingAndReservation = await prisma.$transaction([
+    prisma.listing.findFirstOrThrow({
+      where: query,
+    }),
+    prisma.reservation.create({
+      data: {
+        userId: currentUser.id,
+        startDate,
+        endDate,
+        listingId,
       },
-    },
-  });
+    }),
+  ]);
 
   return NextResponse.json(listingAndReservation);
 }
