@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname, useSearchParams } from 'next/navigation';
-import { TbMoodKid, TbAccessible, TbJewishStar, TbDog } from 'react-icons/tb';
+import { TbMoodKid, TbAccessible, TbJewishStar, TbDog, TbSmokingNo, TbParking } from 'react-icons/tb';
 import CategoryBox from "../CategoryBox";
 import Container from '../Container';
 
@@ -26,6 +26,16 @@ export const categories = [
     label: 'בעלי חיים',
     icon: TbDog,
     description: 'מותר בעלי חיים'
+  },
+  {
+    label: 'ללא עישון',
+    icon: TbSmokingNo,
+    description: 'האישון אסור'
+  },
+  {
+    label: 'חניה',
+    icon: TbParking,
+    description: 'יש חניה'
   },
 ]
 
