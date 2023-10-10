@@ -50,8 +50,8 @@ const Input: React.FC<InputProps> = ({
           disabled:opacity-70
           disabled:cursor-not-allowed
           pr-4
-          ${errors[id] ? 'border-rose-500' : 'border-neutral-300'}
-          ${errors[id] ? 'focus:border-rose-500' : 'focus:border-black'}
+          ${errors[id] ? 'border-sky-500' : 'border-neutral-300'}
+          ${errors[id] ? 'focus:border-sky-500' : 'focus:border-black'}
         `}
       />
       <label 

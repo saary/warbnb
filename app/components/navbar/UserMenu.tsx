@@ -50,7 +50,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
             py-3 
             px-4 
             rounded-full 
-            hover:bg-neutral-100 
+            hover:bg-slate-100 
             transition 
             cursor-pointer
             ${currentUser?.isHost ? 'visible' : 'invisible' }
@@ -65,7 +65,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
           md:py-1
           md:px-2
           border-[1px] 
-          border-neutral-200 
+          border-slate-400 
           flex 
           flex-row 
           items-center 
