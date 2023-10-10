@@ -1,9 +1,7 @@
 'use client';
 
 import { usePathname, useSearchParams } from 'next/navigation';
-import { TbMoodKid, TbAccessible } from 'react-icons/tb';
-import { MdOutlineVilla } from 'react-icons/md';
-
+import { TbMoodKid, TbAccessible, TbJewishStar, TbDog } from 'react-icons/tb';
 import CategoryBox from "../CategoryBox";
 import Container from '../Container';
 
@@ -21,12 +19,12 @@ export const categories = [
   },
   {
     label: 'כשר',
-    icon: MdOutlineVilla,
+    icon: TbJewishStar,
     description: 'מקום שומר כשרות'
   },
   {
     label: 'בעלי חיים',
-    icon: MdOutlineVilla,
+    icon: TbDog,
     description: 'מותר בעלי חיים'
   },
 ]

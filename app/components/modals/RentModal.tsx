@@ -18,7 +18,6 @@ import Counter from "../inputs/Counter";
 import CategoryInput from '../inputs/CategoryInput';
 import CountrySelect from "../inputs/CountrySelect";
 import { categories } from '../navbar/Categories';
-import ImageUpload from '../inputs/ImageUpload';
 import Input from '../inputs/Input';
 import Heading from '../Heading';
 
@@ -26,9 +25,7 @@ enum STEPS {
   CATEGORY = 0,
   LOCATION = 1,
   INFO = 2,
-  IMAGES = 3,
-  DESCRIPTION = 4,
-  PRICE = 5,
+  DESCRIPTION = 3,
 }
 
 const RentModal = () => {
@@ -55,7 +52,7 @@ const RentModal = () => {
       roomCount: 1,
       bathroomCount: 1,
       imageSrc: '',
-      price: 1,
+      price: 0,
       title: '',
       description: '',
     }
@@ -90,7 +87,7 @@ const RentModal = () => {
   }
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    if (step !== STEPS.PRICE) {
+    if (step !== STEPS.DESCRIPTION) {
       return onNext();
     }
     
@@ -113,7 +110,7 @@ const RentModal = () => {
   }
 
   const actionLabel = useMemo(() => {
-    if (step === STEPS.PRICE) {
+    if (step === STEPS.DESCRIPTION) {
       return 'יצירה'
     }
 
@@ -206,21 +203,6 @@ const RentModal = () => {
     )
   }
 
-  if (step === STEPS.IMAGES) {
-    bodyContent = (
-      <div className="flex flex-col gap-8">
-        <Heading
-          title="Add a photo of your place"
-          subtitle="Show guests what your place looks like!"
-        />
-        <ImageUpload
-          onChange={(value) => setCustomValue('imageSrc', value)}
-          value={imageSrc}
-        />
-      </div>
-    )
-  }
-
   if (step === STEPS.DESCRIPTION) {
     bodyContent = (
       <div className="flex flex-col gap-8">
@@ -243,27 +225,6 @@ const RentModal = () => {
           disabled={isLoading}
           register={register}
           errors={errors}
-        />
-      </div>
-    )
-  }
-
-  if (step === STEPS.PRICE) {
-    bodyContent = (
-      <div className="flex flex-col gap-8">
-        <Heading
-          title="REMOVE ME"
-          subtitle="How much do you charge per night?"
-        />
-        <Input
-          id="price"
-          label="Price"
-          formatPrice 
-          type="number" 
-          disabled={isLoading}
-          register={register}
-          errors={errors}
-          required
         />
       </div>
     )
