@@ -25,7 +25,7 @@ const BureauSelect: React.FC<BureauSelectProps> = ({
   return ( 
     <div>
       <Select
-        placeholder="בחירה..."
+        placeholder="בחירה/Select ..."
         isClearable
         options={getAll()}
         value={value}

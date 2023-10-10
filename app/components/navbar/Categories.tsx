@@ -8,34 +8,34 @@ import Container from '../Container';
 
 export const allCategories = [
   {
-    label: 'נגיש',
+    label: 'נגיש/Accessible',
     icon: TbAccessible,
-    description: 'מקום נגיש',
+    description: 'מקום נגיש/Accessible property',
   },
   {
-    label: 'ילדים',
+    label: 'ילדים/Children',
     icon: TbMoodKid,
-    description: 'מקום ידידותי לילדים',
+    description: 'מקום ידידותי לילדים/Children friendly',
   },
   {
     label: 'כשר',
     icon: TbJewishStar,
-    description: 'מקום שומר כשרות'
+    description: 'מקום שומר כשרות/Kosher'
   },
   {
-    label: 'בעלי חיים',
+    label: 'בעלי חיים/Pets',
     icon: TbDog,
-    description: 'מותר בעלי חיים'
+    description: 'מותר בעלי חיים/Pets friendly'
   },
   {
-    label: 'ללא עישון',
+    label: 'ללא עישון/No smoking',
     icon: TbSmokingNo,
-    description: 'האישון אסור'
+    description: 'האישון אסור/No smoking'
   },
   {
-    label: 'חניה',
+    label: 'חניה/Parking',
     icon: TbParking,
-    description: 'יש חניה'
+    description: 'יש חניה/Parking available'
   },
 ]
 
