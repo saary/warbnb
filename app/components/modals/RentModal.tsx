@@ -93,14 +93,14 @@ const RentModal = () => {
 
     axios.post('/api/listings', data)
     .then(() => {
-      toast.success('המודעה נקלטה. תודה!');
+      toast.success('המודעה נקלטה. תודה!\nListing was successfully added');
       router.refresh();
       reset();
       setStep(STEPS.CATEGORY)
       rentModal.onClose();
     })
     .catch(() => {
-      toast.error('משהו השתבש.');
+      toast.error('משהו השתבש.\nSomething went wrong.');
     })
     .finally(() => {
       setIsLoading(false);
@@ -126,8 +126,8 @@ const RentModal = () => {
   let bodyContent = (
     <div className="flex flex-col gap-8">
       <Heading
-        title="מאפיינים רלוונטיים"
-        subtitle="יש לבחור קטגוריות רלוונטיות"
+        title="מאפיינים רלוונטיים/Categories"
+        subtitle="יש לבחור קטגוריות רלוונטיות/Choose relevant categories"
       />
       <div 
         className="
@@ -158,7 +158,7 @@ const RentModal = () => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="איפה הבית נמצא?"
+          title="איפה הבית נמצא?/Where is the house located?"
           subtitle=""
         />
         <BureauSelect 
@@ -174,28 +174,28 @@ const RentModal = () => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="פרטי הבית"
+          title="פרטי הבית/Property details"
           subtitle=""
         />
         <Counter 
           onChange={(value) => setCustomValue('guestCount', value)}
           value={guestCount}
-          title="תפוסה" 
-          subtitle="כמה נפשות אפשר ניתן לארח?"
+          title="תפוסה/Property Capacity" 
+          subtitle="כמה נפשות אפשר ניתן לארח?/Number of guests you can host"
         />
         <hr />
         <Counter 
           onChange={(value) => setCustomValue('roomCount', value)}
           value={roomCount}
-          title="חדרים" 
-          subtitle="כמה חדרים פנויים לאירוח?"
+          title="חדרים/Bedrooms" 
+          subtitle="כמה חדרים פנויים לאירוח?/Number of available rooms for hosting?"
         />
         <hr />
         <Counter 
           onChange={(value) => setCustomValue('bathroomCount', value)}
           value={bathroomCount}
-          title="חדרי רחצה" 
-          subtitle="כמה חדרי רחצה זמינים לשימוש?"
+          title="חדרי רחצה/Bathrooms" 
+          subtitle="כמה חדרי רחצה זמינים לשימוש?/Number of available bathrooms"
         />
       </div>
     )
@@ -205,12 +205,12 @@ const RentModal = () => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="כותרת"
-          subtitle="כותרת המודעה"
+          title="כותרת/Title"
+          subtitle="כותרת המודעה/Listing title"
         />
         <Input
           id="title"
-          label="כותרת"
+          label="כותרת/Title"
           maxLength={20}
           disabled={isLoading}
           register={register}
@@ -220,7 +220,7 @@ const RentModal = () => {
         <hr />
         <Input
           id="description"
-          label="הערות נוספות"
+          label="הערות נוספות/Listing description"
           disabled={isLoading}
           register={register}
           errors={errors}
@@ -234,7 +234,7 @@ const RentModal = () => {
     <Modal
       disabled={isLoading}
       isOpen={rentModal.isOpen}
-      title="אירוח בביתי"
+      title="אירוח בביתי/I want to host"
       actionLabel={actionLabel}
       onSubmit={handleSubmit(onSubmit)}
       secondaryActionLabel={secondaryActionLabel}

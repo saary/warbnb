@@ -103,10 +103,10 @@ const SearchModal = () => {
 
   const actionLabel = useMemo(() => {
     if (step === STEPS.INFO) {
-      return 'חיפוש'
+      return 'חיפוש/Search'
     }
 
-    return 'הבא'
+    return 'הבא/Next'
   }, [step]);
 
   const secondaryActionLabel = useMemo(() => {
@@ -120,7 +120,7 @@ const SearchModal = () => {
   let bodyContent = (
     <div className="flex flex-col gap-8">
       <Heading
-        title="מיקום מועדף?"
+        title="מיקום מועדף/Preferred region?"
         subtitle=""
       />
       <BureauSelect 
@@ -137,8 +137,8 @@ const SearchModal = () => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="תאריכי יעד"
-          subtitle="למציאת מקומות פנויים"
+          title="תאריכי יעד/Dates"
+          subtitle="למציאת מקומות פנויים/Find available places"
         />
         <Calendar
           onChange={(value) => setDateRange(value.selection)}
@@ -152,21 +152,21 @@ const SearchModal = () => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="צרכים נוספים"
+          title="צרכים נוספים/Additional needs"
           subtitle=""
         />
         <Counter 
           onChange={(value) => setGuestCount(value)}
           value={guestCount}
-          title="מספר נפשות" 
+          title="מספר נפשות/Number of people" 
           subtitle=""
         />
         <hr />
         <Counter 
           onChange={(value) => setRoomCount(value)}
           value={roomCount}
-          title="חדרים" 
-          subtitle="כמה חדרים נחוצים?"
+          title="חדרים/Bedrooms" 
+          subtitle="כמה חדרים נחוצים/Required number of bedrooms?"
         />        
         <hr />
         <Counter 
@@ -174,8 +174,8 @@ const SearchModal = () => {
             setBathroomCount(value)
           }}
           value={bathroomCount}
-          title="חדרי רחצה"
-          subtitle="כמה חדרי רחצה  שונים נחוצים"
+          title="חדרי רחצה/Bathrooms"
+          subtitle="כמה חדרי רחצה  שונים נחוצים/Required number of bathrooms"
         />
       </div>
     )

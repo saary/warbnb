@@ -42,7 +42,7 @@ const ListingReservation: React.FC<
       <div className="p-4">
         <Button 
           disabled={disabled} 
-          label="להזמנה" 
+          label="להזמנה / Request Booking" 
           onClick={onSubmit}
         />
       </div>
