@@ -38,16 +38,22 @@ export async function POST(request: Request) {
     },
   };
 
-  const listingAndReservation = await prisma.listing.update({
+  // warning: not concurent
+  // prisma doesn't currently suppost conditional update with another table record creation
+  // P1 add locks based on listing id
+  const listing = await prisma.listing.findFirst({
     where: query,
+  });
+
+  if (!listing) {
+    return NextResponse.error();
+  }
+  const listingAndReservation = await prisma.reservation.create({
     data: {
-      reservations: {
-        create: {
-          userId: currentUser.id,
-          startDate,
-          endDate,
-        },
-      },
+      userId: currentUser.id,
+      startDate,
+      endDate,
+      listingId: listing.id,
     },
   });
 
