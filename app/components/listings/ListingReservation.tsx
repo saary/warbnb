@@ -32,12 +32,14 @@ const ListingReservation: React.FC<
         overflow-hidden
       "
     >
+      <div style={{direction: "ltr"}}>
       <Calendar
         value={dateRange}
         disabledDates={disabledDates}
         onChange={(value) => 
           onChangeDate(value.selection)}
       />
+      </div>
       <hr />
       <div className="p-4">
         <Button 
