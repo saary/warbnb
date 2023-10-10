@@ -3,6 +3,7 @@ import GoogleProvider from "next-auth/providers/google";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 
 import prisma from "@/app/libs/prismadb";
+import { getAuthorizedHosts } from "@/app/api/utils/gsheet";
 
 export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
@@ -23,8 +24,8 @@ export const authOptions: AuthOptions = {
   callbacks: {
     session: async (params) => {
       const email = params.session.user?.email;
-      // todo: replace this with actual spreadsheet verification
-      if (email?.includes("rewire")) {
+      const uniqueHosts = await getAuthorizedHosts();
+      if (uniqueHosts.has(email)) {
         if (!params.session.user) {
           params.session.user = params.user;
         }
