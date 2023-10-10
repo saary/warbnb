@@ -13,17 +13,19 @@ const Map = dynamic(() => import('../Map'), {
   ssr: false 
 });
 
+type Category = {
+  icon: IconType,
+  label: string;
+  description: string;
+}
+
 interface ListingInfoProps {
   user: SafeUser,
   description: string;
   guestCount: number;
   roomCount: number;
   bathroomCount: number;
-  category: {
-    icon: IconType,
-    label: string;
-    description: string;
-  } | undefined
+  categories: Category[];
   locationValue: string;
 }
 
@@ -33,7 +35,7 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
   guestCount,
   roomCount,
   bathroomCount,
-  category,
+  categories,
   locationValue,
 }) => {
   const { getByValue } = useBureaus();
@@ -77,13 +79,16 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
         </div>
       </div>
       <hr />
-      {category && (
-        <ListingCategory
-          icon={category.icon} 
-          label={category?.label}
-          description={category?.description} 
-        />
-      )}
+      <div className="grid grid-cols-3 gap-4">
+        {categories && categories.map((category) => (
+          <ListingCategory
+            key={category.label}
+            icon={category.icon} 
+            label={category?.label}
+            description={category?.description} 
+          />
+        ))}
+      </div>
       <hr />
       <div className="
       text-lg font-light text-neutral-500 break-words">

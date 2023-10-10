@@ -36,7 +36,6 @@ const ListingCard: React.FC<ListingCardProps> = ({
   const { getByValue } = useBureaus();
 
   const location = getByValue(data.locationValue);
-  const title = getByValue(data.title);
 
   const handleCancel = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -73,7 +72,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
           {location?.region}, {location?.label}
         </div>
         <div className="font-light text-neutral-500">
-          {reservationDate || data.category}
+          {reservationDate || data.categories.join(', ')}
         </div>
         {onAction && actionLabel && (
           <Button
