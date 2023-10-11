@@ -31,6 +31,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
   disabled,
   actionLabel,
   actionId = '',
+  currentUser = null
 }) => {
   const router = useRouter();
   const { getByValue } = useBureaus();
@@ -74,6 +75,11 @@ const ListingCard: React.FC<ListingCardProps> = ({
         <div className="font-light text-neutral-500">
           {reservationDate || data.categories.join(', ')}
         </div>
+      { reservation?.user && /* reservation.userId !== currentUser?.id && */
+        <div className="font-normal">
+          הזמנה מ {reservation?.user.name} ({reservation?.user.email} )
+        </div>
+        }
         {onAction && actionLabel && (
           <Button
             disabled={disabled}

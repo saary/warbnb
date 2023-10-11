@@ -12,8 +12,8 @@ import ClientOnly from './components/ClientOnly';
 import getCurrentUser from './actions/getCurrentUser';
 
 export const metadata = {
-  title: 'Warbnb',
-  description: 'אירוח לתושבי הדרום',
+  title: 'Safebnb',
+  description: 'אירוח בשעת חירום',
 }
 
 const font = Nunito({ 

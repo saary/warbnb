@@ -18,7 +18,7 @@ export const allCategories = [
     description: 'מקום ידידותי לילדים/Children friendly',
   },
   {
-    label: 'כשר',
+    label: 'כשר/Kosher',
     icon: TbJewishStar,
     description: 'מקום שומר כשרות/Kosher'
   },

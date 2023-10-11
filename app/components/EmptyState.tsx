@@ -9,12 +9,14 @@ interface EmptyStateProps {
   title?: string;
   subtitle?: string;
   showReset?: boolean;
+  resetLabel?: string
 }
 
 const EmptyState: React.FC<EmptyStateProps> = ({
   title = "לא נמצאו התאמות",
   subtitle = "יש לשנות או להסיר חלק מהפילטרים",
-  showReset
+  showReset,
+  resetLabel = "להורדת כל הפילטרים"
 }) => {
   const router = useRouter();
 
@@ -38,7 +40,7 @@ const EmptyState: React.FC<EmptyStateProps> = ({
         {showReset && (
           <Button
             outline
-            label="להורדת כל הפילטרים"
+            label={resetLabel}
             onClick={() => router.push('/')}
           />
         )}
