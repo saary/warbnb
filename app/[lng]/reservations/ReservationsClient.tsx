@@ -5,18 +5,18 @@ import axios from "axios";
 import { useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
 
-import { SafeReservation, SafeUser } from "@/app/types";
+import { SafeReservation, SafeUser } from "@/app/types"
+;
+import Heading from "@/app/[lng]/components/Heading";
+import Container from "@/app/[lng]/components/Container";
+import ListingCard from "@/app/[lng]/components/listings/ListingCard";
 
-import Heading from "@/app/components/Heading";
-import Container from "@/app/components/Container";
-import ListingCard from "@/app/components/listings/ListingCard";
-
-interface TripsClientProps {
+interface ReservationsClientProps {
   reservations: SafeReservation[],
   currentUser?: SafeUser | null,
 }
 
-const TripsClient: React.FC<TripsClientProps> = ({
+const ReservationsClient: React.FC<ReservationsClientProps> = ({
   reservations,
   currentUser
 }) => {
@@ -28,11 +28,11 @@ const TripsClient: React.FC<TripsClientProps> = ({
 
     axios.delete(`/api/reservations/${id}`)
     .then(() => {
-      toast.success('הזמנה בוטלה');
+      toast.success('Reservation cancelled');
       router.refresh();
     })
-    .catch((error) => {
-      toast.error(error?.response?.data?.error)
+    .catch(() => {
+      toast.error('Something went wrong.')
     })
     .finally(() => {
       setDeletingId('');
@@ -42,8 +42,8 @@ const TripsClient: React.FC<TripsClientProps> = ({
   return (
     <Container>
       <Heading
-        title="איפה התארחתי"
-        subtitle="מקומות בהם התארחתי/אתארח"
+        title="בקשות אירוח"
+        subtitle=""
       />
       <div 
         className="
@@ -66,7 +66,7 @@ const TripsClient: React.FC<TripsClientProps> = ({
             actionId={reservation.id}
             onAction={onCancel}
             disabled={deletingId === reservation.id}
-            actionLabel="ביטול הזמנה"
+            actionLabel="ביטול הבקשה"
             currentUser={currentUser}
           />
         ))}
@@ -75,4 +75,4 @@ const TripsClient: React.FC<TripsClientProps> = ({
    );
 }
  
-export default TripsClient;
+export default ReservationsClient;
