@@ -13,7 +13,7 @@ import ClientOnly from "./components/ClientOnly";
 import getCurrentUser from "../actions/getCurrentUser";
 
 export const metadata = {
-  title: "Safebnb",
+  title: "SAFEbnb",
   description: "אירוח בשעת חירום",
 };
 

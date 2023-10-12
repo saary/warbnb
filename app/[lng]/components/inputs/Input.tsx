@@ -13,8 +13,9 @@ interface InputProps {
   maxLength?: number
   disabled?: boolean;
   required?: boolean;
-  register: UseFormRegister<FieldValues>,
-  errors: FieldErrors,
+  register: UseFormRegister<FieldValues>;
+  errors: FieldErrors;
+  placeHolder?: string;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -26,6 +27,7 @@ const Input: React.FC<InputProps> = ({
   register,
   required,
   errors,
+  placeHolder = " "
 }) => {
   return (
     <div className="w-full relative">
@@ -34,7 +36,7 @@ const Input: React.FC<InputProps> = ({
         disabled={disabled}
         {...register(id, { required })}
         maxLength={maxLength}
-        placeholder= " "
+        placeholder={placeHolder}
         type={type}
         className={`
           peer

@@ -1,6 +1,4 @@
 {
-  "welcome": "ברוך הבא!",
-  "about": "About Us",
   "orderFrom": "הזמנה מ",
   "beHostedAt": "להתארח אצל",
   "guests": "נפשות",
@@ -19,7 +17,7 @@
   "petsFriendly": "מותר בעלי חיים",
   "parkingAvailable": "יש חניה",
   "cancelOrder": "ביטול הזמנה",
-  "unauthorized": "על מנת להגן על פרטיותכם עליכם להתחבר באמצעות חשבון gmail תקין למערכת",
+  "unauthorized": "על מנת להגן על פרטיותך עליך להתחבר באמצעות חשבון gmail תקין למערכת",
   "requestBooking": "להזמנה",
   "categories": "מאפיינים רלוונטיים",
   "selectCategories": "יש לבחור קטגוריות רלוונטיות",
@@ -33,7 +31,7 @@
   "nextLabel": "הבא",
   "backLabel": "חזרה",
   "rentModalLocationTitle": "איפה הבית נמצא?",
-  "rentModalCapacitySubtitle": "כמה נפשות אפשר ניתן לארח?",
+  "rentModalCapacitySubtitle": "כמה נפשות ניתן לארח?",
   "bedroomTitle": "חדרי שינה",
   "rentModalBedroomSubtitle": "כמה חדרים פנויים לאירוח?",
   "bathroomTitle": "חדרי רחצה",
@@ -68,7 +66,7 @@
   "homeBannerPreLoginTitle": "",
   "homeBannerPreLoginText": "בימים קשים אלה, אנשים רבים מהאזורים שנפגעו בעקבות המצב הבטחוני צריכים מקום בטוח להתארח בו.\nSafeBNB היא פלטפורמה שקמה כדי לעזור לקשר בין תושבים שזקוקים למקום בטוח להתארח בו- לתושבים שרוצים לתת יד ולארח.",
   "homeBannerHostPostLoginTitle": "מארח יקר",
-  "homeBannerHostPostLoginText": "קודם כל, אנחנו רוצים להצדיע לכם על פתיחת הלב והבית.\n  כדי לוודא שהאירוח יהיה מתאים לשני הצדדים, אנא ביחרו אופציות שמתאימות למקום האירוח.",
+  "homeBannerHostPostLoginText": "קודם כל, אנחנו רוצים להצדיע לך על פתיחת הלב והבית.\n  כדי לוודא שהאירוח יהיה מתאים לשני הצדדים, יש לבחור אופציות שמתאימות למקום האירוח.",
   "homeBannerGuestPostLoginTitle": "אורח יקר",
-  "homeBannerGuestPostLoginText": "מקווים שנוכל לעזור למצוא מקום בטוח להתארח בו בהקדם.\nכדי למצוא מקום אשר יתאים לצרכיכם אנא השתמשו באפשרויות החיפוש שנמצאות בחלק העליון של האתר."
+  "homeBannerGuestPostLoginText": "נשמח לעזור למצוא מקום בטוח להתארח בו בהקדם.\nכדי למצוא מקום אשר יתאים לצרכיכם אנא השתמשו באפשרויות החיפוש שנמצאות בחלק העליון של האתר."
 }

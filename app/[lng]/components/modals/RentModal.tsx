@@ -205,9 +205,10 @@ const RentModal = ({ lng }: { lng: string }) => {
           label={t("title")}
           maxLength={20}
           disabled={isLoading}
-          register={register}
+          register={register}          
           errors={errors}
           required
+          placeHolder="something catchy"
         />
         <hr />
         <PhoneInput

@@ -1,5 +1,4 @@
 {
-  "welcome": "Welcome to my website!",
   "about": "About Us",
   "orderFrom": "Order from",
   "beHostedAt": "Stay at",
@@ -67,7 +66,7 @@
   "searchBarDates": "Pick dates",
   "searchBarGuests": "Number of guests",
   "homeBannerPreLoginTitle": "",
-  "homeBannerPreLoginText": "In these difficult times, many people from the areas affected by the attack on Israel need a safe place to stay.\nSafeBNB is a platform established to help connect residents who need a safe place to stay with residents who want to help and host.",
+  "homeBannerPreLoginText": "In these difficult times, many people from the areas affected by the attack on Israel need a safe place to stay.\nSAFEbnb is a platform established to help connect residents who need a safe place to stay with residents who want to help and host.",
   "homeBannerHostPostLoginTitle": "Dear Host",
   "homeBannerHostPostLoginText": "First and foremost, we want to commend you for opening your heart and home.\nTo ensure that the hosting will be suitable for both parties, please select options that are appropriate for the hosting place.",
   "homeBannerGuestPostLoginTitle": "Dear Guest",
