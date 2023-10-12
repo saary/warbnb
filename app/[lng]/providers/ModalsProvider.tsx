@@ -7,8 +7,8 @@ import SearchModal from "../components/modals/SearchModal";
 const ModalsProvider = ({ lng }: { lng: string }) => {
   return (
     <>
-      <LoginModal />
-      <SearchModal />
+      <LoginModal lng={lng} />
+      <SearchModal lng={lng} />
       <RentModal lng={lng} />
     </>
   );

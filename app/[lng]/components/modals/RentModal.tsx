@@ -162,6 +162,7 @@ const RentModal = ({ lng }: { lng: string }) => {
         <BureauSelect
           value={location}
           onChange={(value) => setCustomValue("location", value)}
+          lng={lng}
         />
       </div>
     );

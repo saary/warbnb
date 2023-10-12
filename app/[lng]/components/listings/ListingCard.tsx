@@ -73,7 +73,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
           {location?.region}, {location?.label}
         </div>
         <div className="font-light text-neutral-500">
-          {reservationDate || data.categories.join(", ")}
+          {reservationDate || data.categories.map((categoryLabel) => t(categoryLabel)).join(", ")}
         </div>
         {reservation?.user /* reservation.userId !== currentUser?.id && */ && (
           <div className="font-normal">

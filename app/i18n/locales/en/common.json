@@ -10,7 +10,7 @@
   "children": "Children",
   "kosher": "Kosher",
   "pets": "Pets",
-  "noSmonking": "No smoking",
+  "noSmoking": "No smoking",
   "parking": "Parking",
   "shelter": "Shelter",
   "accessibleProperty": "Accessible property",
@@ -54,5 +54,12 @@
   "searchModalNeedsPeople": "Number of people",
   "searchModalNeedsBedrooms": "Required number of bedrooms?",
   "searchModalNeedsBathrooms": "Required number of bathrooms?",
-  "searchModalTitle": "Search"
+  "searchModalTitle": "Search",
+  "select": "Select",
+  "wishToHost": "I wish to host",
+  "reservationsHistory": "Places I've visited / will visit",
+  "hostRequests": "Host requests at my listings",
+  "myListings": "My listings",
+  "disconnect": "Disconnect",
+  "login": "Login"
 }

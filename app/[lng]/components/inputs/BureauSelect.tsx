@@ -3,6 +3,7 @@
 import Select from 'react-select'
 
 import useBureaus from '@/app/hooks/useBureaus';
+import { useTranslation } from '@/app/i18n/client';
 
 export type BureauSelectValue = {
   label: string;
@@ -14,18 +15,21 @@ export type BureauSelectValue = {
 interface BureauSelectProps {
   value?: BureauSelectValue;
   onChange: (value: BureauSelectValue) => void;
+  lng: string;
 }
 
 const BureauSelect: React.FC<BureauSelectProps> = ({
   value,
-  onChange
+  onChange,
+  lng,
 }) => {
+  const { t } = useTranslation(lng);
   const { getAll } = useBureaus();
 
   return ( 
     <div>
       <Select
-        placeholder="בחירה/Select ..."
+        placeholder={`${t("select")}...`}
         isClearable
         options={getAll()}
         value={value}
