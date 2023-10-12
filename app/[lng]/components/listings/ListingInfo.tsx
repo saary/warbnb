@@ -1,6 +1,5 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import { IconType } from "react-icons";
 
 import useBureaus from "@/app/hooks/useBureaus";
@@ -11,10 +10,6 @@ import ListingCategory from "./ListingCategory";
 import { useTranslation } from "@/app/i18n/client";
 import { formatPhoneNumber } from "react-phone-number-input";
 import { TbBrandWhatsapp } from "react-icons/tb";
-
-const Map = dynamic(() => import("../Map"), {
-  ssr: false,
-});
 
 type Category = {
   icon: IconType;
@@ -128,9 +123,6 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
           </a>
         </div>
       </div>}
-      
-      <hr />
-      <Map center={coordinates} />
     </div>
   );
 };
