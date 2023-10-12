@@ -13,6 +13,7 @@ interface Params {
 
 const TripsPage = async ({ params }: { params: Params }) => {
   const currentUser = await getCurrentUser();
+  const { t } = await useTranslation(params.lng);
 
   if (!currentUser) {
     return (
@@ -28,8 +29,8 @@ const TripsPage = async ({ params }: { params: Params }) => {
     return (
       <ClientOnly>
         <EmptyState
-          title="לא נמצאו הזמנות"
-          subtitle="נראה שעדיין לא הזמנת אירוח."
+          title={t('tripsEmptyStateTitle')}
+          subtitle={t('tripsEmptyStateSubtitle')}
           lng={params.lng}
         />
       </ClientOnly>

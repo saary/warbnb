@@ -5,6 +5,9 @@ import getCurrentUser from "@/app/actions/getCurrentUser";
 import getListings from "@/app/actions/getListings";
 
 import PropertiesClient from "./PropertiesClient";
+import HomeBanner from "../components/HomeBanner"
+
+import { useTranslation } from "../../i18n";
 
 interface Params {
   lng: string;
@@ -12,6 +15,7 @@ interface Params {
 
 const PropertiesPage = async ({ params }: { params: Params }) => {
   const currentUser = await getCurrentUser();
+  const { t } = await useTranslation(params.lng);
 
   if (!currentUser) {
     return <EmptyState title="Unauthorized" subtitle="Please login" lng={params.lng} />;
@@ -23,8 +27,8 @@ const PropertiesPage = async ({ params }: { params: Params }) => {
     return (
       <ClientOnly>
         <EmptyState
-          title="לא נמצאו מודעות"
-          subtitle="נראה שעדיין לא פרסמת מודעה."
+          title={t('propertiesEmptyTitle')}
+          subtitle={t('propertiesEmptySubtitle')}
           lng={params.lng}
         />
       </ClientOnly>
@@ -33,6 +37,7 @@ const PropertiesPage = async ({ params }: { params: Params }) => {
 
   return (
     <ClientOnly>
+      <HomeBanner isLoggedIn={!!currentUser} isHost={currentUser?.isHost} name={currentUser?.name || ''} lng={params.lng}/>
       <PropertiesClient listings={listings} currentUser={currentUser} lng={params.lng} />
     </ClientOnly>
   );

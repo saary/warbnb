@@ -68,5 +68,14 @@
   "homeBannerHostPostLoginTitle": "מארח יקר",
   "homeBannerHostPostLoginText": "קודם כל, אנחנו רוצים להצדיע לך על פתיחת הלב והבית.\n  כדי לוודא שהאירוח יהיה מתאים לשני הצדדים, יש לבחור אופציות שמתאימות למקום האירוח.",
   "homeBannerGuestPostLoginTitle": "אורח יקר",
-  "homeBannerGuestPostLoginText": "נשמח לעזור למצוא מקום בטוח להתארח בו בהקדם.\nכדי למצוא מקום אשר יתאים לצרכיכם אנא השתמשו באפשרויות החיפוש שנמצאות בחלק העליון של האתר."
+  "homeBannerGuestPostLoginText": "נשמח לעזור למצוא מקום בטוח להתארח בו בהקדם.\nכדי למצוא מקום אשר יתאים לצרכיכם אנא השתמשו באפשרויות החיפוש שנמצאות בחלק העליון של האתר.",
+  "propertiesEmptyTitle": "לא נמצאו מודעות",
+  "propertiesEmptySubtitle": "נראה שעדיין לא פרסמת מודעה.",
+  "emptyStateTitle": "לא נמצאו התאמות",
+  "emptyStateSubtitle": "יש לשנות או להסיר חלק מהפילטרים",
+  "emptyStateReset": "להורדת כל הפילטרים",
+  "tripsEmptyStateTitle": "לא נמצאו הזמנות",
+  "tripsEmptyStateSubtitle": "נראה שעדיין לא הזמנת אירוח.",
+  "reservationEmptyStateTitle": "לא נמצאו בקשות",
+  "reservationEmptyStateSubtitle": "נראה שעדיין אין בקשות להתארח אצלך."
 }

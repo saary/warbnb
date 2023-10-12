@@ -32,7 +32,6 @@ export default async function RootLayout({
   };
 }) {
   const currentUser = await getCurrentUser();
-
   return (
     <html lang={lng} dir={dir(lng)}>
       <body className={font.className}>

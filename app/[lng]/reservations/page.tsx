@@ -14,6 +14,7 @@ interface Params {
 
 const ReservationsPage = async ({ params }: { params: Params }) => {
   const currentUser = await getCurrentUser();
+  const { t } = await useTranslation(params.lng);
 
   if (!currentUser) {
     return (
@@ -33,8 +34,8 @@ const ReservationsPage = async ({ params }: { params: Params }) => {
     return (
       <ClientOnly>
         <EmptyState
-          title="לא נמצאו בקשות"
-          subtitle="נראה שעדיין אין בקשות להתארח אצלך."
+          title={t('reservationEmptyStateTitle')}
+          subtitle={t('reservationEmptyStateSubtitle')}
           lng={params.lng}
         />
       </ClientOnly>

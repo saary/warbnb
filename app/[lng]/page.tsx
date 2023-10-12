@@ -1,3 +1,5 @@
+import { redirect  } from "next/navigation";
+
 import Container from "@/app/[lng]/components/Container";
 import ListingCard from "@/app/[lng]/components/listings/ListingCard";
 import EmptyState from "@/app/[lng]/components/EmptyState";
@@ -17,8 +19,14 @@ interface HomeProps {
 
 const Home = async ({ searchParams, params: { lng } }: HomeProps) => {
   const { t } = await useTranslation(lng);
-  const listings = await getListings(searchParams);
+
   const currentUser = await getCurrentUser();
+
+  if (currentUser?.isHost) {
+    redirect(`/${lng}/properties`);
+  }
+
+  const listings = await getListings(searchParams);
 
   if (listings.length === 0) {
     return (
