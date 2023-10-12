@@ -8,6 +8,8 @@ import { differenceInDays } from 'date-fns';
 import useSearchModal from '@/app/hooks/useSearchModal';
 import useBureaus from '@/app/hooks/useBureaus';
 
+import { STEPS } from '../modals/SearchModal';
+
 const Search = () => {
   const searchModal = useSearchModal();
   const params = useSearchParams();
@@ -23,7 +25,7 @@ const Search = () => {
       return getByValue(locationValue as string)?.label;
     }
 
-    return 'כל האזורים';
+    return 'בחירת איזור';
   }, [locationValue, getByValue]);
 
   const durationLabel = useMemo(() => {
@@ -39,7 +41,7 @@ const Search = () => {
       return `ימים ${diff}`;
     }
 
-    return 'מה שזמין'
+    return 'בחירת תאריכים'
   }, [startDate, endDate]);
 
   const guestLabel = useMemo(() => {
@@ -47,12 +49,11 @@ const Search = () => {
       return `${guestCount} אורחים`;
     }
 
-    return 'הוספת אורחים';
+    return 'מספר אורחים';
   }, [guestCount]);
 
   return ( 
     <div
-      onClick={searchModal.onOpen}
       className="
         border-[1px] 
         w-full 
@@ -67,13 +68,14 @@ const Search = () => {
     >
       <div 
         className="
-          flex 
-          flex-row 
-          items-center 
-          justify-between
+        flex 
+        flex-row 
+        items-center 
+        justify-between
         "
-      >
+        >
         <div 
+          onClick={() => searchModal.onOpen(STEPS.LOCATION)}
           className="
             text-sm 
             font-semibold 
@@ -83,6 +85,7 @@ const Search = () => {
           {locationLabel}
         </div>
         <div 
+          onClick={() => searchModal.onOpen(STEPS.DATE)}
           className="
             hidden 
             sm:block 
@@ -97,6 +100,7 @@ const Search = () => {
           {durationLabel}
         </div>
         <div 
+          onClick={() => searchModal.onOpen(STEPS.INFO)}
           className="
             text-sm 
             pl-6 
@@ -109,16 +113,6 @@ const Search = () => {
           "
         >
           <div className="hidden sm:block">{guestLabel}</div>
-          <div 
-            className="
-              p-2 
-              bg-sky-500 
-              rounded-full 
-              text-white
-            "
-          >
-            <BiSearch size={18} />
-          </div>
         </div>
       </div>
     </div>

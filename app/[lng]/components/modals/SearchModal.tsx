@@ -17,7 +17,7 @@ import BureauSelect, {
 } from "../inputs/BureauSelect";
 import Heading from '../Heading';
 
-enum STEPS {
+export enum STEPS {
   LOCATION = 0,
   DATE = 1,
   INFO = 2,
@@ -27,8 +27,6 @@ const SearchModal = () => {
   const router = useRouter();
   const searchModal = useSearchModal();
   const params = useSearchParams();
-
-  const [step, setStep] = useState(STEPS.LOCATION);
 
   const [location, setLocation] = useState<BureauSelectValue>();
   const [guestCount, setGuestCount] = useState(1);
@@ -40,23 +38,7 @@ const SearchModal = () => {
     key: 'selection'
   });
 
-  const Map = useMemo(() => dynamic(() => import('../Map'), { 
-    ssr: false 
-  }), [location]);
-
-  const onBack = useCallback(() => {
-    setStep((value) => value - 1);
-  }, []);
-
-  const onNext = useCallback(() => {
-    setStep((value) => value + 1);
-  }, []);
-
   const onSubmit = useCallback(async () => {
-    if (step !== STEPS.INFO) {
-      return onNext();
-    }
-
     let currentQuery = {};
 
     if (params) {
@@ -84,38 +66,19 @@ const SearchModal = () => {
       query: updatedQuery,
     }, { skipNull: true });
 
-    setStep(STEPS.LOCATION);
     searchModal.onClose();
     router.push(url);
   }, 
   [
-    step, 
     searchModal, 
     location, 
     router, 
     guestCount, 
     roomCount,
     dateRange,
-    onNext,
     bathroomCount,
     params
   ]);
-
-  const actionLabel = useMemo(() => {
-    if (step === STEPS.INFO) {
-      return 'חיפוש/Search'
-    }
-
-    return 'הבא/Next'
-  }, [step]);
-
-  const secondaryActionLabel = useMemo(() => {
-    if (step === STEPS.LOCATION) {
-      return undefined
-    }
-
-    return 'חזרה'
-  }, [step]);
 
   let bodyContent = (
     <div className="flex flex-col gap-8">
@@ -128,11 +91,10 @@ const SearchModal = () => {
         onChange={(value) => 
           setLocation(value as BureauSelectValue)} 
       />
-      <hr />
-      <Map center={location?.latlng} />
     </div>
   )
 
+  const step = useSearchModal(state => state.step);
   if (step === STEPS.DATE) {
     bodyContent = (
       <div className="flex flex-col gap-8">
@@ -140,10 +102,12 @@ const SearchModal = () => {
           title="תאריכי יעד/Dates"
           subtitle="למציאת מקומות פנויים/Find available places"
         />
-        <Calendar
-          onChange={(value) => setDateRange(value.selection)}
-          value={dateRange}
-        />
+        <div style={{direction: "ltr"}}>
+          <Calendar
+            onChange={(value) => setDateRange(value.selection)}
+            value={dateRange}
+          />
+        </div>
       </div>
     )
   }
@@ -185,10 +149,8 @@ const SearchModal = () => {
     <Modal
       isOpen={searchModal.isOpen}
       title="חיפוש"
-      actionLabel={actionLabel}
+      actionLabel="חיפוש/Search"
       onSubmit={onSubmit}
-      secondaryActionLabel={secondaryActionLabel}
-      secondaryAction={step === STEPS.LOCATION ? undefined : onBack}
       onClose={searchModal.onClose}
       body={bodyContent}
     />
