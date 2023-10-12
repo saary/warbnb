@@ -5,13 +5,16 @@ import Container from "../Container";
 import Logo from "./Logo";
 import Search from "./Search";
 import UserMenu from "./UserMenu";
+import { LanaguageSwitcher } from "../LanaguageSwitcher";
 
 interface NavbarProps {
   currentUser?: SafeUser | null;
+  lng: string;
 }
 
 const Navbar: React.FC<NavbarProps> = ({
   currentUser,
+  lng,
 }) => {
   return ( 
     <div className="fixed w-full bg-white z-10 shadow-sm">
@@ -35,6 +38,7 @@ const Navbar: React.FC<NavbarProps> = ({
           <Logo />
           <Search />
           <UserMenu currentUser={currentUser} />
+          <LanaguageSwitcher lng={lng} />
         </div>
       </Container>
     </div>

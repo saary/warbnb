@@ -11,8 +11,7 @@ interface ModalProps {
   onSubmit: () => void;
   title?: string;
   body?: React.ReactElement;
-  footer?: React.ReactElement;
-  actionLabel: string;
+  LanaguageSwitcher?: React.ReactElement;
   disabled?: boolean;
   secondaryAction?: () => void;
   secondaryActionLabel?: string;
@@ -24,8 +23,7 @@ const Modal: React.FC<ModalProps> = ({
   onSubmit, 
   title, 
   body, 
-  actionLabel, 
-  footer, 
+  LanaguageSwitcher, 
   disabled,
   secondaryAction,
   secondaryActionLabel
@@ -154,7 +152,7 @@ const Modal: React.FC<ModalProps> = ({
               <div className="relative p-6 flex-auto">
                 {body}
               </div>
-              {/*footer*/}
+              {/*LanaguageSwitcher*/}
               <div className="flex flex-col gap-2 p-6">
                 <div 
                   className="
@@ -173,13 +171,8 @@ const Modal: React.FC<ModalProps> = ({
                       outline
                     />  
                   )}
-                  <Button 
-                    disabled={disabled} 
-                    label={actionLabel} 
-                    onClick={handleSubmit}
-                  />
                 </div>
-                {footer}
+                {LanaguageSwitcher}
               </div>
             </div>
           </div>

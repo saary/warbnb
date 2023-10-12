@@ -5,18 +5,18 @@ import axios from "axios";
 import { useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
 
-import { SafeReservation, SafeUser } from "@/app/types"
-;
-import Heading from "@/app/components/Heading";
-import Container from "@/app/components/Container";
-import ListingCard from "@/app/components/listings/ListingCard";
+import { SafeReservation, SafeUser } from "@/app/types";
 
-interface ReservationsClientProps {
+import Heading from "@/app/[lng]/components/Heading";
+import Container from "@/app/[lng]/components/Container";
+import ListingCard from "@/app/[lng]/components/listings/ListingCard";
+
+interface TripsClientProps {
   reservations: SafeReservation[],
   currentUser?: SafeUser | null,
 }
 
-const ReservationsClient: React.FC<ReservationsClientProps> = ({
+const TripsClient: React.FC<TripsClientProps> = ({
   reservations,
   currentUser
 }) => {
@@ -28,11 +28,11 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
 
     axios.delete(`/api/reservations/${id}`)
     .then(() => {
-      toast.success('Reservation cancelled');
+      toast.success('הזמנה בוטלה');
       router.refresh();
     })
-    .catch(() => {
-      toast.error('Something went wrong.')
+    .catch((error) => {
+      toast.error(error?.response?.data?.error)
     })
     .finally(() => {
       setDeletingId('');
@@ -42,8 +42,8 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
   return (
     <Container>
       <Heading
-        title="בקשות אירוח"
-        subtitle=""
+        title="איפה התארחתי"
+        subtitle="מקומות בהם התארחתי/אתארח"
       />
       <div 
         className="
@@ -66,7 +66,7 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
             actionId={reservation.id}
             onAction={onCancel}
             disabled={deletingId === reservation.id}
-            actionLabel="ביטול הבקשה"
+            actionLabel="ביטול הזמנה"
             currentUser={currentUser}
           />
         ))}
@@ -75,4 +75,4 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
    );
 }
  
-export default ReservationsClient;
+export default TripsClient;

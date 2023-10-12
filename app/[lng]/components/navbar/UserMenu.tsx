@@ -40,7 +40,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
   return (
     <div className="relative">
       <div className="flex flex-row items-center gap-3">
-         <div
+        <div
           onClick={onRent}
           className={`
             hidden
@@ -53,7 +53,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
             hover:bg-slate-100 
             transition 
             cursor-pointer
-            ${currentUser?.isHost ? 'visible' : 'invisible' }
+            ${currentUser?.isHost ? "visible" : "invisible"}
           `}
         >
           רוצה לארח
@@ -77,7 +77,15 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
           "
         >
           <AiOutlineMenu />
-          <div className="hidden md:block">
+          <div
+            className="hidden md:block"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <p style={{ paddingLeft: "10px" }}>{currentUser?.name}</p>
             <Avatar src={currentUser?.image} />
           </div>
         </div>
@@ -112,7 +120,9 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                   label="המקומות שלי"
                   onClick={() => router.push("/properties")}
                 />
-                { currentUser?.isHost && <MenuItem label="רוצה לארח" onClick={rentModal.onOpen} /> }
+                {currentUser?.isHost && (
+                  <MenuItem label="רוצה לארח" onClick={rentModal.onOpen} />
+                )}
                 <hr />
                 <MenuItem label="התנתקות" onClick={() => signOut()} />
               </>

@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-import EmptyState from "@/app/components/EmptyState";
+import EmptyState from "@/app/[lng]/components/EmptyState";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
