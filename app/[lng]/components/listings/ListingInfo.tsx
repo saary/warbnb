@@ -9,6 +9,8 @@ import { SafeUser } from "@/app/types";
 import Avatar from "../Avatar";
 import ListingCategory from "./ListingCategory";
 import { useTranslation } from "@/app/i18n/client";
+import { formatPhoneNumber } from "react-phone-number-input";
+import { TbBrandWhatsapp } from "react-icons/tb";
 
 const Map = dynamic(() => import("../Map"), {
   ssr: false,
@@ -22,6 +24,7 @@ type Category = {
 
 interface ListingInfoProps {
   user: SafeUser;
+  title: string;
   description: string;
   guestCount: number;
   roomCount: number;
@@ -29,10 +32,12 @@ interface ListingInfoProps {
   categories: Category[];
   locationValue: string;
   lng: string;
+  phoneNumber: string | null;
 }
 
 const ListingInfo: React.FC<ListingInfoProps> = ({
   user,
+  title,
   description,
   guestCount,
   roomCount,
@@ -40,6 +45,7 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
   categories,
   locationValue,
   lng,
+  phoneNumber
 }) => {
   const { getByValue } = useBureaus();
   const { t } = useTranslation(lng);
@@ -105,6 +111,24 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
       >
         {description}
       </div>
+      {phoneNumber && 
+      <div className="flex flex-col gap-8">
+        <hr />
+        <div className="flex flex-row gap-4">
+          <div className="text-lg font-semibold text-neutral-500 break-words">
+              טלפון ליצירת קשר/phone number
+          </div>
+          <div className="
+          text-lg font-light text-neutral-500 break-words justify-start"
+          style={{direction: "ltr"}}>
+            {formatPhoneNumber(phoneNumber)}
+          </div>
+          <a target="_blank" href={`https://wa.me/${phoneNumber}?text=Message%20from%20https%3A%2F%2Fsafebnb.com%20about%20your%20listing%20${title}%3A%0A`} rel="noopener noreferrer">
+            <TbBrandWhatsapp size={26} />
+          </a>
+        </div>
+      </div>}
+      
       <hr />
       <Map center={coordinates} />
     </div>

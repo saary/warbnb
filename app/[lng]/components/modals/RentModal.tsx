@@ -11,7 +11,8 @@ import useRentModal from "@/app/hooks/useRentModal";
 
 import Modal from "./Modal";
 import Counter from "../inputs/Counter";
-import CategoryInput from "../inputs/CategoryInput";
+import CategoryInput from '../inputs/CategoryInput';
+import PhoneInput from "../inputs/PhoneInput"
 import BureauSelect from "../inputs/BureauSelect";
 import { allCategories } from "../navbar/Categories";
 import Input from "../inputs/Input";
@@ -34,8 +35,9 @@ const RentModal = ({ lng }: { lng: string }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [step, setStep] = useState(STEPS.CATEGORY);
 
-  const {
-    register,
+  const { 
+    register, 
+    control,
     handleSubmit,
     setValue,
     watch,
@@ -51,14 +53,16 @@ const RentModal = ({ lng }: { lng: string }) => {
       title: "",
       description: "",
       categories: [],
-    },
+      phoneNumber: ''
+    }
   });
 
-  const location = watch("location");
-  const guestCount = watch("guestCount");
-  const roomCount = watch("roomCount");
-  const bathroomCount = watch("bathroomCount");
-  const filters = watch("categories");
+  const location = watch('location');
+  const guestCount = watch('guestCount');
+  const roomCount = watch('roomCount');
+  const bathroomCount = watch('bathroomCount');
+  const filters = watch('categories');
+  const phoneNumber = watch('phoneNumber');
 
   const Map = useMemo(
     () =>
@@ -222,6 +226,15 @@ const RentModal = ({ lng }: { lng: string }) => {
           errors={errors}
           maxLength={500}
         />
+        <hr />
+        <PhoneInput
+          id="phoneNumber"
+          label='טלפון  ליצירת קשר/phone number'
+          value={phoneNumber}
+          onChange={(value) => setCustomValue('phoneNumber', value)}
+          control={control}
+          errors={errors}
+          required={false} />
       </div>
     );
   }

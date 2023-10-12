@@ -119,12 +119,14 @@ const ListingClient: React.FC<ListingClientProps> = ({
               <ListingInfo
                 user={listing.user}
                 categories={categories}
+                title={listing.title}
                 description={listing.description}
                 roomCount={listing.roomCount}
                 guestCount={listing.guestCount}
                 bathroomCount={listing.bathroomCount}
                 locationValue={listing.locationValue}
                 lng={lng}
+                phoneNumber={listing.phoneNumber}
               />
               {!currentUser?.isHost && (
                 <div
