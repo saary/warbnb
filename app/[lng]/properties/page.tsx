@@ -14,7 +14,7 @@ const PropertiesPage = async ({ params }: { params: Params }) => {
   const currentUser = await getCurrentUser();
 
   if (!currentUser) {
-    return <EmptyState title="Unauthorized" subtitle="Please login" />;
+    return <EmptyState title="Unauthorized" subtitle="Please login" lng={params.lng} />;
   }
 
   const listings = await getListings({ userId: currentUser.id });
@@ -25,6 +25,7 @@ const PropertiesPage = async ({ params }: { params: Params }) => {
         <EmptyState
           title="לא נמצאו מודעות"
           subtitle="נראה שעדיין לא פרסמת מודעה."
+          lng={params.lng}
         />
       </ClientOnly>
     );

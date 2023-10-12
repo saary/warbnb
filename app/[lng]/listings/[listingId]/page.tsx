@@ -21,7 +21,7 @@ const ListingPage = async ({ params }: { params: IParams }) => {
   if (!listing) {
     return (
       <ClientOnly>
-        <EmptyState />
+        <EmptyState lng={params.lng} />
       </ClientOnly>
     );
   }

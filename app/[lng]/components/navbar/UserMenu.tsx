@@ -113,15 +113,15 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
               <>
                 <MenuItem
                   label={t("reservationsHistory")}
-                  onClick={() => router.push("/trips")}
+                  onClick={() => router.push(`${lng}/trips`)}
                 />
                 <MenuItem
                   label={t("hostRequests")}
-                  onClick={() => router.push("/reservations")}
+                  onClick={() => router.push(`${lng}/reservations`)}
                 />
                 <MenuItem
                   label={t("myListings")}
-                  onClick={() => router.push("/properties")}
+                  onClick={() => router.push(`${lng}/properties`)}
                 />
                 {currentUser?.isHost && (
                   <MenuItem label={t('wishToHost')} onClick={rentModal.onOpen} />
