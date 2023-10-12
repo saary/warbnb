@@ -5,6 +5,15 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/he_IL',
+        permanent: false,
+      },
+    ]
+  },  
   images: {
     domains: [
       "res.cloudinary.com",
