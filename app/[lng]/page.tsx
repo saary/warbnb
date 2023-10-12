@@ -1,7 +1,7 @@
 import Container from "@/app/[lng]/components/Container";
 import ListingCard from "@/app/[lng]/components/listings/ListingCard";
 import EmptyState from "@/app/[lng]/components/EmptyState";
-import Banner from "@/app/[lng]/components/Banner";
+import HomeBanner from "@/app/[lng]/components/HomeBanner";
 
 import getListings, { IListingsParams } from "@/app/actions/getListings";
 import getCurrentUser from "@/app/actions/getCurrentUser";
@@ -32,12 +32,7 @@ const Home = async ({ searchParams, params: { lng } }: HomeProps) => {
     <ClientOnly>
       <Container>
         <div style={{ marginTop: "150px" }}></div>
-        <Banner
-          title="Adding a listing"
-          text="Explain why hosts should not provide any specific details about their listing 
-from a security perspective (e.g. address) - 
-during the description section of adding a listing"
-        />
+        <HomeBanner isLoggedIn={!!currentUser} isHost={currentUser?.isHost} name={currentUser?.name || ''} lng={lng}/>
         <div
           className="
             pt-24
