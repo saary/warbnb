@@ -25,17 +25,18 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser, lng }) => {
           <div
             className="
             flex 
-            flex-row 
+            flex-row
             items-center 
             justify-between
             gap-3
             md:gap-0
-          "
+            "
+          style={{direction: "rtl"}}
           >
+            <LanaguageSwitcher lng={lng} />
             <Logo lng={lng} />
             <Search />
             <UserMenu currentUser={currentUser} />
-            <LanaguageSwitcher lng={lng} />
           </div>
         </Container>
       </div>
