@@ -60,5 +60,9 @@
   "hostRequests": "בקשות אירוח אצלי",
   "myListings": "המקומות שלי",
   "disconnect": "התנתקות",
-  "login": "כניסה"
+  "login": "כניסה",
+  "days": "ימים",
+  "searchBarRegion": "בחירת איזור",
+  "searchBarDates": "בחירת תאריכים",
+  "searchBarGuests": "מספר אורחים"
 }

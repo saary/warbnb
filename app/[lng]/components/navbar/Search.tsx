@@ -7,13 +7,15 @@ import { differenceInDays } from 'date-fns';
 
 import useSearchModal from '@/app/hooks/useSearchModal';
 import useBureaus from '@/app/hooks/useBureaus';
+import { useTranslation } from "@/app/i18n/client";
 
 import { STEPS } from '../modals/SearchModal';
 
-const Search = () => {
+const Search = ({ lng }: { lng: string }) => {
   const searchModal = useSearchModal();
   const params = useSearchParams();
   const { getByValue } = useBureaus();
+  const { t } = useTranslation(lng);
 
   const  locationValue = params?.get('locationValue'); 
   const  startDate = params?.get('startDate');
@@ -25,8 +27,8 @@ const Search = () => {
       return getByValue(locationValue as string)?.label;
     }
 
-    return 'בחירת איזור';
-  }, [locationValue, getByValue]);
+    return t('searchBarRegion');
+  }, [locationValue, getByValue, t]);
 
   const durationLabel = useMemo(() => {
     if (startDate && endDate) {
@@ -38,19 +40,19 @@ const Search = () => {
         diff = 1;
       }
 
-      return `ימים ${diff}`;
+      return `${t('days')} ${diff}`;
     }
 
-    return 'בחירת תאריכים'
-  }, [startDate, endDate]);
+    return t('searchBarDates');
+  }, [startDate, endDate, t]);
 
   const guestLabel = useMemo(() => {
     if (guestCount) {
-      return `${guestCount} אורחים`;
+      return `${guestCount} ${t('guests')}`;
     }
 
-    return 'מספר אורחים';
-  }, [guestCount]);
+    return t('searchBarGuests');
+  }, [guestCount, t]);
 
   return ( 
     <div

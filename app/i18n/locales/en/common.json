@@ -61,5 +61,9 @@
   "hostRequests": "Host requests at my listings",
   "myListings": "My listings",
   "disconnect": "Disconnect",
-  "login": "Login"
+  "login": "Login",
+  "days": "days",
+  "searchBarRegion": "Pick region",
+  "searchBarDates": "Pick dates",
+  "searchBarGuests": "Number of guests"
 }
