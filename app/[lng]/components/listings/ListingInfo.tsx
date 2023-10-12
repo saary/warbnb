@@ -9,6 +9,7 @@ import { SafeUser } from "@/app/types";
 import Avatar from "../Avatar";
 import ListingCategory from "./ListingCategory";
 import { useTranslation } from "@/app/i18n/client";
+import { formatPhoneNumber } from "react-phone-number-input";
 
 const Map = dynamic(() => import("../Map"), {
   ssr: false,
@@ -29,6 +30,7 @@ interface ListingInfoProps {
   categories: Category[];
   locationValue: string;
   lng: string;
+  phoneNumber: string | null;
 }
 
 const ListingInfo: React.FC<ListingInfoProps> = ({
@@ -40,6 +42,7 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
   categories,
   locationValue,
   lng,
+  phoneNumber
 }) => {
   const { getByValue } = useBureaus();
   const { t } = useTranslation(lng);
@@ -105,6 +108,21 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
       >
         {description}
       </div>
+      {phoneNumber && 
+      <div>
+        <hr />
+        <div className="flex flex-row gap-4">
+          <div className="text-lg font-semibold text-neutral-500 break-words">
+              טלפון ליצירת קשר/phone number
+          </div>
+          <div className="
+          text-lg font-light text-neutral-500 break-words justify-start"
+          style={{direction: "ltr"}}>
+            {formatPhoneNumber(phoneNumber)}  phoneNumber
+        </div>
+        </div>
+      </div>}
+      
       <hr />
       <Map center={coordinates} />
     </div>
