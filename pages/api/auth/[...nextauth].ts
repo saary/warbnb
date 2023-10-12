@@ -26,7 +26,7 @@ export const authOptions: AuthOptions = {
     session: async (params) => {
       const email = params.session.user?.email;
       const uniqueHosts = await getAuthorizedHosts();
-      if (true || uniqueHosts.has(email)) {
+      if (uniqueHosts.has(email)) {
         if (!params.session.user) {
           params.session.user = params.user;
         }

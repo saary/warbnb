@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import qs from 'query-string';
-import dynamic from 'next/dynamic'
+import qs from "query-string";
+import dynamic from "next/dynamic";
 import { useCallback, useMemo, useState } from "react";
-import { Range } from 'react-date-range';
-import { formatISO } from 'date-fns';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { Range } from "react-date-range";
+import { formatISO } from "date-fns";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import useSearchModal from "@/app/hooks/useSearchModal";
 import { useTranslation } from "@/app/i18n/client";
@@ -13,10 +13,8 @@ import { useTranslation } from "@/app/i18n/client";
 import Modal from "./Modal";
 import Calendar from "../inputs/Calendar";
 import Counter from "../inputs/Counter";
-import BureauSelect, { 
-  BureauSelectValue
-} from "../inputs/BureauSelect";
-import Heading from '../Heading';
+import BureauSelect, { BureauSelectValue } from "../inputs/BureauSelect";
+import Heading from "../Heading";
 
 export enum STEPS {
   LOCATION = 0,
@@ -37,14 +35,14 @@ const SearchModal = ({ lng }: { lng: string }) => {
   const [dateRange, setDateRange] = useState<Range>({
     startDate: new Date(),
     endDate: new Date(),
-    key: 'selection'
+    key: "selection",
   });
 
   const onSubmit = useCallback(async () => {
     let currentQuery = {};
 
     if (params) {
-      currentQuery = qs.parse(params.toString())
+      currentQuery = qs.parse(params.toString());
     }
 
     const updatedQuery: any = {
@@ -52,7 +50,7 @@ const SearchModal = ({ lng }: { lng: string }) => {
       locationValue: location?.value,
       guestCount,
       roomCount,
-      bathroomCount
+      bathroomCount,
     };
 
     if (dateRange.startDate) {
@@ -63,40 +61,39 @@ const SearchModal = ({ lng }: { lng: string }) => {
       updatedQuery.endDate = formatISO(dateRange.endDate);
     }
 
-    const url = qs.stringifyUrl({
-      url: '/',
-      query: updatedQuery,
-    }, { skipNull: true });
+    const url = qs.stringifyUrl(
+      {
+        url: "/",
+        query: updatedQuery,
+      },
+      { skipNull: true }
+    );
 
     searchModal.onClose();
     router.push(url);
-  }, 
-  [
-    searchModal, 
-    location, 
-    router, 
-    guestCount, 
+  }, [
+    searchModal,
+    location,
+    router,
+    guestCount,
     roomCount,
     dateRange,
     bathroomCount,
-    params
+    params,
   ]);
 
   let bodyContent = (
     <div className="flex flex-col gap-8">
-      <Heading
-        title={t("searchModalHeading")}
-        subtitle=""
-      />
-      <BureauSelect 
-        value={location} 
-        onChange={(value) => 
-          setLocation(value as BureauSelectValue)} 
+      <Heading title={t("searchModalHeading")} subtitle="" />
+      <BureauSelect
+        value={location}
+        onChange={(value) => setLocation(value as BureauSelectValue)}
+        lng={lng}
       />
     </div>
-  )
+  );
 
-  const step = useSearchModal(state => state.step);
+  const step = useSearchModal((state) => state.step);
   if (step === STEPS.DATE) {
     bodyContent = (
       <div className="flex flex-col gap-8">
@@ -104,47 +101,44 @@ const SearchModal = ({ lng }: { lng: string }) => {
           title={t("searchModalDateTitle")}
           subtitle={t("searchModalDateSubtitle")}
         />
-        <div style={{direction: "ltr"}}>
+        <div style={{ direction: "ltr" }}>
           <Calendar
             onChange={(value) => setDateRange(value.selection)}
             value={dateRange}
           />
         </div>
       </div>
-    )
+    );
   }
 
   if (step === STEPS.INFO) {
     bodyContent = (
       <div className="flex flex-col gap-8">
-        <Heading
-          title={t("searchModalNeedsTitle")}
-          subtitle=""
-        />
-        <Counter 
+        <Heading title={t("searchModalNeedsTitle")} subtitle="" />
+        <Counter
           onChange={(value) => setGuestCount(value)}
           value={guestCount}
           title={t("searchModalNeedsPeople")}
           subtitle=""
         />
         <hr />
-        <Counter 
+        <Counter
           onChange={(value) => setRoomCount(value)}
           value={roomCount}
           title={t("bedroomTitle")}
           subtitle={t("searchModalNeedsBedrooms")}
-        />        
+        />
         <hr />
-        <Counter 
+        <Counter
           onChange={(value) => {
-            setBathroomCount(value)
+            setBathroomCount(value);
           }}
           value={bathroomCount}
           title={t("bathroomTitle")}
           subtitle={t("searchModalNeedsBathrooms")}
         />
       </div>
-    )
+    );
   }
 
   return (
@@ -157,6 +151,6 @@ const SearchModal = ({ lng }: { lng: string }) => {
       body={bodyContent}
     />
   );
-}
+};
 
 export default SearchModal;

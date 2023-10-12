@@ -10,7 +10,7 @@
   "children": "ילדים",
   "kosher": "כשרות",
   "pets": "בעלי חיים",
-  "noSmonking": "העישון אסור",
+  "noSmoking": "העישון אסור",
   "parking": "חניה",
   "shelter": "ממ״ד",
   "accessibleProperty": "מקום נגיש",
@@ -53,5 +53,12 @@
   "searchModalNeedsPeople": "מספר נפשות",
   "searchModalNeedsBedrooms": "כמה חדרים נחוצים?",
   "searchModalNeedsBathrooms": "כמה חדרי רחצה נחוצים?",
-  "searchModalTitle": "חיפוש"
+  "searchModalTitle": "חיפוש",
+  "select": "בחירה",
+  "wishToHost": "רוצה לארח",
+  "reservationsHistory": "מקומות בהם התארחתי/אתארח",
+  "hostRequests": "בקשות אירוח אצלי",
+  "myListings": "המקומות שלי",
+  "disconnect": "התנתקות",
+  "login": "כניסה"
 }

@@ -11,12 +11,15 @@ import { SafeUser } from "@/app/types";
 
 import MenuItem from "./MenuItem";
 import Avatar from "../Avatar";
+import { useTranslation } from "@/app/i18n/client";
 
 interface UserMenuProps {
   currentUser?: SafeUser | null;
+  lng: string;
 }
 
-const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
+const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
+  const { t } = useTranslation(lng);
   const router = useRouter();
 
   const loginModal = useLoginModal();
@@ -56,7 +59,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
             ${currentUser?.isHost ? "visible" : "invisible"}
           `}
         >
-          רוצה לארח
+          {t('wishToHost')}
         </div>
         <div
           onClick={toggleOpen}
@@ -109,26 +112,26 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
             {currentUser ? (
               <>
                 <MenuItem
-                  label="מקומות בהם התארחתי/אתארח"
+                  label={t("reservationsHistory")}
                   onClick={() => router.push("/trips")}
                 />
                 <MenuItem
-                  label="בקשות אירוח אצלי"
+                  label={t("hostRequests")}
                   onClick={() => router.push("/reservations")}
                 />
                 <MenuItem
-                  label="המקומות שלי"
+                  label={t("myListings")}
                   onClick={() => router.push("/properties")}
                 />
                 {currentUser?.isHost && (
-                  <MenuItem label="רוצה לארח" onClick={rentModal.onOpen} />
+                  <MenuItem label={t('wishToHost')} onClick={rentModal.onOpen} />
                 )}
                 <hr />
-                <MenuItem label="התנתקות" onClick={() => signOut()} />
+                <MenuItem label={t('disconnect')} onClick={() => signOut()} />
               </>
             ) : (
               <>
-                <MenuItem label="כניסה" onClick={loginModal.onOpen} />
+                <MenuItem label={t('login')} onClick={loginModal.onOpen} />
               </>
             )}
           </div>

@@ -29,9 +29,9 @@ export const allCategories = [
     description: 'petsFriendly'
   },
   {
-    label: 'noSmonking',
+    label: 'noSmoking',
     icon: TbSmokingNo,
-    description: 'noSmonking'
+    description: 'noSmoking'
   },
   {
     label: 'parking',

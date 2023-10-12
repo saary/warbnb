@@ -36,7 +36,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser, lng }) => {
             <LanaguageSwitcher lng={lng} />
             <Logo lng={lng} />
             <Search />
-            <UserMenu currentUser={currentUser} />
+            <UserMenu currentUser={currentUser} lng={lng} />
           </div>
         </Container>
       </div>
