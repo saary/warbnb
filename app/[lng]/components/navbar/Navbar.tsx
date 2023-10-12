@@ -40,7 +40,9 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser, lng }) => {
           </div>
         </Container>
       </div>
-      <Categories lng={lng} />
+      {!currentUser?.isHost && (
+        <Categories lng={lng} />
+      )}
     </div>
   );
 };
