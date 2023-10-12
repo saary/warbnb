@@ -15,6 +15,7 @@ import PhoneInput from "../inputs/PhoneInput"
 import BureauSelect from "../inputs/BureauSelect";
 import { allCategories } from "../navbar/Categories";
 import Input from "../inputs/Input";
+import TextArea from "../inputs/TextArea";
 import Heading from "../Heading";
 import { toggleCategoryFilter } from "../CategoryBox";
 import { useTranslation } from "@/app/i18n/client";
@@ -208,15 +209,6 @@ const RentModal = ({ lng }: { lng: string }) => {
           required
         />
         <hr />
-        <Input
-          id="description"
-          label="הערות נוספות/Listing description"
-          disabled={isLoading}
-          register={register}
-          errors={errors}
-          maxLength={500}
-        />
-        <hr />
         <PhoneInput
           id="phoneNumber"
           label='טלפון  ליצירת קשר/phone number'
@@ -225,6 +217,15 @@ const RentModal = ({ lng }: { lng: string }) => {
           control={control}
           errors={errors}
           required={false} />
+        <hr />
+        <TextArea
+          id="description"
+          label="הערות נוספות/Listing description"
+          disabled={isLoading}
+          register={register}
+          errors={errors}
+          maxLength={500}
+        />
       </div>
     );
   }
