@@ -5,7 +5,7 @@ import { useCallback, useMemo, useState } from "react";
 import { toast } from "react-hot-toast";
 import { Range } from "react-date-range";
 import { useRouter } from "next/navigation";
-import { eachDayOfInterval } from 'date-fns';
+import { eachDayOfInterval } from "date-fns";
 
 import useLoginModal from "@/app/hooks/useLoginModal";
 import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
@@ -15,6 +15,7 @@ import { allCategories } from "@/app/[lng]/components/navbar/Categories";
 import ListingHead from "@/app/[lng]/components/listings/ListingHead";
 import ListingInfo from "@/app/[lng]/components/listings/ListingInfo";
 import ListingReservation from "@/app/[lng]/components/listings/ListingReservation";
+import { useTranslation } from "@/app/i18n/client";
 
 const initialDateRange = {
   startDate: new Date(),
@@ -28,13 +29,16 @@ interface ListingClientProps {
     user: SafeUser;
   };
   currentUser?: SafeUser | null;
+  lng: string;
 }
 
 const ListingClient: React.FC<ListingClientProps> = ({
   listing,
   reservations = [],
   currentUser,
+  lng,
 }) => {
+  const { t } = useTranslation(lng);
   const loginModal = useLoginModal();
   const router = useRouter();
 
@@ -120,6 +124,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
                 guestCount={listing.guestCount}
                 bathroomCount={listing.bathroomCount}
                 locationValue={listing.locationValue}
+                lng={lng}
               />
               {!currentUser?.isHost && (
                 <div
@@ -136,15 +141,13 @@ const ListingClient: React.FC<ListingClientProps> = ({
                     onSubmit={onCreateReservation}
                     disabled={isLoading}
                     disabledDates={disabledDates}
+                    lng={lng}
                   />
                 </div>
               )}
             </div>
           ) : (
-            <div>
-              על מנת להגן על פרטיותכם עליכם להתחבר באמצעות חשבון gmail תקין
-              למערכת
-            </div>
+            <div>{t("unauthorized")}</div>
           )}
         </div>
       </div>

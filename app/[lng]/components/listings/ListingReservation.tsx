@@ -4,6 +4,7 @@ import { Range } from "react-date-range";
 
 import Button from "../Button";
 import Calendar from "../inputs/Calendar";
+import { useTranslation } from "@/app/i18n/client";
 
 interface ListingReservationProps {
   dateRange: Range,
@@ -11,6 +12,7 @@ interface ListingReservationProps {
   onSubmit: () => void;
   disabled?: boolean;
   disabledDates: Date[];
+  lng: string;
 }
 
 const ListingReservation: React.FC<
@@ -20,8 +22,11 @@ const ListingReservation: React.FC<
   onChangeDate,
   onSubmit,
   disabled,
-  disabledDates
+  disabledDates,
+  lng
 }) => {
+  const { t } = useTranslation(lng);
+  
   return ( 
     <div 
       className="
@@ -44,7 +49,7 @@ const ListingReservation: React.FC<
       <div className="p-4">
         <Button 
           disabled={disabled} 
-          label="להזמנה / Request Booking" 
+          label={t('requestBooking')}
           onClick={onSubmit}
         />
       </div>

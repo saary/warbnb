@@ -4,12 +4,15 @@ import qs, { ParsedQuery } from 'query-string';
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback } from "react";
 import { IconType } from "react-icons";
+import { useTranslation } from '@/app/i18n/client';
 
 interface CategoryBoxProps {
   icon: IconType,
   label: string;
   selected?: boolean;
+  lng: string;
 }
+
 // NOTE: This mutates the filters[] parameter! 
 export const toggleCategoryFilter = (filters: string[], category: string): string[] => {
   const index = filters.indexOf(category, 0);
@@ -25,7 +28,9 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
   icon: Icon,
   label,
   selected,
+  lng,
 }) => {
+  const { t } = useTranslation(lng);
   const router = useRouter();
   const params = useSearchParams();
 
@@ -71,7 +76,7 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
     >
       <Icon size={26} />
       <div className="font-medium text-sm">
-        {label}
+        {t(label)}
       </div>
     </div>
    );

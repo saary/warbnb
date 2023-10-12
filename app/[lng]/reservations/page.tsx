@@ -6,8 +6,13 @@ import getCurrentUser from "@/app/actions/getCurrentUser";
 import getReservations from "@/app/actions/getReservations";
 
 import TripsClient from "./ReservationsClient";
+import { useTranslation } from "@/app/i18n";
 
-const ReservationsPage = async () => {
+interface Params {
+  lng: string;
+}
+
+const ReservationsPage = async ({ params }: { params: Params }) => {
   const currentUser = await getCurrentUser();
 
   if (!currentUser) {
@@ -39,6 +44,7 @@ const ReservationsPage = async () => {
       <TripsClient
         reservations={reservations}
         currentUser={currentUser}
+        lng={params.lng}
       />
     </ClientOnly>
   );

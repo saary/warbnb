@@ -40,7 +40,7 @@ export default async function RootLayout({
           <ToasterProvider />
           <LoginModal />
           <SearchModal />
-          <RentModal />
+          <RentModal lng={lng}/>
           <Navbar currentUser={currentUser} lng={lng} />
         </ClientOnly>
         <div className="pb-20 pt-40">{children}</div>
