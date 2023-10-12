@@ -8,38 +8,38 @@ import Container from '../Container';
 
 export const allCategories = [
   {
-    label: 'נגיש/Accessible',
+    label: 'accessible',
     icon: TbAccessible,
-    description: 'מקום נגיש/Accessible property',
+    description: 'accessibleProperty',
   },
   {
-    label: 'ילדים/Children',
+    label: 'children',
     icon: TbMoodKid,
-    description: 'מקום ידידותי לילדים/Children friendly',
+    description: 'childrenFriendly',
   },
   {
-    label: 'כשר/Kosher',
+    label: 'kosher',
     icon: TbJewishStar,
-    description: 'מקום שומר כשרות/Kosher'
+    description: 'kosherKeeping'
   },
   {
-    label: 'בעלי חיים/Pets',
+    label: 'pets',
     icon: TbDog,
-    description: 'מותר בעלי חיים/Pets friendly'
+    description: 'petsFriendly'
   },
   {
-    label: 'ללא עישון/No smoking',
+    label: 'noSmonking',
     icon: TbSmokingNo,
-    description: 'האישון אסור/No smoking'
+    description: 'noSmonking'
   },
   {
-    label: 'חניה/Parking',
+    label: 'parking',
     icon: TbParking,
-    description: 'יש חניה/Parking available'
+    description: 'parkingAvailable'
   },
 ]
 
-const Categories = () => {
+const Categories = ({ lng }: { lng: string }) => {
   const params = useSearchParams();
   const categories = params?.getAll('categories');
   const pathname = usePathname();
@@ -67,6 +67,7 @@ const Categories = () => {
             label={item.label}
             icon={item.icon}
             selected={categories?.includes(item.label)}
+            lng={lng}
           />
         ))}
       </div>

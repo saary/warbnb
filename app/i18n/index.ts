@@ -20,7 +20,7 @@ const initI18next = async (lng: string, ns: string) => {
 
 export async function useTranslation(
   lng: string,
-  ns: string = 'common',
+  ns: string = "common",
   options: { keyPrefix?: string } = {}
 ) {
   const i18nextInstance = await initI18next(lng, ns);
@@ -29,7 +29,7 @@ export async function useTranslation(
       lng,
       Array.isArray(ns) ? ns[0] : ns,
       options.keyPrefix
-    ),
+    ) as (label: string) => string | undefined,
     i18n: i18nextInstance,
   };
 }

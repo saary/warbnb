@@ -12,11 +12,8 @@ interface NavbarProps {
   lng: string;
 }
 
-const Navbar: React.FC<NavbarProps> = ({
-  currentUser,
-  lng,
-}) => {
-  return ( 
+const Navbar: React.FC<NavbarProps> = ({ currentUser, lng }) => {
+  return (
     <div className="fixed w-full bg-white z-10 shadow-sm">
       <div
         className="
@@ -24,9 +21,9 @@ const Navbar: React.FC<NavbarProps> = ({
           border-b-[1px]
         "
       >
-      <Container>
-        <div 
-          className="
+        <Container>
+          <div
+            className="
             flex 
             flex-row 
             items-center 
@@ -34,18 +31,17 @@ const Navbar: React.FC<NavbarProps> = ({
             gap-3
             md:gap-0
           "
-        >
-          <Logo />
-          <Search />
-          <UserMenu currentUser={currentUser} />
-          <LanaguageSwitcher lng={lng} />
-        </div>
-      </Container>
+          >
+            <Logo lng={lng} />
+            <Search />
+            <UserMenu currentUser={currentUser} />
+            <LanaguageSwitcher lng={lng} />
+          </div>
+        </Container>
+      </div>
+      <Categories lng={lng} />
     </div>
-    <Categories />
-  </div>
   );
-}
-
+};
 
 export default Navbar;
