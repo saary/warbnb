@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import { toast } from "react-hot-toast";
-import axios from "axios";
-import { useCallback, useState } from "react";
-import { useRouter } from "next/navigation";
+import { toast } from 'react-hot-toast';
+import axios from 'axios';
+import { useCallback, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
-import { SafeReservation, SafeUser } from "@/app/types";
+import { SafeReservation, SafeUser } from '@/app/types';
 
-import Heading from "@/app/[lng]/components/Heading";
-import Container from "@/app/[lng]/components/Container";
-import ListingCard from "@/app/[lng]/components/listings/ListingCard";
-import { useTranslation } from "@/app/i18n/client";
+import Heading from '@/app/[lng]/components/Heading';
+import Container from '@/app/[lng]/components/Container';
+import ListingCard from '@/app/[lng]/components/listings/ListingCard';
+import { useTranslation } from '@/app/i18n/client';
 
 interface TripsClientProps {
   reservations: SafeReservation[];
@@ -24,7 +24,7 @@ const TripsClient: React.FC<TripsClientProps> = ({
   lng,
 }) => {
   const router = useRouter();
-  const [deletingId, setDeletingId] = useState("");
+  const [deletingId, setDeletingId] = useState('');
   const { t } = useTranslation(lng);
 
   const onCancel = useCallback(
@@ -34,14 +34,14 @@ const TripsClient: React.FC<TripsClientProps> = ({
       axios
         .delete(`/api/reservations/${id}`)
         .then(() => {
-          toast.success("הזמנה בוטלה");
+          toast.success('הזמנה בוטלה');
           router.refresh();
         })
         .catch((error) => {
           toast.error(error?.response?.data?.error);
         })
         .finally(() => {
-          setDeletingId("");
+          setDeletingId('');
         });
     },
     [router]
@@ -71,7 +71,7 @@ const TripsClient: React.FC<TripsClientProps> = ({
             actionId={reservation.id}
             onAction={onCancel}
             disabled={deletingId === reservation.id}
-            actionLabel={t("cancelOrder")}
+            actionLabel={t('cancelOrder')}
             currentUser={currentUser}
             lng={lng}
           />

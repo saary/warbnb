@@ -1,24 +1,25 @@
-"use client";
+'use client';
 
-import axios from "axios";
-import { toast } from "react-hot-toast";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
-import { useMemo, useState } from "react";
+import axios from 'axios';
+import { toast } from 'react-hot-toast';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import { useRouter } from 'next/navigation';
+import { useMemo, useState } from 'react';
 
-import useRentModal from "@/app/hooks/useRentModal";
+import useRentModal from '@/app/hooks/useRentModal';
 
-import Modal from "./Modal";
-import Counter from "../inputs/Counter";
+import Modal from './Modal';
+import Counter from '../inputs/Counter';
 import CategoryInput from '../inputs/CategoryInput';
-import PhoneInput from "../inputs/PhoneInput"
-import BureauSelect from "../inputs/BureauSelect";
-import { allCategories } from "../navbar/Categories";
-import Input from "../inputs/Input";
-import TextArea from "../inputs/TextArea";
-import Heading from "../Heading";
-import { toggleCategoryFilter } from "../CategoryBox";
-import { useTranslation } from "@/app/i18n/client";
+import PhoneInput from '../inputs/PhoneInput';
+import BureauSelect from '../inputs/BureauSelect';
+import { allCategories } from '../navbar/Categories';
+import Input from '../inputs/Input';
+import TextArea from '../inputs/TextArea';
+import Heading from '../Heading';
+import { toggleCategoryFilter } from '../CategoryBox';
+import { useTranslation } from '@/app/i18n/client';
+import Banner from '@/app/[lng]/components/Banner';
 
 enum STEPS {
   CATEGORY = 0,
@@ -35,8 +36,8 @@ const RentModal = ({ lng }: { lng: string }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [step, setStep] = useState(STEPS.CATEGORY);
 
-  const { 
-    register, 
+  const {
+    register,
     control,
     handleSubmit,
     setValue,
@@ -49,12 +50,12 @@ const RentModal = ({ lng }: { lng: string }) => {
       guestCount: 1,
       roomCount: 1,
       bathroomCount: 1,
-      imageSrc: "",
-      title: "",
-      description: "",
+      imageSrc: '',
+      title: '',
+      description: '',
       categories: [],
-      phoneNumber: ''
-    }
+      phoneNumber: '',
+    },
   });
 
   const location = watch('location');
@@ -87,16 +88,16 @@ const RentModal = ({ lng }: { lng: string }) => {
     setIsLoading(true);
 
     axios
-      .post("/api/listings", data)
+      .post('/api/listings', data)
       .then(() => {
-        toast.success(t("listingSuccessfullyAddedToast"));
+        toast.success(t('listingSuccessfullyAddedToast'));
         router.refresh();
         reset();
         setStep(STEPS.CATEGORY);
         rentModal.onClose();
       })
       .catch(() => {
-        toast.error(t("somethingWentWrongToast"));
+        toast.error(t('somethingWentWrongToast'));
       })
       .finally(() => {
         setIsLoading(false);
@@ -105,10 +106,10 @@ const RentModal = ({ lng }: { lng: string }) => {
 
   const actionLabel = useMemo(() => {
     if (step === STEPS.DESCRIPTION) {
-      return t("createLabel");
+      return t('createLabel');
     }
 
-    return t("nextLabel");
+    return t('nextLabel');
   }, [step, t]);
 
   const secondaryActionLabel = useMemo(() => {
@@ -116,12 +117,12 @@ const RentModal = ({ lng }: { lng: string }) => {
       return undefined;
     }
 
-    return t("backLabel");
+    return t('backLabel');
   }, [step, t]);
 
   let bodyContent = (
     <div className="flex flex-col gap-8">
-      <Heading title={t("categories")} subtitle={t("selectCategories")} />
+      <Heading title={t('categories')} subtitle={t('selectCategories')} />
       <div
         className="
           grid 
@@ -137,7 +138,7 @@ const RentModal = ({ lng }: { lng: string }) => {
             <CategoryInput
               onClick={(category) =>
                 setCustomValue(
-                  "categories",
+                  'categories',
                   toggleCategoryFilter(filters, category)
                 )
               }
@@ -155,13 +156,10 @@ const RentModal = ({ lng }: { lng: string }) => {
   if (step === STEPS.LOCATION) {
     bodyContent = (
       <div className="flex flex-col gap-8">
-        <Heading
-          title={t("rentModalLocationTitle")}
-          subtitle=""
-        />
+        <Heading title={t('rentModalLocationTitle')} subtitle="" />
         <BureauSelect
           value={location}
-          onChange={(value) => setCustomValue("location", value)}
+          onChange={(value) => setCustomValue('location', value)}
           lng={lng}
         />
       </div>
@@ -171,26 +169,26 @@ const RentModal = ({ lng }: { lng: string }) => {
   if (step === STEPS.INFO) {
     bodyContent = (
       <div className="flex flex-col gap-8">
-        <Heading title={t("propertyDetails")} subtitle="" />
+        <Heading title={t('propertyDetails')} subtitle="" />
         <Counter
-          onChange={(value) => setCustomValue("guestCount", value)}
+          onChange={(value) => setCustomValue('guestCount', value)}
           value={guestCount}
-          title={t("propertyCapacity")}
-          subtitle={t("rentModalCapacitySubtitle")}
+          title={t('propertyCapacity')}
+          subtitle={t('rentModalCapacitySubtitle')}
         />
         <hr />
         <Counter
-          onChange={(value) => setCustomValue("roomCount", value)}
+          onChange={(value) => setCustomValue('roomCount', value)}
           value={roomCount}
-          title={t("bedroomTitle")}
-          subtitle={t("rentModalBedroomSubtitle")}
+          title={t('bedroomTitle')}
+          subtitle={t('rentModalBedroomSubtitle')}
         />
         <hr />
         <Counter
-          onChange={(value) => setCustomValue("bathroomCount", value)}
+          onChange={(value) => setCustomValue('bathroomCount', value)}
           value={bathroomCount}
-          title={t("bathroomTitle")}
-          subtitle={t("rentModalBathroomSubtitle")}
+          title={t('bathroomTitle')}
+          subtitle={t('rentModalBathroomSubtitle')}
         />
       </div>
     );
@@ -198,11 +196,13 @@ const RentModal = ({ lng }: { lng: string }) => {
 
   if (step === STEPS.DESCRIPTION) {
     bodyContent = (
-      <div className="flex flex-col gap-8">
-        <Heading title={t("title")} subtitle={t("listingTitle")} />
+      <div className="flex flex-col gap-x-8 gap-y-5">
+        <Heading title={t('listingTitle')} />
+        <div className="-my-6"></div>
+        <Banner title={undefined} text={t('listingSecurityMessage')} />
         <Input
           id="title"
-          label={t("title")}
+          label={t('title')}
           maxLength={20}
           disabled={isLoading}
           register={register}
@@ -212,21 +212,23 @@ const RentModal = ({ lng }: { lng: string }) => {
         <hr />
         <PhoneInput
           id="phoneNumber"
-          label={t("contactPhone")}
+          label={t('contactPhone')}
           value={phoneNumber}
           onChange={(value) => setCustomValue('phoneNumber', value)}
           control={control}
           errors={errors}
-          required={false} />
+          required={false}
+        />
         <hr />
         <TextArea
           id="description"
-          label={t("listingDescription")}
+          label={t('listingDescription')}
           disabled={isLoading}
           register={register}
           errors={errors}
           maxLength={500}
         />
+        <div className="-my-6"></div>
       </div>
     );
   }
@@ -235,7 +237,7 @@ const RentModal = ({ lng }: { lng: string }) => {
     <Modal
       disabled={isLoading}
       isOpen={rentModal.isOpen}
-      title={t("rentModalMainTitle")}
+      title={t('rentModalMainTitle')}
       actionLabel={actionLabel}
       onSubmit={handleSubmit(onSubmit)}
       secondaryActionLabel={secondaryActionLabel}
