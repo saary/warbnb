@@ -46,5 +46,13 @@
   "rentModalMainTitle": "I want to host",
   "LoginSuccessToast": "Logged In",
   "googleLoginTitle": "Login with Google",
-  "loginModalTitle": "Sign In"
+  "loginModalTitle": "Sign In",
+  "searchModalHeading": "Region in Israel?",
+  "searchModalDateTitle": "Dates",
+  "searchModalDateSubtitle": "Find available places",
+  "searchModalNeedsTitle": "Additional Needs",
+  "searchModalNeedsPeople": "Number of people",
+  "searchModalNeedsBedrooms": "Required number of bedrooms?",
+  "searchModalNeedsBathrooms": "Required number of bathrooms?",
+  "searchModalTitle": "Search"
 }

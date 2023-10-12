@@ -85,7 +85,7 @@ const SearchModal = ({ lng }: { lng: string }) => {
   let bodyContent = (
     <div className="flex flex-col gap-8">
       <Heading
-        title="מיקום מועדף/Preferred region?"
+        title={t("searchModalHeading")}
         subtitle=""
       />
       <BureauSelect 
@@ -101,8 +101,8 @@ const SearchModal = ({ lng }: { lng: string }) => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="תאריכי יעד/Dates"
-          subtitle="למציאת מקומות פנויים/Find available places"
+          title={t("searchModalDateTitle")}
+          subtitle={t("searchModalDateSubtitle")}
         />
         <div style={{direction: "ltr"}}>
           <Calendar
@@ -118,21 +118,21 @@ const SearchModal = ({ lng }: { lng: string }) => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="צרכים נוספים/Additional needs"
+          title={t("searchModalNeedsTitle")}
           subtitle=""
         />
         <Counter 
           onChange={(value) => setGuestCount(value)}
           value={guestCount}
-          title="מספר נפשות/Number of people" 
+          title={t("searchModalNeedsPeople")}
           subtitle=""
         />
         <hr />
         <Counter 
           onChange={(value) => setRoomCount(value)}
           value={roomCount}
-          title="חדרים/Bedrooms" 
-          subtitle="כמה חדרים נחוצים/Required number of bedrooms?"
+          title={t("bedroomTitle")}
+          subtitle={t("searchModalNeedsBedrooms")}
         />        
         <hr />
         <Counter 
@@ -140,8 +140,8 @@ const SearchModal = ({ lng }: { lng: string }) => {
             setBathroomCount(value)
           }}
           value={bathroomCount}
-          title="חדרי רחצה/Bathrooms"
-          subtitle="כמה חדרי רחצה  שונים נחוצים/Required number of bathrooms"
+          title={t("bathroomTitle")}
+          subtitle={t("searchModalNeedsBathrooms")}
         />
       </div>
     )
@@ -150,8 +150,8 @@ const SearchModal = ({ lng }: { lng: string }) => {
   return (
     <Modal
       isOpen={searchModal.isOpen}
-      title="חיפוש"
-      actionLabel="חיפוש/Search"
+      title={t("searchModalTitle")}
+      actionLabel={t("searchModalTitle")}
       onSubmit={onSubmit}
       onClose={searchModal.onClose}
       body={bodyContent}

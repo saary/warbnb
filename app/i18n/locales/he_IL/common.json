@@ -45,5 +45,13 @@
   "rentModalMainTitle": "אירוח בביתי",
   "loginSuccessToast": "התחבר בהצלחה",
   "googleLoginTitle": "כניסה עם גוגל",
-  "loginModalTitle": "כניסה"
+  "loginModalTitle": "כניסה",
+  "searchModalHeading": "איזור בארץ?",
+  "searchModalDateTitle": "תאריכי יעד",
+  "searchModalDateSubtitle": "למציאת מקומות פנויים",
+  "searchModalNeedsTitle": "צרכים נוספים",
+  "searchModalNeedsPeople": "מספר נפשות",
+  "searchModalNeedsBedrooms": "כמה חדרים נחוצים?",
+  "searchModalNeedsBathrooms": "כמה חדרי רחצה נחוצים?",
+  "searchModalTitle": "חיפוש"
 }
