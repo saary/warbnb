@@ -17,7 +17,7 @@ const TripsPage = async ({ params }: { params: Params }) => {
   if (!currentUser) {
     return (
       <ClientOnly>
-        <EmptyState title="Unauthorized" subtitle="Please login" />
+        <EmptyState title="Unauthorized" subtitle="Please login" lng={params.lng} />
       </ClientOnly>
     );
   }
@@ -30,6 +30,7 @@ const TripsPage = async ({ params }: { params: Params }) => {
         <EmptyState
           title="לא נמצאו הזמנות"
           subtitle="נראה שעדיין לא הזמנת אירוח."
+          lng={params.lng}
         />
       </ClientOnly>
     );

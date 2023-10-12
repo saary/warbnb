@@ -23,7 +23,7 @@ const Home = async ({ searchParams, params: { lng } }: HomeProps) => {
   if (listings.length === 0) {
     return (
       <ClientOnly>
-        <EmptyState showReset />
+        <EmptyState showReset lng={lng} />
       </ClientOnly>
     );
   }

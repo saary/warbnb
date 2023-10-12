@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useEffect } from "react";
 
@@ -7,24 +7,26 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 interface ErrorStateProps {
-  error: Error
+  error: Error;
+  lng: string;
 }
 
-const ErrorState: React.FC<ErrorStateProps> = ({ error }) => {
+const ErrorState: React.FC<ErrorStateProps> = ({ error, lng }) => {
   const router = useRouter();
-  
+
   useEffect(() => {
     console.error(error);
   }, [error]);
 
-  return ( 
+  return (
     <EmptyState
       title="אופס/Uh Oh"
       subtitle="משהו השתבש! Something went wrong!"
       showReset
       resetLabel="חזרה לעמוד הראשי / back to main page"
+      lng={lng}
     />
-   );
-}
- 
+  );
+};
+
 export default ErrorState;

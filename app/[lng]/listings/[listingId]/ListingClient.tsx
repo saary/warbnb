@@ -81,7 +81,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
       .then(() => {
         toast.success("ההזמנה נקלטה!");
         setDateRange(initialDateRange);
-        router.push("/trips");
+        router.push(`${lng}/trips`);
       })
       .catch(() => {
         toast.error("משהו השתבש.");

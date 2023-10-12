@@ -21,6 +21,7 @@ const ReservationsPage = async ({ params }: { params: Params }) => {
         <EmptyState
           title="Unauthorized"
           subtitle="Please login"
+          lng={params.lng}
         />
       </ClientOnly>
     )
@@ -34,6 +35,7 @@ const ReservationsPage = async ({ params }: { params: Params }) => {
         <EmptyState
           title="לא נמצאו בקשות"
           subtitle="נראה שעדיין אין בקשות להתארח אצלך."
+          lng={params.lng}
         />
       </ClientOnly>
     );
