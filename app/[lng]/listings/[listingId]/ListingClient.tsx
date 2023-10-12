@@ -128,7 +128,6 @@ const ListingClient: React.FC<ListingClientProps> = ({
                 lng={lng}
                 phoneNumber={listing.phoneNumber}
               />
-              {!currentUser?.isHost && (
                 <div
                   className="
                 order-first 
@@ -146,7 +145,6 @@ const ListingClient: React.FC<ListingClientProps> = ({
                     lng={lng}
                   />
                 </div>
-              )}
             </div>
           ) : (
             <div>{t("unauthorized")}</div>
