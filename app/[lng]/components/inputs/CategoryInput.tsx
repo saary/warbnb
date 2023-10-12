@@ -28,7 +28,7 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
         border-2
         p-4
         flex
-        flex-col
+        flex-row
         gap-3
         hover:border-black
         transition
@@ -36,7 +36,7 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
         ${selected ? 'border-black' : 'border-neutral-200'}
       `}
     >
-      <Icon size={30} />
+      <Icon size={26} />
       <div className="font-semibold">
         {t(label)}
       </div>

@@ -2,6 +2,7 @@
 
 import { usePathname, useSearchParams } from 'next/navigation';
 import { TbMoodKid, TbAccessible, TbJewishStar, TbDog, TbSmokingNo, TbParking } from 'react-icons/tb';
+import { FaPersonShelter } from "react-icons/fa6";
 import CategoryBox from "../CategoryBox";
 import Container from '../Container';
 
@@ -36,6 +37,11 @@ export const allCategories = [
     label: 'parking',
     icon: TbParking,
     description: 'parkingAvailable'
+  },
+  {
+    label: 'shelter',
+    icon: FaPersonShelter,
+    description: 'indoorShelter'
   },
 ]
 
