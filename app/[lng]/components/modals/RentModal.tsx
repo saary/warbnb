@@ -89,14 +89,14 @@ const RentModal = ({ lng }: { lng: string }) => {
     axios
       .post("/api/listings", data)
       .then(() => {
-        toast.success("המודעה נקלטה. תודה!\nListing was successfully added");
+        toast.success(t("listingSuccessfullyAddedToast"));
         router.refresh();
         reset();
         setStep(STEPS.CATEGORY);
         rentModal.onClose();
       })
       .catch(() => {
-        toast.error("משהו השתבש.\nSomething went wrong.");
+        toast.error(t("somethingWentWrongToast"));
       })
       .finally(() => {
         setIsLoading(false);
@@ -105,19 +105,19 @@ const RentModal = ({ lng }: { lng: string }) => {
 
   const actionLabel = useMemo(() => {
     if (step === STEPS.DESCRIPTION) {
-      return "יצירה";
+      return t("createLabel");
     }
 
-    return "הבא";
-  }, [step]);
+    return t("nextLabel");
+  }, [step, t]);
 
   const secondaryActionLabel = useMemo(() => {
     if (step === STEPS.CATEGORY) {
       return undefined;
     }
 
-    return "חזרה";
-  }, [step]);
+    return t("backLabel");
+  }, [step, t]);
 
   let bodyContent = (
     <div className="flex flex-col gap-8">
@@ -156,7 +156,7 @@ const RentModal = ({ lng }: { lng: string }) => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="איפה הבית נמצא?/Where is the house located?"
+          title={t("rentModalLocationTitle")}
           subtitle=""
         />
         <BureauSelect
@@ -175,21 +175,21 @@ const RentModal = ({ lng }: { lng: string }) => {
           onChange={(value) => setCustomValue("guestCount", value)}
           value={guestCount}
           title={t("propertyCapacity")}
-          subtitle="כמה נפשות אפשר ניתן לארח?/Number of guests you can host"
+          subtitle={t("rentModalCapacitySubtitle")}
         />
         <hr />
         <Counter
           onChange={(value) => setCustomValue("roomCount", value)}
           value={roomCount}
-          title="חדרים/Bedrooms"
-          subtitle="כמה חדרים פנויים לאירוח?/Number of available rooms for hosting?"
+          title={t("bedroomTitle")}
+          subtitle={t("rentModalBedroomSubtitle")}
         />
         <hr />
         <Counter
           onChange={(value) => setCustomValue("bathroomCount", value)}
           value={bathroomCount}
-          title="חדרי רחצה/Bathrooms"
-          subtitle="כמה חדרי רחצה זמינים לשימוש?/Number of available bathrooms"
+          title={t("bathroomTitle")}
+          subtitle={t("rentModalBathroomSubtitle")}
         />
       </div>
     );
@@ -198,10 +198,10 @@ const RentModal = ({ lng }: { lng: string }) => {
   if (step === STEPS.DESCRIPTION) {
     bodyContent = (
       <div className="flex flex-col gap-8">
-        <Heading title="כותרת/Title" subtitle="כותרת המודעה/Listing title" />
+        <Heading title={t("title")} subtitle={t("listingTitle")} />
         <Input
           id="title"
-          label="כותרת/Title"
+          label={t("title")}
           maxLength={20}
           disabled={isLoading}
           register={register}
@@ -211,7 +211,7 @@ const RentModal = ({ lng }: { lng: string }) => {
         <hr />
         <PhoneInput
           id="phoneNumber"
-          label='טלפון  ליצירת קשר/phone number'
+          label={t("phoneNumberLabel")}
           value={phoneNumber}
           onChange={(value) => setCustomValue('phoneNumber', value)}
           control={control}
@@ -220,7 +220,7 @@ const RentModal = ({ lng }: { lng: string }) => {
         <hr />
         <TextArea
           id="description"
-          label="הערות נוספות/Listing description"
+          label={t("listingDescription")}
           disabled={isLoading}
           register={register}
           errors={errors}
@@ -234,7 +234,7 @@ const RentModal = ({ lng }: { lng: string }) => {
     <Modal
       disabled={isLoading}
       isOpen={rentModal.isOpen}
-      title="אירוח בביתי/I want to host"
+      title={t("rentModalMainTitle")}
       actionLabel={actionLabel}
       onSubmit={handleSubmit(onSubmit)}
       secondaryActionLabel={secondaryActionLabel}

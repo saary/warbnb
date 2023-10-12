@@ -23,5 +23,22 @@
   "categories": "Categories",
   "selectCategories": "Choose property categories",
   "propertyDetails": "Property details",
-  "propertyCapacity": "Property capacity"
+  "propertyCapacity": "Property capacity",
+  "listingSuccessfullyAddedToast": "Listing was successfully added. Thank You!",
+  "somethingWentWrongToast": "Somthing went wrong",
+  "createLabel": "Create",
+  "nextLabel": "Next",
+  "backLabel": "Back",
+  "rentModalLocationTitle": "Where is the house located?",
+  "rentModalCapacitySubtitle": "Number of guests you can host",
+  "bedroomTitle": "Bedrooms",
+  "rentModalBedroomSubtitle": "Number of available rooms for hosting?",
+  "bathroomTitle": "Bathrooms",
+  "rentModalBathroomSubtitle": "Number of available bathrooms",
+  "title": "Title",
+  "listingTitle": "Listing Title",
+  "phoneNumber": "Phone number",
+  "phoneNumberLabel": "Phone number to contact host (Whatsapp enabled)",
+  "listingDescription": "Listing description",
+  "rentModalMainTitle": "I want to host"
 }

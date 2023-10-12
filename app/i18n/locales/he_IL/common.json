@@ -23,5 +23,22 @@
   "categories": "מאפיינים רלוונטיים",
   "selectCategories": "יש לבחור קטגוריות רלוונטיות",
   "propertyDetails": "פרטי הבית",
-  "propertyCapacity": "תפוסה"
+  "propertyCapacity": "תפוסה",
+  "listingSuccessfullyAddedToast": "המודעה נקלטה. תודה!",
+  "somethingWentWrongToast": "משהו השתבש.",
+  "createLabel": "יצירה",
+  "nextLabel": "הבא",
+  "backLabel": "חזרה",
+  "rentModalLocationTitle": "איפה הבית נמצא?",
+  "rentModalCapacitySubtitle": "כמה נפשות אפשר ניתן לארח?",
+  "bedroomTitle": "חדרי שינה",
+  "rentModalBedroomSubtitle": "כמה חדרים פנויים לאירוח?",
+  "bathroomTitle": "חדרי רחצה",
+  "rentModalBathroomSubtitle": "כמה חדרי רחצה זמינים לשימוש?",
+  "title": "כותרת",
+  "listingTitle": "כותרת המודעה",
+  "phoneNumber": "מספר טלפון",
+  "phoneNumberLabel": "טלפון ליצירת קשר",
+  "listingDescription": "הערות נוספות",
+  "rentModalMainTitle": "אירוח בביתי"
 }
