@@ -67,8 +67,8 @@
   "searchBarGuests": "מספר אורחים",
   "homeBannerPreLoginTitle": "",
   "homeBannerPreLoginText": "בימים קשים אלה, אנשים רבים מהאזורים שנפגעו בעקבות המצב הבטחוני צריכים מקום בטוח להתארח בו.\nSafeBNB היא פלטפורמה שקמה כדי לעזור לקשר בין תושבים שזקוקים למקום בטוח להתארח בו- לתושבים שרוצים לתת יד ולארח.",
-  "homeBannerHostPostLoginTitle": "שלום {{name}}",
+  "homeBannerHostPostLoginTitle": "מארח יקר",
   "homeBannerHostPostLoginText": "קודם כל, אנחנו רוצים להצדיע לכם על פתיחת הלב והבית.\n  כדי לוודא שהאירוח יהיה מתאים לשני הצדדים, אנא ביחרו אופציות שמתאימות למקום האירוח.",
-  "homeBannerGuestPostLoginTitle": "שלום {{name}}",
+  "homeBannerGuestPostLoginTitle": "אורח יקר",
   "homeBannerGuestPostLoginText": "מקווים שנוכל לעזור למצוא מקום בטוח להתארח בו בהקדם.\nכדי למצוא מקום אשר יתאים לצרכיכם אנא השתמשו באפשרויות החיפוש שנמצאות בחלק העליון של האתר."
 }
