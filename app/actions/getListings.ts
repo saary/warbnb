@@ -34,7 +34,6 @@ export default async function getListings(params: IListingsParams) {
       startDate,
       endDate,
       categories,
-      phoneNumber
     } = params;
 
     let query: any = {};
