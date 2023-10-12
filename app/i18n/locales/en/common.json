@@ -41,6 +41,10 @@
   "title": "Title",
   "listingTitle": "Listing Title",
   "phoneNumber": "Phone number",
+  "phoneNumberLabel": "Phone number to contact host",
   "listingDescription": "Listing description",
-  "rentModalMainTitle": "I want to host"
+  "rentModalMainTitle": "I want to host",
+  "LoginSuccessToast": "Logged In",
+  "googleLoginTitle": "Login with Google",
+  "loginModalTitle": "Sign In"
 }

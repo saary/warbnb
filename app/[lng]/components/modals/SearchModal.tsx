@@ -8,6 +8,7 @@ import { formatISO } from 'date-fns';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 import useSearchModal from "@/app/hooks/useSearchModal";
+import { useTranslation } from "@/app/i18n/client";
 
 import Modal from "./Modal";
 import Calendar from "../inputs/Calendar";
@@ -23,10 +24,11 @@ export enum STEPS {
   INFO = 2,
 }
 
-const SearchModal = () => {
+const SearchModal = ({ lng }: { lng: string }) => {
   const router = useRouter();
   const searchModal = useSearchModal();
   const params = useSearchParams();
+  const { t } = useTranslation(lng);
 
   const [location, setLocation] = useState<BureauSelectValue>();
   const [guestCount, setGuestCount] = useState(1);

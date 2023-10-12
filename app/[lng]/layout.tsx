@@ -38,9 +38,9 @@ export default async function RootLayout({
       <body className={font.className}>
         <ClientOnly>
           <ToasterProvider />
-          <LoginModal />
-          <SearchModal />
-          <RentModal lng={lng}/>
+          <LoginModal lng={lng} />
+          <SearchModal lng={lng} />
+          <RentModal lng={lng} />
           <Navbar currentUser={currentUser} lng={lng} />
         </ClientOnly>
         <div className="pb-20 pt-40">{children}</div>

@@ -12,13 +12,15 @@ import { FcGoogle } from "react-icons/fc";
 import { useRouter } from "next/navigation";
 
 import useLoginModal from "@/app/hooks/useLoginModal";
+import { useTranslation } from "@/app/i18n/client";
 
 import SlimModal from "./SlimModal";
 import Button from "../Button";
 
-const LoginModal = () => {
+const LoginModal = ({ lng }: { lng: string }) => {
   const router = useRouter();
   const loginModal = useLoginModal();
+  const { t } = useTranslation(lng);
   const [isLoading, setIsLoading] = useState(false);
 
   const { 
@@ -46,7 +48,7 @@ const LoginModal = () => {
       setIsLoading(false);
 
       if (callback?.ok) {
-        toast.success('Logged in');
+        toast.success(t("loginSuccessToast"));
         router.refresh();
         loginModal.onClose();
       }
@@ -62,7 +64,7 @@ const LoginModal = () => {
       <hr />
       <Button 
         outline 
-        label="כניסה עם גוגל / Login with Google"
+        label={t("googleLoginTitle")}
         icon={FcGoogle}
         onClick={() => signIn('google')}
       />
@@ -73,7 +75,7 @@ const LoginModal = () => {
     <SlimModal
       disabled={isLoading}
       isOpen={loginModal.isOpen}
-      title="כניסה / Sign In"
+      title={t("loginModalTitle")}
       onClose={loginModal.onClose}
       onSubmit={handleSubmit(onSubmit)}
       body={bodyContent}

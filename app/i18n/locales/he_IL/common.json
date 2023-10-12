@@ -42,5 +42,8 @@
   "listingTitle": "כותרת המודעה",
   "phoneNumber": "מספר טלפון",
   "listingDescription": "הערות נוספות",
-  "rentModalMainTitle": "אירוח בביתי"
+  "rentModalMainTitle": "אירוח בביתי",
+  "loginSuccessToast": "התחבר בהצלחה",
+  "googleLoginTitle": "כניסה עם גוגל",
+  "loginModalTitle": "כניסה"
 }

@@ -111,7 +111,7 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
         <hr />
         <div className="flex flex-row gap-4">
           <div className="text-lg font-semibold text-neutral-500 break-words">
-              {t("contactPhone")}
+              {t("phoneNumberLabel")}
           </div>
           <div className="
           text-lg font-light text-neutral-500 break-words justify-start"
