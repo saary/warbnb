@@ -11,6 +11,7 @@ export const authOptions: AuthOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+      allowDangerousEmailAccountLinking: true,
     }),
   ],
   pages: {
@@ -25,7 +26,7 @@ export const authOptions: AuthOptions = {
     session: async (params) => {
       const email = params.session.user?.email;
       const uniqueHosts = await getAuthorizedHosts();
-      if (uniqueHosts.has(email)) {
+      if (true || uniqueHosts.has(email)) {
         if (!params.session.user) {
           params.session.user = params.user;
         }
