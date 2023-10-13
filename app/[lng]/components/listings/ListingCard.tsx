@@ -75,7 +75,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
         shadow-sm 
         hover:shadow-md"
     >
-      <div className="flex flex-col gap-2 w-full">
+      <div className="flex flex-col gap-2 w-full h-full">
         <div className="font-semibold text-lg overflow-hidden text-ellipsis">{data.title}</div>
         <div className="font-normal">
           {location?.region}, {location?.label}
@@ -89,14 +89,16 @@ const ListingCard: React.FC<ListingCardProps> = ({
             {reservation?.user.name} ({reservation?.user.email} )
           </div>
         )}
-        {onAction && actionLabel && (
-          <Button
+        {onAction && actionLabel && 
+          <div className="mt-auto">
+          <Button 
             disabled={disabled}
             small
             label={actionLabel}
             onClick={handleCancel}
           />
-        )}
+          </div>
+        }
       </div>
     </div>
   );

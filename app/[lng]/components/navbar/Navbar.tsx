@@ -14,36 +14,30 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ currentUser, lng }) => {
   return (
-    <div className="fixed w-full bg-white z-10 shadow-sm">
+    <div className="w-full bg-white z-10 shadow-sm">
       <div
         className="
-          py-4 
-          border-b-[1px]
+        py-4 
+        border-b-[1px]
         "
       >
-        <Container>
-          <div
-            className="
-            flex 
-            flex-row
-            items-center 
-            justify-between
-            gap-3
-            md:gap-0
-            "
+        <div
+          className="
+          flex 
+          flex-row
+          items-center 
+          justify-between
+          gap-3
+          md:gap-0"
           style={{direction: "rtl"}}
-          >
-            <LanaguageSwitcher lng={lng} />
-            <Logo lng={lng} />
-            <Search lng={lng} />
-            <UserMenu currentUser={currentUser} lng={lng} />
-          </div>
-        </Container>
+        >
+          <LanaguageSwitcher lng={lng} />
+          <Logo lng={lng} />
+          <Search lng={lng} />
+          <UserMenu currentUser={currentUser} lng={lng} />
+        </div>
       </div>
-      {!currentUser?.isHost && (
-        <Categories lng={lng} />
-      )}
-    </div>
+  </div>
   );
 };
 

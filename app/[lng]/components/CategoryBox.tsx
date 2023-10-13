@@ -49,7 +49,7 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
     }
    
     const url = qs.stringifyUrl({
-      url: '/',
+      url: `/${lng}`,
       query: updatedQuery
     }, { skipNull: true });
 
