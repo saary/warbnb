@@ -85,5 +85,6 @@
   "propertiesTitle": "Places",
   "propertiesSubtitle": "List of places",
   "removePropertyLabel": "Remove",
-  "noMatchFound": "No matches were found"
+  "noMatchFound": "No matches were found",
+  "getBack": "Back to listings"
 }
