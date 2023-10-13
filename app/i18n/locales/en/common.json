@@ -86,5 +86,10 @@
   "propertiesSubtitle": "List of places",
   "removePropertyLabel": "Remove",
   "noMatchFound": "No matches were found",
-  "getBack": "Back to listings"
+  "getBack": "Back to listings",
+  "signupHost": "Signup as a host",
+  "becomeHostTitle": "Host registration form",
+  "hostRegistrationTile": "Security notice",
+  "hostRegistrationNotice": "Dear users, for security concerns you are required to register with verifiable details in order to sign up as a potential host.",
+  "registerContactUs": "To register please contact us at help@safebnb.co so that we can verify your identity."
 }

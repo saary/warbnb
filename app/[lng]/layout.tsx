@@ -1,4 +1,4 @@
-import { dir } from 'i18next'
+import { dir } from "i18next";
 import { Nunito } from "next/font/google";
 
 import Navbar from "@/app/[lng]/components/navbar/Navbar";
@@ -11,7 +11,8 @@ import ToasterProvider from "@/app/[lng]/providers/ToasterProvider";
 import "./globals.css";
 import ClientOnly from "./components/ClientOnly";
 import getCurrentUser from "../actions/getCurrentUser";
-import Container from './components/Container';
+import Container from "./components/Container";
+import BecomeHostModal from "./components/modals/BecomeHostModal";
 
 export const metadata = {
   title: "SAFEbnb",
@@ -41,8 +42,9 @@ export default async function RootLayout({
           <LoginModal lng={lng} />
           <SearchModal lng={lng} />
           <RentModal lng={lng} />
+          <BecomeHostModal lng={lng} />
           <Container>
-            <div className='flex flex-col gap-2'>
+            <div className="flex flex-col gap-2">
               <Navbar currentUser={currentUser} lng={lng} />
               <div>{children}</div>
             </div>

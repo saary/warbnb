@@ -13,6 +13,7 @@ import { SafeUser } from "@/app/types";
 import MenuItem from "./MenuItem";
 import Avatar from "../Avatar";
 import { useTranslation } from "@/app/i18n/client";
+import useBecomeHostModal from "@/app/hooks/useBecomeHostModal";
 
 interface UserMenuProps {
   currentUser?: SafeUser | null;
@@ -25,6 +26,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
 
   const loginModal = useLoginModal();
   const rentModal = useRentModal();
+  const becomeHostModal = useBecomeHostModal();
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -34,10 +36,10 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
 
   const handleClickOutside = () => {
     setIsOpen(false);
-  }
+  };
   const ref = useRef(null);
-  useOnClickOutside(ref, handleClickOutside)
-  
+  useOnClickOutside(ref, handleClickOutside);
+
   const onRent = useCallback(() => {
     if (!currentUser) {
       return loginModal.onOpen();
@@ -45,6 +47,14 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
 
     rentModal.onOpen();
   }, [loginModal, rentModal, currentUser]);
+
+  const onRegisterHost = useCallback(() => {
+    if (!currentUser) {
+      return becomeHostModal.onOpen();
+    }
+
+    becomeHostModal.onOpen();
+  }, [loginModal, becomeHostModal, currentUser]);
 
   // Hide listing creation button from non-hosts (for fixed width rendering). Actual authorization is checked in api.
   return (
@@ -66,7 +76,25 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
             ${currentUser?.isHost ? "visible" : "invisible"}
           `}
         >
-          {t('wishToHost')}
+          {t("wishToHost")}
+        </div>
+        <div
+          onClick={onRegisterHost}
+          className={`
+            hidden
+            md:block
+            text-sm 
+            font-semibold 
+            py-3 
+            px-4 
+            rounded-full 
+            hover:bg-slate-100 
+            transition 
+            cursor-pointer
+            ${!currentUser?.isHost ? "visible" : "invisible"}
+          `}
+        >
+          {t("signupHost")}
         </div>
         <div
           onClick={toggleOpen}
@@ -101,7 +129,8 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
         </div>
       </div>
       {isOpen && (
-        <div ref={ref}
+        <div
+          ref={ref}
           className="
             absolute 
             rounded-xl 
@@ -120,25 +149,42 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
               <>
                 <MenuItem
                   label={t("reservationsHistory")}
-                  onClick={() => { setIsOpen(false); router.push(`/${lng}/trips`)}}
+                  onClick={() => {
+                    setIsOpen(false);
+                    router.push(`/${lng}/trips`);
+                  }}
                 />
                 <MenuItem
                   label={t("hostRequests")}
-                  onClick={() => { setIsOpen(false); router.push(`/${lng}/reservations`)}}
+                  onClick={() => {
+                    setIsOpen(false);
+                    router.push(`/${lng}/reservations`);
+                  }}
                 />
                 <MenuItem
                   label={t("myListings")}
-                  onClick={() => { setIsOpen(false); router.push(`/${lng}/properties`)}}
+                  onClick={() => {
+                    setIsOpen(false);
+                    router.push(`/${lng}/properties`);
+                  }}
                 />
-                {currentUser?.isHost && (
-                  <MenuItem label={t('wishToHost')} onClick={rentModal.onOpen} />
+                {currentUser?.isHost ? (
+                  <MenuItem
+                    label={t("wishToHost")}
+                    onClick={rentModal.onOpen}
+                  />
+                ) : (
+                  <MenuItem
+                    label={t("signupHost")}
+                    onClick={rentModal.onOpen}
+                  />
                 )}
                 <hr />
-                <MenuItem label={t('disconnect')} onClick={() => signOut()} />
+                <MenuItem label={t("disconnect")} onClick={() => signOut()} />
               </>
             ) : (
               <>
-                <MenuItem label={t('login')} onClick={loginModal.onOpen} />
+                <MenuItem label={t("login")} onClick={loginModal.onOpen} />
               </>
             )}
           </div>
