@@ -31,8 +31,10 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser, lng }) => {
           md:gap-0"
           style={{direction: "rtl"}}
         >
-          <Logo lng={lng} />
-          <LanaguageSwitcher lng={lng} />
+          <div className="flex flex-row gap-1 md:gap-0">
+            <Logo lng={lng} />
+            <LanaguageSwitcher lng={lng} />
+          </div>
           <Search lng={lng} />
           <UserMenu currentUser={currentUser} lng={lng} />
         </div>

@@ -30,7 +30,7 @@ export const LanaguageSwitcher: React.FC<Props> = ({ lng }) => {
     .map((l, index) => {
       return (
         <li key={l}>
-          <a href={`/${setNewLanguage(l)}`}>
+          <a href={`/${setNewLanguage(l)}`} className="rounded-lg hover:bg-slate-100 px-3 py-1 mb-2">
             {getUnicodeFlagIcon(languagesToIcons[l].unic)} {languagesToIcons[l].text}
           </a>
         </li>
@@ -39,13 +39,13 @@ export const LanaguageSwitcher: React.FC<Props> = ({ lng }) => {
 
   const selectedOption = (
     <div>
-      <div className="selected-lang">
+      <div className="selected-lang rounded-lg bg-slate-100 px-3 py-1 mb-2">
         {getUnicodeFlagIcon(languagesToIcons[lng].unic)} {languagesToIcons[lng].text}
       </div>
     </div>
   );
   return (
-    <div className="mt-8 w-20">
+    <div className="mt-8 w-30">
       <nav>
         <div className="lang-menu" dir="ltr">
           {selectedOption}
