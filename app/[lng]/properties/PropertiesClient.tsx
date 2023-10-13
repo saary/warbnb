@@ -31,11 +31,11 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ({
   const rentModal = useRentModal();
 
   const { t } = useTranslation(lng);
-  const [deletingId, setDeletingId] = useState("");
+  const [updatedListingId, setUpdatedListingId] = useState("");
 
   const onDelete = useCallback(
     (id: string) => {
-      setDeletingId(id);
+      setUpdatedListingId(id);
 
       axios
         .delete(`/api/listings/${id}`)
@@ -47,7 +47,27 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ({
           toast.error(error?.response?.data?.error);
         })
         .finally(() => {
-          setDeletingId("");
+          setUpdatedListingId("");
+        });
+    },
+    [router]
+  );
+ 
+  const onFreeze = useCallback(
+    (id: string, available: boolean) => {
+      setUpdatedListingId(id);
+
+      axios
+        .patch(`/api/listings/${id}`, { available })
+        .then(() => {
+          toast.success("Listing updated");
+          router.refresh();
+        })
+        .catch((error) => {
+          toast.error(error?.response?.data?.error);
+        })
+        .finally(() => {
+          setUpdatedListingId("");
         });
     },
     [router]
@@ -109,8 +129,10 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ({
             data={listing}
             actionId={listing.id}
             onAction={onDelete}
-            disabled={deletingId === listing.id}
+            onFreeze={(id, available: boolean) => onFreeze(listing.id, available)}
+            disabled={updatedListingId === listing.id}
             actionLabel={t('removePropertyLabel')}
+            freezeLabel={listing.available ? t('freezePropertyLabel') : t('unfreezePropertyLabel')}
             currentUser={currentUser}
             lng={lng}
           />

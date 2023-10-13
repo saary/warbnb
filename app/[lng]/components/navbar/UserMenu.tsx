@@ -119,14 +119,6 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
             {currentUser ? (
               <>
                 <MenuItem
-                  label={t("reservationsHistory")}
-                  onClick={() => { setIsOpen(false); router.push(`/${lng}/trips`)}}
-                />
-                <MenuItem
-                  label={t("hostRequests")}
-                  onClick={() => { setIsOpen(false); router.push(`/${lng}/reservations`)}}
-                />
-                <MenuItem
                   label={t("myListings")}
                   onClick={() => { setIsOpen(false); router.push(`/${lng}/properties`)}}
                 />

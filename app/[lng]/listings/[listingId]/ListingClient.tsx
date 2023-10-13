@@ -128,23 +128,6 @@ const ListingClient: React.FC<ListingClientProps> = ({
                 lng={lng}
                 phoneNumber={listing.phoneNumber}
               />
-                <div
-                  className="
-                order-first 
-                mb-10 
-                md:order-last 
-                md:col-span-3
-              "
-                >
-                  <ListingReservation
-                    onChangeDate={(value) => setDateRange(value)}
-                    dateRange={dateRange}
-                    onSubmit={onCreateReservation}
-                    disabled={isLoading}
-                    disabledDates={disabledDates}
-                    lng={lng}
-                  />
-                </div>
             </div>
           ) : (
             <div>{t("unauthorized")}</div>
