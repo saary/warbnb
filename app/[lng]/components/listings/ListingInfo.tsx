@@ -102,7 +102,7 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
       <hr />
       <div
         className="
-      text-lg font-light text-neutral-500 break-words"
+      text-lg font-light text-neutral-500 break-words whitespace-pre-wrap"
       >
         {description}
       </div>
