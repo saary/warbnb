@@ -55,7 +55,7 @@
   "searchModalNeedsBathrooms": "Required number of bathrooms?",
   "searchModalTitle": "Search",
   "select": "Select",
-  "wishToHost": "I wish to host",
+  "wishToHost": "Add a new place",
   "reservationsHistory": "Places I've visited / will visit",
   "hostRequests": "Host requests at my listings",
   "myListings": "My listings",
@@ -79,5 +79,8 @@
   "tripsEmptyStateTitle": "No reservation found",
   "tripsEmptyStateSubtitle": "Looks like you haven't made a reservation yet.",
   "reservationEmptyStateTitle": "No reservation requests found",
-  "reservationEmptyStateSubtitle": "Looks like there are no reservation requests for you yet."
+  "reservationEmptyStateSubtitle": "Looks like there are no reservation requests for you yet.",
+  "propertiesTitle": "Places",
+  "propertiesSubtitle": "List of places",
+  "removePropertyLabel": "Remove"
 }

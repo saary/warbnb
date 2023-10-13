@@ -53,7 +53,7 @@
   "searchModalNeedsBathrooms": "כמה חדרי רחצה נחוצים?",
   "searchModalTitle": "חיפוש",
   "select": "בחירה",
-  "wishToHost": "רוצה לארח",
+  "wishToHost": "הוסף מקום חדש",
   "reservationsHistory": "מקומות בהם התארחתי/אתארח",
   "hostRequests": "בקשות אירוח אצלי",
   "myListings": "המקומות שלי",
@@ -77,5 +77,8 @@
   "tripsEmptyStateTitle": "לא נמצאו הזמנות",
   "tripsEmptyStateSubtitle": "נראה שעדיין לא הזמנת אירוח.",
   "reservationEmptyStateTitle": "לא נמצאו בקשות",
-  "reservationEmptyStateSubtitle": "נראה שעדיין אין בקשות להתארח אצלך."
+  "reservationEmptyStateSubtitle": "נראה שעדיין אין בקשות להתארח אצלך.",
+  "propertiesTitle": "מקומות",
+  "propertiesSubtitle": "רשימת המקומות שלך",
+  "removePropertyLabel": "הסרה"
 }
