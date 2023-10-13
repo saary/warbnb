@@ -9,6 +9,7 @@ import getListings, { IListingsParams } from "@/app/actions/getListings";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import ClientOnly from "./components/ClientOnly";
 import { useTranslation } from "../i18n";
+import Categories from "./components/navbar/Categories";
 
 interface HomeProps {
   searchParams: IListingsParams;
@@ -18,14 +19,7 @@ interface HomeProps {
 }
 
 const Home = async ({ searchParams, params: { lng } }: HomeProps) => {
-  const { t } = await useTranslation(lng);
-
   const currentUser = await getCurrentUser();
-
-  if (currentUser?.isHost) {
-    redirect(`/${lng}/properties`);
-  }
-
   const listings = await getListings(searchParams);
 
   if (listings.length === 0) {
@@ -37,22 +31,21 @@ const Home = async ({ searchParams, params: { lng } }: HomeProps) => {
   }
 
   return (
-    <ClientOnly>
-      <Container>
-        <div style={{ marginTop: "150px" }}></div>
+    <div className="flex flex-col gap-2">
+      <ClientOnly>
+        <Categories lng={lng} />
+        <hr />
         <HomeBanner isLoggedIn={!!currentUser} isHost={currentUser?.isHost} name={currentUser?.name || ''} lng={lng}/>
-        <div
-          className="
-            pt-24
-            grid 
-            grid-cols-1 
-            sm:grid-cols-2 
-            md:grid-cols-3 
-            lg:grid-cols-4
-            xl:grid-cols-5
-            2xl:grid-cols-6
-            gap-8
-          "
+        <div className="
+          grid 
+          grid-cols-1 
+          sm:grid-cols-2 
+          md:grid-cols-3 
+          lg:grid-cols-4
+          xl:grid-cols-5
+          2xl:grid-cols-6
+          gap-8
+          pt-2"
         >
           {listings.map((listing: any) => (
             <ListingCard
@@ -60,11 +53,11 @@ const Home = async ({ searchParams, params: { lng } }: HomeProps) => {
               key={listing.id}
               data={listing}
               lng={lng}
-            />
+              />
           ))}
         </div>
-      </Container>
-    </ClientOnly>
+      </ClientOnly>
+    </div>
   );
 };
 

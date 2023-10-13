@@ -1,6 +1,7 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
+import { useOnClickOutside } from "usehooks-ts";
 import { AiOutlineMenu } from "react-icons/ai";
 import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -31,6 +32,12 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
     setIsOpen((value) => !value);
   }, []);
 
+  const handleClickOutside = () => {
+    setIsOpen(false);
+  }
+  const ref = useRef(null);
+  useOnClickOutside(ref, handleClickOutside)
+  
   const onRent = useCallback(() => {
     if (!currentUser) {
       return loginModal.onOpen();
@@ -94,7 +101,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
         </div>
       </div>
       {isOpen && (
-        <div
+        <div ref={ref}
           className="
             absolute 
             rounded-xl 
@@ -113,15 +120,15 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
               <>
                 <MenuItem
                   label={t("reservationsHistory")}
-                  onClick={() => router.push(`/${lng}/trips`)}
+                  onClick={() => { setIsOpen(false); router.push(`/${lng}/trips`)}}
                 />
                 <MenuItem
                   label={t("hostRequests")}
-                  onClick={() => router.push(`/${lng}/reservations`)}
+                  onClick={() => { setIsOpen(false); router.push(`/${lng}/reservations`)}}
                 />
                 <MenuItem
                   label={t("myListings")}
-                  onClick={() => router.push(`/${lng}/properties`)}
+                  onClick={() => { setIsOpen(false); router.push(`/${lng}/properties`)}}
                 />
                 {currentUser?.isHost && (
                   <MenuItem label={t('wishToHost')} onClick={rentModal.onOpen} />
