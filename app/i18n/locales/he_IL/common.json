@@ -82,5 +82,6 @@
   "reservationEmptyStateSubtitle": "נראה שעדיין אין בקשות להתארח אצלך.",
   "propertiesTitle": "מקומות",
   "propertiesSubtitle": "רשימת המקומות שלך",
-  "removePropertyLabel": "הסרה"
+  "removePropertyLabel": "הסרה",
+  "noMatchFound": "לא נמצאו התאמות"
 }

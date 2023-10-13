@@ -84,5 +84,6 @@
   "reservationEmptyStateSubtitle": "Looks like there are no reservation requests for you yet.",
   "propertiesTitle": "Places",
   "propertiesSubtitle": "List of places",
-  "removePropertyLabel": "Remove"
+  "removePropertyLabel": "Remove",
+  "noMatchFound": "No matches were found"
 }
