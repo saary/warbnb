@@ -88,22 +88,18 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ({
         <button
           onClick={onRent}
           className={`
-            relative
-            px-2
-            disabled:opacity-70
-            disabled:cursor-not-allowed
-            rounded-lg
-            hover:opacity-80
-            transition
-            w-full
-            bg-sky-500
-            border-sky-500
-            text-white
-            text-sm
-            py-1
-            font-light
-            border-[1px]
-            ${currentUser?.isHost ? "visible" : "invisible"}
+          md:block
+          text-sm 
+          font-semibold 
+          py-3 
+          px-4 
+          rounded-full 
+          hover:bg-slate-100 
+          transition 
+          cursor-pointer
+          border-slate-400
+          border-[1px]
+        ${currentUser?.isHost ? "visible" : "invisible"}
           `}
         >
           {t('wishToHost')}
