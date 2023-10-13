@@ -87,5 +87,7 @@
   "removePropertyLabel": "Remove",
   "noMatchFound": "No matches were found",
   "freezePropertyLabel": "Mark unavailable",
-  "unfreezePropertyLabel": "Mark available"
+  "unfreezePropertyLabel": "Mark available",
+  "gotoMainPage": "See all places",
+  "gotoMyPropertiesPage": "See my places"
 }

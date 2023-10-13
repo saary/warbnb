@@ -85,5 +85,7 @@
   "removePropertyLabel": "הסרה",
   "noMatchFound": "לא נמצאו התאמות",
   "freezePropertyLabel": "להקפיא זמינות",
-  "unfreezePropertyLabel": "להפוך לזמין"
+  "unfreezePropertyLabel": "להפוך לזמין",
+  "gotoMainPage": "צפייה בכל המקומות",
+  "gotoMyPropertiesPage": "צפייה במקומות שלי"
 }
