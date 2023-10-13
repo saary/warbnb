@@ -6,6 +6,9 @@ import { useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import { SafeListing, SafeUser } from "@/app/types";
+import { useTranslation } from '@/app/i18n/client';
+import useLoginModal from "@/app/hooks/useLoginModal";
+import useRentModal from "@/app/hooks/useRentModal";
 
 import Heading from "@/app/[lng]/components/Heading";
 import Container from "@/app/[lng]/components/Container";
@@ -23,6 +26,11 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ({
   lng,
 }) => {
   const router = useRouter();
+
+  const loginModal = useLoginModal();
+  const rentModal = useRentModal();
+
+  const { t } = useTranslation(lng);
   const [deletingId, setDeletingId] = useState("");
 
   const onDelete = useCallback(
@@ -45,9 +53,43 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ({
     [router]
   );
 
+  const onRent = useCallback(() => {
+    if (!currentUser) {
+      return loginModal.onOpen();
+    }
+
+    rentModal.onOpen();
+  }, [loginModal, rentModal, currentUser]);
+
+
   return (
     <Container>
-      <Heading title="Properties" subtitle="List of your properties" />
+      <div className="mt-3 max-w-fit mb-8">
+        <button
+          onClick={onRent}
+          className={`
+            relative
+            px-2
+            disabled:opacity-70
+            disabled:cursor-not-allowed
+            rounded-lg
+            hover:opacity-80
+            transition
+            w-full
+            bg-sky-500
+            border-sky-500
+            text-white
+            text-sm
+            py-1
+            font-light
+            border-[1px]
+            ${currentUser?.isHost ? "visible" : "invisible"}
+          `}
+        >
+          {t('wishToHost')}
+        </button>
+      </div>
+      <Heading title={t('propertiesTitle')} subtitle={t('propertiesSubtitle')} />
       <div
         className="
           mt-10
@@ -68,7 +110,7 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ({
             actionId={listing.id}
             onAction={onDelete}
             disabled={deletingId === listing.id}
-            actionLabel="להסרת המודעה"
+            actionLabel={t('removePropertyLabel')}
             currentUser={currentUser}
             lng={lng}
           />

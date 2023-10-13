@@ -32,6 +32,7 @@ const TextArea: React.FC<TextAreaProps> = ({
         placeholder=" "
         className={`
           peer
+          whitespace-pre
           w-full
           p-4
           pt-6

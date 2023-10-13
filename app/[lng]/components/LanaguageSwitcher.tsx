@@ -1,3 +1,5 @@
+'use client';
+
 import Link from "next/link";
 import { Trans } from "react-i18next/TransWithoutContext";
 import { languages } from "../../i18n/settings";
@@ -17,12 +19,18 @@ const languagesToIcons: Record<
 };
 
 export const LanaguageSwitcher: React.FC<Props> = ({ lng }) => {
+  const setNewLanguage = (lng: string) => {
+    const location = window.location;
+    const parts = location.pathname.split('/');    
+    parts.splice(0, 2);
+    return [lng, ...parts].join('/');
+  }
   const contents = languages
     .filter((l) => lng !== l)
     .map((l, index) => {
       return (
         <li key={l}>
-          <a href={`/${l}`}>
+          <a href={`/${setNewLanguage(l)}`}>
             {getUnicodeFlagIcon(languagesToIcons[l].unic)} {languagesToIcons[l].text}
           </a>
         </li>

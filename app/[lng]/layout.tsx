@@ -11,9 +11,10 @@ import ToasterProvider from "@/app/[lng]/providers/ToasterProvider";
 import "./globals.css";
 import ClientOnly from "./components/ClientOnly";
 import getCurrentUser from "../actions/getCurrentUser";
+import Container from './components/Container';
 
 export const metadata = {
-  title: "Safebnb",
+  title: "SAFEbnb",
   description: "אירוח בשעת חירום",
 };
 
@@ -32,18 +33,21 @@ export default async function RootLayout({
   };
 }) {
   const currentUser = await getCurrentUser();
-
   return (
     <html lang={lng} dir={dir(lng)}>
-      <body className={font.className}>
+      <body className={`font.className `}>
         <ClientOnly>
           <ToasterProvider />
           <LoginModal lng={lng} />
           <SearchModal lng={lng} />
           <RentModal lng={lng} />
-          <Navbar currentUser={currentUser} lng={lng} />
+          <Container>
+            <div className='flex flex-col gap-2'>
+              <Navbar currentUser={currentUser} lng={lng} />
+              <div>{children}</div>
+            </div>
+          </Container>
         </ClientOnly>
-        <div className="pb-20 pt-40">{children}</div>
       </body>
     </html>
   );

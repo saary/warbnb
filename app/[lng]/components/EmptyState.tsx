@@ -1,6 +1,7 @@
 'use client';
 
 import { useRouter } from "next/navigation";
+import { useTranslation } from '@/app/i18n/client';
 
 import Button from "./Button";
 import Heading from "./Heading";
@@ -14,13 +15,23 @@ interface EmptyStateProps {
 }
 
 const EmptyState: React.FC<EmptyStateProps> = ({
-  title = "לא נמצאו התאמות",
-  subtitle = "יש לשנות או להסיר חלק מהפילטרים",
+  title,
+  subtitle = "",
   showReset,
-  resetLabel = "להורדת כל הפילטרים",
+  resetLabel = "",
   lng
 }) => {
   const router = useRouter();
+  const { t } = useTranslation(lng);
+  if (!title) {
+    title = t('noMatchFound');
+  }
+  if (!subtitle) {
+    subtitle = t('emptyStateSubtitle');
+  }
+  if (!resetLabel) {
+    resetLabel = t('emptyStateReset');
+  }
 
   return ( 
     <div 

@@ -203,7 +203,7 @@ const RentModal = ({ lng }: { lng: string }) => {
         <Input
           id="title"
           label={t('title')}
-          maxLength={20}
+          maxLength={40}
           disabled={isLoading}
           register={register}
           errors={errors}
