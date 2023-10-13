@@ -58,6 +58,7 @@ model Listing {
   userId String @db.ObjectId
   categories String[]
   phoneNumber String?
+  available Boolean?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
   reservations Reservation[]

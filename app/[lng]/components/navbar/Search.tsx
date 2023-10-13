@@ -86,21 +86,6 @@ const Search = ({ lng }: { lng: string }) => {
           {locationLabel}
         </div>
         <div 
-          onClick={() => searchModal.onOpen(STEPS.DATE)}
-          className="
-            hidden 
-            sm:block 
-            text-sm 
-            font-semibold 
-            px-6 
-            border-x-[1px] 
-            flex-1 
-            text-center
-          "
-        >
-          {durationLabel}
-        </div>
-        <div 
           onClick={() => searchModal.onOpen(STEPS.INFO)}
           className="
             text-sm 

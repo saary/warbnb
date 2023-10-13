@@ -2,6 +2,7 @@ import prisma from "@/app/libs/prismadb";
 import pick from "lodash.pick";
 import { Listing } from "@prisma/client";
 import getCurrentUser from "./getCurrentUser";
+import { SafeListing } from "../types";
 
 export interface IListingsParams {
   userId?: string;
@@ -24,7 +25,7 @@ const publicKeys: Array<keyof Listing> = [
   "id",
 ];
 
-export default async function getListings(params: IListingsParams) {
+export default async function getListings(params: IListingsParams): Promise<SafeListing[]> {
   try {
     const {
       userId,
@@ -71,24 +72,24 @@ export default async function getListings(params: IListingsParams) {
       query.locationValue = locationValue;
     }
 
-    if (startDate && endDate) {
-      query.NOT = {
-        reservations: {
-          some: {
-            OR: [
-              {
-                endDate: { gte: startDate },
-                startDate: { lte: startDate },
-              },
-              {
-                startDate: { lte: endDate },
-                endDate: { gte: endDate },
-              },
-            ],
-          },
-        },
-      };
-    }
+    // if (startDate && endDate) {
+    //   query.NOT = {
+    //     reservations: {
+    //       some: {
+    //         OR: [
+    //           {
+    //             endDate: { gte: startDate },
+    //             startDate: { lte: startDate },
+    //           },
+    //           {
+    //             startDate: { lte: endDate },
+    //             endDate: { gte: endDate },
+    //           },
+    //         ],
+    //       },
+    //     },
+    //   };
+    // }
 
     const listings = (await prisma.listing.findMany({
       where: query,

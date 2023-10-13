@@ -83,5 +83,7 @@
   "propertiesTitle": "מקומות",
   "propertiesSubtitle": "רשימת המקומות שלך",
   "removePropertyLabel": "הסרה",
-  "noMatchFound": "לא נמצאו התאמות"
+  "noMatchFound": "לא נמצאו התאמות",
+  "freezePropertyLabel": "להקפיא זמינות",
+  "unfreezePropertyLabel": "להפוך לזמין"
 }
