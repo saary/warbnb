@@ -196,7 +196,7 @@ const RentModal = ({ lng }: { lng: string }) => {
 
   if (step === STEPS.DESCRIPTION) {
     bodyContent = (
-      <div className="flex flex-col gap-x-8 gap-y-5">
+      <div className="flex flex-col gap-x-8 gap-y-4">
         <Heading title={t('listingTitle')} />
         <div className="-my-6"></div>
         <Banner title={undefined} text={t('listingSecurityMessage')} />
