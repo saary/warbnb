@@ -19,6 +19,7 @@ const publicKeys: Array<keyof Listing> = [
   "title",
   "roomCount",
   "guestCount",
+  "locationValue",
   "categories",
   "id",
 ];

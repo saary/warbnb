@@ -65,10 +65,18 @@ const ListingCard: React.FC<ListingCardProps> = ({
   return (
     <div
       onClick={() => router.push(`/${lng}/listings/${data.id}`)}
-      className="col-span-1 cursor-pointer group"
+      className="
+        col-span-1
+        cursor-pointer
+        group 
+        p-2 
+        border
+        rounded-md 
+        shadow-sm 
+        hover:shadow-md"
     >
       <div className="flex flex-col gap-2 w-full">
-        <div className="font-semibold text-lg">{data.title}</div>
+        <div className="font-semibold text-lg overflow-hidden text-ellipsis">{data.title}</div>
         <div className="font-normal">
           {location?.region}, {location?.label}
         </div>
