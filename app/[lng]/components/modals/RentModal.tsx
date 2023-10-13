@@ -212,7 +212,7 @@ const RentModal = ({ lng }: { lng: string }) => {
         <hr />
         <PhoneInput
           id="phoneNumber"
-          label={t('contactPhone')}
+          label={t('phoneNumberLabel')}
           value={phoneNumber}
           onChange={(value) => setCustomValue('phoneNumber', value)}
           control={control}
