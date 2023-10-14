@@ -4,6 +4,7 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter";
 
 import prisma from "@/app/libs/prismadb";
 import { getAuthorizedHosts } from "@/app/api/utils/gsheet";
+import { userAgent } from "next/server";
 
 export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
@@ -23,17 +24,38 @@ export const authOptions: AuthOptions = {
   },
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
-    session: async (params) => {
-      const email = params.session.user?.email;
-      const uniqueHosts = await getAuthorizedHosts();
-      if (uniqueHosts.has(email)) {
-        if (!params.session.user) {
-          params.session.user = params.user;
-        }
+    /**
+       * @param  {object}  token     Decrypted JSON Web Token
+       * @param  {object}  user      User object      (only available on sign in)
+       * @param  {object}  account   Provider account (only available on sign in)
+       * @param  {object}  profile   Provider profile (only available on sign in)
+       * @param  {boolean} isNewUser True if new user (only available on sign in)
+       * @return {object}            JSON Web Token that will be saved
+       */
+    jwt: async ({ token, user, account, profile, isNewUser }) => {
+      // Only update the sesion user if we have fetched it from the DB
+      if (user) {
+        token.name = user?.name || profile?.name;
         // @ts-expect-error
-        params.session.user.isHost = true;
+        token.picture = profile?.image || profile?.picture || user?.image;
+        token.id = user.id;
+        const uniqueHosts = await getAuthorizedHosts();
+        if (uniqueHosts.has(token.email)) {
+          token.isHost = true;
+        }  
       }
-      return params.session;
+      return token
+    },    
+    session: async (params) => {
+      return {
+        ...params.session,
+        user: {
+          ...params.session.user,
+          image: params.token.picture,
+          id: params.token.id,
+          isHost: params.token.isHost,
+        }
+      };
     },
   },
 };

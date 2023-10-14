@@ -23,6 +23,10 @@
                 "<node_internals>/**"
             ],
             "program": "${file}",
+            "skipFiles": [
+                "${workspaceFolder}/node_modules/**/*.js",
+                "<node_internals>/**/*.js"
+            ],            
             "outFiles": [
                 "${workspaceFolder}/**/*.js"
             ]

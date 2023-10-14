@@ -11,28 +11,12 @@ export default async function getCurrentUser() {
   try {
     const session = await getSession();
 
+    // NOTICE: We are using the session user as our user and not fetching every time from the DB
     if (!session?.user?.email) {
       return null;
     }
 
-    const currentUser = await prisma.user.findUnique({
-      where: {
-        email: session.user.email as string,
-      },
-    });
-
-    if (!currentUser) {
-      return null;
-    }
-
-    return {
-      ...currentUser,
-      createdAt: currentUser.createdAt.toISOString(),
-      updatedAt: currentUser.updatedAt.toISOString(),
-      emailVerified: currentUser.emailVerified?.toISOString() || null,
-      // @ts-expect-error
-      isHost: session.user?.isHost,
-    };
+    return session.user;
   } catch (error: any) {
     return null;
   }
