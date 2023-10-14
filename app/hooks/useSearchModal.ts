@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { STEPS } from '../[lng]/components/modals/SearchModal';
+import { STEPS } from '../[lng]/components/types';
 
 interface SearchModalStore {
   isOpen: boolean;

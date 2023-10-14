@@ -4,8 +4,7 @@ import qs, { ParsedQuery } from 'query-string';
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback } from "react";
 import { useTranslation } from '@/app/i18n/client';
-import { SvgIcon } from '@mui/material';
-import { ICategory } from './navbar/Categories';
+import { ICategory } from './types';
 
 interface CategoryBoxProps extends Omit<ICategory, "description"> {
   selected?: boolean;

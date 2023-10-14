@@ -1,8 +1,7 @@
 "use client";
 
 import qs from "query-string";
-import dynamic from "next/dynamic";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useState } from "react";
 import { Range } from "react-date-range";
 import { formatISO } from "date-fns";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -15,12 +14,7 @@ import Calendar from "../inputs/Calendar";
 import Counter from "../inputs/Counter";
 import BureauSelect, { BureauSelectValue } from "../inputs/BureauSelect";
 import Heading from "../Heading";
-
-export enum STEPS {
-  LOCATION = 0,
-  DATE = 1,
-  INFO = 2,
-}
+import { STEPS } from "../types";
 
 const SearchModal = ({ lng }: { lng: string }) => {
   const router = useRouter();

@@ -8,7 +8,7 @@ import useSearchModal from '@/app/hooks/useSearchModal';
 import useBureaus from '@/app/hooks/useBureaus';
 import { useTranslation } from "@/app/i18n/client";
 
-import { STEPS } from '../modals/SearchModal';
+import { STEPS } from '../types';
 
 const Search = ({ lng }: { lng: string }) => {
   const searchModal = useSearchModal();
@@ -90,7 +90,7 @@ const Search = ({ lng }: { lng: string }) => {
         <div 
           onClick={() => searchModal.onOpen(STEPS.INFO)}
           className="
-            inline-block w-32
+            inline-block w-40
             text-base
             text-gray-600
             text-center

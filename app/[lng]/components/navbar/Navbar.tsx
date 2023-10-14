@@ -11,7 +11,7 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ currentUser, lng }) => {
   return (
-    <div className="w-full bg-white z-10 shadow-sm p-6">
+    <div className="w-full bg-white z-10 shadow-sm p-6" style={{direction: "rtl"}}>
         <div
           className="
           flex 

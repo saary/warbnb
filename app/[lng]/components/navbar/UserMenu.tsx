@@ -117,7 +117,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
             {currentUser ? (
               <>
                 <MenuItem
-                  label={currentUser!.name}
+                  label={currentUser!.name || ""}
                 />
                 <hr />
                 <MenuItem

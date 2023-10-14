@@ -12,13 +12,7 @@ import NoSmokingIcon from '@/public/icons/noSmoking.svg'
 import ParkingIcon from '@/public/icons/parking.svg'
 import ShelterIcon from '@/public/icons/shelter.svg'
 import { SvgIcon } from '@mui/material';
-
-ShelterIcon
-export interface ICategory {
-  icon: any,
-  label: string;
-  description: string;
-}
+import { ICategory } from '../types';
 
 export const allCategories: ICategory[] = [
   {
@@ -72,7 +66,6 @@ const Categories = ({ lng }: { lng: string }) => {
     <Container>
       <div
         className="
-          pt-4
           flex 
           flex-row 
           items-center 
