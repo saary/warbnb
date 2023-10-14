@@ -3,12 +3,11 @@
 import qs, { ParsedQuery } from 'query-string';
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback } from "react";
-import { IconType } from "react-icons";
 import { useTranslation } from '@/app/i18n/client';
+import { SvgIcon } from '@mui/material';
+import { ICategory } from './navbar/Categories';
 
-interface CategoryBoxProps {
-  icon: IconType,
-  label: string;
+interface CategoryBoxProps extends Omit<ICategory, "description"> {
   selected?: boolean;
   lng: string;
 }
@@ -25,10 +24,11 @@ export const toggleCategoryFilter = (filters: string[], category: string): strin
 }
 
 const CategoryBox: React.FC<CategoryBoxProps> = ({
-  icon: Icon,
+  icon,
   label,
   selected,
   lng,
+
 }) => {
   const { t } = useTranslation(lng);
   const router = useRouter();
@@ -74,7 +74,8 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
         ${selected ? 'text-neutral-800' : 'text-neutral-500'}
       `}
     >
-      <Icon size={26} />
+      {icon}
+      
       <div className="font-medium text-sm">
         {t(label)}
       </div>

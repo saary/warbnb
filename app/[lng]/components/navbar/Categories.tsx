@@ -1,47 +1,60 @@
 'use client';
 
 import { usePathname, useSearchParams } from 'next/navigation';
-import { TbMoodKid, TbAccessible, TbJewishStar, TbDog, TbSmokingNo, TbParking } from 'react-icons/tb';
-import { FaPersonShelter } from "react-icons/fa6";
 import CategoryBox from "../CategoryBox";
 import Container from '../Container';
 
+import KidsIcon from '@/public/icons/kids.svg'
+import KosherIcon from '@/public/icons/kosher.svg'
+import AccesibilityIcon from '@/public/icons/accessibility.svg'
+import PetsIcon from '@/public/icons/pets.svg'
+import NoSmokingIcon from '@/public/icons/noSmoking.svg'
+import ParkingIcon from '@/public/icons/parking.svg'
+import ShelterIcon from '@/public/icons/shelter.svg'
+import { SvgIcon } from '@mui/material';
 
-export const allCategories = [
+ShelterIcon
+export interface ICategory {
+  icon: any,
+  label: string;
+  description: string;
+}
+
+export const allCategories: ICategory[] = [
   {
+    icon: <SvgIcon component={AccesibilityIcon} htmlColor='white' />,
     label: 'accessible',
-    icon: TbAccessible,
     description: 'accessibleProperty',
   },
   {
+    icon: <SvgIcon component={KidsIcon} htmlColor='white' />,
     label: 'children',
-    icon: TbMoodKid,
     description: 'childrenFriendly',
   },
   {
+    icon: <SvgIcon component={KosherIcon} htmlColor='white' />,
     label: 'kosher',
-    icon: TbJewishStar,
     description: 'kosherKeeping'
   },
   {
+    icon: <SvgIcon component={PetsIcon} htmlColor='white' />,
     label: 'pets',
-    icon: TbDog,
     description: 'petsFriendly'
   },
   {
+    icon: <SvgIcon component={NoSmokingIcon} htmlColor='white' />,
     label: 'noSmoking',
-    icon: TbSmokingNo,
     description: 'noSmoking'
   },
   {
+    icon: <SvgIcon component={ParkingIcon} htmlColor='white' />,
     label: 'parking',
-    icon: TbParking,
     description: 'parkingAvailable'
   },
   {
+    icon: <SvgIcon component={ShelterIcon} htmlColor='white' />,
     label: 'shelter',
-    icon: FaPersonShelter,
-    description: 'indoorShelter'
+    description: 'indoorShelter',
   },
 ]
 
