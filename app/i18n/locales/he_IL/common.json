@@ -24,6 +24,8 @@
   "propertyDetails": "פרטי הבית",
   "propertyCapacity": "תפוסה",
   "indoorShelter": "ממ״ד בבית",
+  "nearbyShelter": "מקלט",
+  "nearbyShelterDesc": "מקלט קרוב",
   "phoneNumberLabel": "טלפון ליצירת קשר",
   "listingSuccessfullyAddedToast": "המודעה נקלטה. תודה!",
   "somethingWentWrongToast": "משהו השתבש.",

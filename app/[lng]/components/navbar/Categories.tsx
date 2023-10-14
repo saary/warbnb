@@ -4,51 +4,60 @@ import { usePathname, useSearchParams } from 'next/navigation';
 import CategoryBox from "../CategoryBox";
 import Container from '../Container';
 
-import KidsIcon from '@/public/icons/kids.svg'
-import KosherIcon from '@/public/icons/kosher.svg'
-import AccesibilityIcon from '@/public/icons/accessibility.svg'
-import PetsIcon from '@/public/icons/pets.svg'
-import NoSmokingIcon from '@/public/icons/noSmoking.svg'
-import ParkingIcon from '@/public/icons/parking.svg'
-import ShelterIcon from '@/public/icons/shelter.svg'
-import { SvgIcon } from '@mui/material';
 import { ICategory } from '../types';
+import Image from 'next/image';
 
-export const allCategories: ICategory[] = [
+
+const mkIconElement = (name: string) => {
+  return (
+    <Image className="hidden md:block cursor-pointer"
+    src={`/icons/${name}.svg`}
+    height="24"
+    width="24"
+    alt=""
+    />
+  )};
+
+ export const allCategories: ICategory[] = [
   {
-    icon: <SvgIcon component={AccesibilityIcon} htmlColor='white' />,
+    icon: mkIconElement('accessibility'),
     label: 'accessible',
     description: 'accessibleProperty',
   },
   {
-    icon: <SvgIcon component={KidsIcon} htmlColor='white' />,
+    icon: mkIconElement('kids'),
     label: 'children',
     description: 'childrenFriendly',
   },
   {
-    icon: <SvgIcon component={KosherIcon} htmlColor='white' />,
+    icon: mkIconElement('kosher'),
     label: 'kosher',
     description: 'kosherKeeping'
   },
   {
-    icon: <SvgIcon component={PetsIcon} htmlColor='white' />,
+    icon: mkIconElement('pets'),
     label: 'pets',
     description: 'petsFriendly'
   },
   {
-    icon: <SvgIcon component={NoSmokingIcon} htmlColor='white' />,
+    icon: mkIconElement('noSmoking'),
     label: 'noSmoking',
     description: 'noSmoking'
   },
   {
-    icon: <SvgIcon component={ParkingIcon} htmlColor='white' />,
+    icon: mkIconElement('parking'),
     label: 'parking',
     description: 'parkingAvailable'
   },
   {
-    icon: <SvgIcon component={ShelterIcon} htmlColor='white' />,
+    icon: mkIconElement('shelter'),
     label: 'shelter',
     description: 'indoorShelter',
+  },
+  {
+    icon: mkIconElement('shelter-near-by'),
+    label: 'nearbyShelter',
+    description: 'nearbyShelterDesc',
   },
 ]
 

@@ -53,6 +53,10 @@
 
   "indoorShelter": "Abris intérieur",
 
+  "nearbyShelter": "Abris (ext.)",
+  
+  "nearbyShelterDesc": "Abris extérieurs",
+
   "contactPhone": "Numero de téléphone à contacter",
 
   "listingSuccessfullyAddedToast": "Réservation ajoutée avec succès. Merci!",
