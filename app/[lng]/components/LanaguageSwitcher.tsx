@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import Link from "next/link";
 import { Trans } from "react-i18next/TransWithoutContext";
@@ -16,22 +16,27 @@ const languagesToIcons: Record<
 > = {
   he_IL: { unic: "IL", text: "עברית" },
   en: { unic: "US", text: "English" },
+  fr: { unic: "FR", text: "Français" },
 };
 
 export const LanaguageSwitcher: React.FC<Props> = ({ lng }) => {
   const setNewLanguage = (lng: string) => {
     const location = window.location;
-    const parts = location.pathname.split('/');    
+    const parts = location.pathname.split("/");
     parts.splice(0, 2);
-    return [lng, ...parts].join('/');
-  }
+    return [lng, ...parts].join("/");
+  };
   const contents = languages
     .filter((l) => lng !== l)
     .map((l, index) => {
       return (
         <li key={l}>
-          <a href={`/${setNewLanguage(l)}`} className="rounded-lg hover:bg-slate-100 px-3 py-1 mb-2">
-            {getUnicodeFlagIcon(languagesToIcons[l].unic)} {languagesToIcons[l].text}
+          <a
+            href={`/${setNewLanguage(l)}`}
+            className="rounded-lg hover:bg-slate-100 px-3 py-1 mb-2"
+          >
+            {getUnicodeFlagIcon(languagesToIcons[l].unic)}{" "}
+            {languagesToIcons[l].text}
           </a>
         </li>
       );
@@ -40,7 +45,8 @@ export const LanaguageSwitcher: React.FC<Props> = ({ lng }) => {
   const selectedOption = (
     <div>
       <div className="selected-lang rounded-lg bg-slate-100 px-3 py-1 mb-2">
-        {getUnicodeFlagIcon(languagesToIcons[lng].unic)} {languagesToIcons[lng].text}
+        {getUnicodeFlagIcon(languagesToIcons[lng].unic)}{" "}
+        {languagesToIcons[lng].text}
       </div>
     </div>
   );
