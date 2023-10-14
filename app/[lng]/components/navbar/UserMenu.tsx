@@ -49,7 +49,8 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
   // Hide listing creation button from non-hosts (for fixed width rendering). Actual authorization is checked in api.
   return (
     <div className="relative">
-      <div className="flex flex-row items-center gap-3">
+      <div className="md:flex flex-row items-center md:gap-3">
+      <div className="hidden lg:block">
       <button
           onClick={onRent}
           className={`
@@ -70,6 +71,8 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
         >
           {t('wishToHost')}
         </button>
+
+        </div>
         <div
           onClick={toggleOpen}
           className="
@@ -89,7 +92,6 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
           <div
             className="hidden md:block"
             style={{
-              display: "flex",
               alignItems: "center",
               justifyContent: "center",
             }}

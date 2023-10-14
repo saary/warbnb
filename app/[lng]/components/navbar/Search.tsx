@@ -57,46 +57,54 @@ const Search = ({ lng }: { lng: string }) => {
     <div
       className="
         border-[1px] 
-        w-full
-        md:w-auto 
+        lg:w-auto
         rounded
         shadow-sm 
         hover:shadow-md 
         transition 
         cursor-pointer
-        block
+        md:block
       "
     >
       <div 
         className="
-          flex
-          flex-row
-          p-2 
-          gap-2
+          lg:flex
+          flex-col
+          h-14
+          sm:h-auto
+          sm:flex-row
+          sm:shrink-0
+          p-1
+          md:p-2
+          gap-1 
+          md:gap-2
           justify-center
         ">
         <div 
           onClick={() => searchModal.onOpen(STEPS.LOCATION)}
           className="
-            inline-block w-32
-            text-base
+            md:inline-block w-24 sm:w-32 h-4 sm:h-6
+            text-sm
+            md:text-base
             text-gray-600
             text-center
           "
         >
           {locationLabel}
         </div>
-        <div className="text-slate-400 font-thin inline-block">|</div>
+        <div className="hidden md:inline-block text-slate- 100 md:text-slate-400 font-thin">|</div>
+        <div className="md:hidden"><hr/></div>
         <div 
           onClick={() => searchModal.onOpen(STEPS.INFO)}
           className="
-            inline-block w-40
-            text-base
+            md:inline-block w-32 sm:w-40 h-4 sm:h-6
+            text-sm
+            lg:text-base
             text-gray-600
             text-center
           "
         >
-          <div className="hidden sm:block">{guestLabel}</div>
+          <div className="hidden sm:block h-4 sm:h-6">{guestLabel}</div>
         </div>
       </div>
     </div>
