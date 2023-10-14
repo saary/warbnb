@@ -46,6 +46,30 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
     rentModal.onOpen();
   }, [loginModal, rentModal, currentUser]);
 
+  if (!currentUser) {
+    //<MenuItem label={t('login')} onClick={loginModal.onOpen} />
+    return (
+      <button
+        onClick={loginModal.onOpen}
+        className={`
+        md:block
+        text-sm 
+        font-semibold 
+        py-2
+        px-2 
+        rounded-md 
+        hover:bg-slate-100 
+        transition 
+        cursor-pointer
+        border-slate-400
+        border-[1px]
+        `}
+      >
+        {t('login')}
+      </button>
+    );
+  }
+
   // Hide listing creation button from non-hosts (for fixed width rendering). Actual authorization is checked in api.
   return (
     <div className="relative">

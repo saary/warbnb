@@ -9,8 +9,8 @@ const Logo = ({ lng }: { lng: string }) => {
   return (
     <div className="flex flex-row-reverse gap-1 items-center">
       <div className="hidden sm:flex">
-        <div className="text-base font-semibold">Safe</div>
-        <div className="text-base font-light -ml-1">bnb</div>      
+        <div className="text-base font-light">bnb</div>      
+        <div className="text-base font-semibold -ml-1">Safe</div>
       </div>
       <div className="shrink-0">
       <Image
