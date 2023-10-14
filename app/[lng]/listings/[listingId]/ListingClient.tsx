@@ -89,7 +89,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
       .finally(() => {
         setIsLoading(false);
       });
-  }, [dateRange, listing?.id, router, currentUser, loginModal]);
+  }, [dateRange, listing?.id, router, currentUser, loginModal, lng]);
 
   return (
     <Container>

@@ -53,7 +53,7 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
     }, { skipNull: true });
 
     router.push(url);
-  }, [label, router, params]);
+  }, [label, router, params, lng]);
 
   return ( 
     <div
