@@ -1,7 +1,4 @@
 import { SafeUser } from "@/app/types";
-
-import Categories from "./Categories";
-import Container from "../Container";
 import Logo from "./Logo";
 import Search from "./Search";
 import UserMenu from "./UserMenu";
@@ -14,31 +11,23 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ currentUser, lng }) => {
   return (
-    <div className="w-full bg-white z-10 shadow-sm">
-      <div
-        className="
-        py-4 
-        border-b-[1px]
-        "
-      >
+    <div className="w-full bg-white z-10 shadow-sm p-6">
         <div
           className="
           flex 
-          flex-row
+          flex-row-reverse
           items-center 
           justify-between
           gap-3
           md:gap-0"
-          style={{direction: "rtl"}}
         >
-          <div className="flex flex-row gap-1 md:gap-0">
-            <Logo lng={lng} />
-            <LanaguageSwitcher lng={lng} />
-          </div>
-          <Search lng={lng} />
           <UserMenu currentUser={currentUser} lng={lng} />
+          <Search lng={lng} />
+          <div className="flex flex-row-reverse gap-6">
+            <LanaguageSwitcher lng={lng} />
+            <Logo lng={lng} />
+          </div>
         </div>
-      </div>
   </div>
   );
 };

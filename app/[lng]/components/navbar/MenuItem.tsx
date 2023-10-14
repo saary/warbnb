@@ -1,7 +1,7 @@
 'use client';
 
 interface MenuItemProps {
-  onClick: () => void;
+  onClick?: () => void;
   label: string;
 }
 
@@ -17,7 +17,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
         py-3 
         hover:bg-slate-100 
         transition
-        font-semibold
+        font-base
       "
     >
       {label}

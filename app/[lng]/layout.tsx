@@ -1,5 +1,5 @@
 import { dir } from 'i18next'
-import { Nunito } from "next/font/google";
+import { Rubik } from "next/font/google";
 
 import Navbar from "@/app/[lng]/components/navbar/Navbar";
 import LoginModal from "@/app/[lng]/components/modals/LoginModal";
@@ -18,8 +18,8 @@ export const metadata = {
   description: "אירוח בשעת חירום",
 };
 
-const font = Nunito({
-  subsets: ["latin"],
+const font = Rubik({
+  subsets: ["latin", "hebrew"]
 });
 
 export default async function RootLayout({
