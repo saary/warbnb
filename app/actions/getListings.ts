@@ -6,6 +6,7 @@ import { SafeListing } from "../types";
 
 export interface IListingsParams {
   userId?: string;
+  includeUnavailable?: boolean;
   guestCount?: number;
   roomCount?: number;
   bathroomCount?: number;
@@ -70,6 +71,10 @@ export default async function getListings(params: IListingsParams): Promise<Safe
 
     if (locationValue) {
       query.locationValue = locationValue;
+    }
+
+    if (!params.includeUnavailable) {
+      query.available = true;
     }
 
     // if (startDate && endDate) {
