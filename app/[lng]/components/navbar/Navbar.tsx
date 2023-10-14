@@ -18,12 +18,13 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser, lng }) => {
           flex-row-reverse
           items-center 
           justify-between
-          gap-3
+          gap-1
+          lg:gap-3
           md:gap-0"
         >
           <UserMenu currentUser={currentUser} lng={lng} />
           <Search lng={lng} />
-          <div className="flex flex-row-reverse gap-6">
+          <div className="flex flex-row-reverse sm:gap-1 md:gap-6">
             <LanaguageSwitcher lng={lng} />
             <Logo lng={lng} />
           </div>

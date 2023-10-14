@@ -75,7 +75,9 @@ export const LanaguageSwitcher: React.FC<Props> = ({ lng }) => {
         onClick={handleClick}
         style={{direction: "ltr"}}
       >
-        {selectedOption}
+        <div className="block">
+          { selectedOption}
+        </div>
       </LangButton>
       <Menu
         anchorEl={anchorEl}
