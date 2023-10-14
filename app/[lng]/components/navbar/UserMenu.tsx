@@ -50,37 +50,36 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
   return (
     <div className="relative">
       <div className="flex flex-row items-center gap-3">
-        <div
+      <button
           onClick={onRent}
           className={`
-            hidden
-            md:block
-            text-sm 
-            font-semibold 
-            py-3 
-            px-4 
-            rounded-full 
-            hover:bg-slate-100 
-            transition 
-            cursor-pointer
-            ${currentUser?.isHost ? "visible" : "invisible"}
+          md:block
+          font-base 
+          py-2 
+          rounded
+          bg-sky-500
+          text-white
+          hover:opacity-80
+          transition 
+          cursor-pointer
+          border-slate-400
+          border-[1px]
+          w-40
+        ${currentUser?.isHost ? "visible" : "invisible"}
           `}
         >
           {t('wishToHost')}
-        </div>
+        </button>
         <div
           onClick={toggleOpen}
           className="
           p-4
           md:py-1
           md:px-2
-          border-[1px] 
-          border-slate-400 
           flex 
           flex-row 
           items-center 
           gap-3 
-          rounded-full 
           cursor-pointer 
           hover:shadow-md 
           transition
@@ -95,7 +94,6 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
               justifyContent: "center",
             }}
           >
-            <p style={{ paddingLeft: "10px" }}>{currentUser?.name}</p>
             <Avatar src={currentUser?.image} />
           </div>
         </div>
@@ -104,7 +102,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
         <div ref={ref}
           className="
             absolute 
-            rounded-xl 
+            rounded 
             shadow-md
             w-[40vw]
             md:w-3/4 
@@ -118,6 +116,10 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
           <div className="flex flex-col cursor-pointer">
             {currentUser ? (
               <>
+                <MenuItem
+                  label={currentUser!.name || ""}
+                />
+                <hr />
                 <MenuItem
                   label={t("myListings")}
                   onClick={() => { setIsOpen(false); router.push(`/${lng}/properties`)}}

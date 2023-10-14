@@ -1,11 +1,9 @@
 'use client';
 
 import { useTranslation } from "@/app/i18n/client";
-import { IconType } from "react-icons";
+import { ICategory } from "../types";
 
-interface CategoryBoxProps {
-  icon: IconType,
-  label: string;
+interface CategoryBoxProps extends Omit<ICategory, "description"> {
   selected?: boolean;
   onClick: (value: string) => void;
   lng: string;
@@ -36,7 +34,7 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
         ${selected ? 'border-black' : 'border-neutral-200'}
       `}
     >
-      <Icon size={26} />
+      {Icon}
       <div className="font-semibold">
         {t(label)}
       </div>

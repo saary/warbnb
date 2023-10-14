@@ -8,7 +8,7 @@ import useSearchModal from '@/app/hooks/useSearchModal';
 import useBureaus from '@/app/hooks/useBureaus';
 import { useTranslation } from "@/app/i18n/client";
 
-import { STEPS } from '../modals/SearchModal';
+import { STEPS } from '../types';
 
 const Search = ({ lng }: { lng: string }) => {
   const searchModal = useSearchModal();
@@ -57,45 +57,43 @@ const Search = ({ lng }: { lng: string }) => {
     <div
       className="
         border-[1px] 
-        w-full 
+        w-full
         md:w-auto 
-        py-2 
-        rounded-full 
+        rounded
         shadow-sm 
         hover:shadow-md 
         transition 
         cursor-pointer
+        block
       "
     >
       <div 
         className="
-        flex 
-        flex-row 
-        items-center 
-        justify-between
-        "
-        >
+          flex
+          flex-row
+          p-2 
+          gap-2
+          justify-center
+        ">
         <div 
           onClick={() => searchModal.onOpen(STEPS.LOCATION)}
           className="
-            text-sm 
-            font-semibold 
-            px-6
+            inline-block w-32
+            text-base
+            text-gray-600
+            text-center
           "
         >
           {locationLabel}
         </div>
+        <div className="text-slate-400 font-thin inline-block">|</div>
         <div 
           onClick={() => searchModal.onOpen(STEPS.INFO)}
           className="
-            text-sm 
-            pl-6 
-            pr-2 
-            text-gray-600 
-            flex 
-            flex-row 
-            items-center 
-            gap-3
+            inline-block w-40
+            text-base
+            text-gray-600
+            text-center
           "
         >
           <div className="hidden sm:block">{guestLabel}</div>
