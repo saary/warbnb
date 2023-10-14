@@ -33,14 +33,12 @@ export type SafeReservation = Omit<
   };
 };
 
-
-export type SafeUser = Omit<
-  User,
-  "createdAt" | "updatedAt" | "emailVerified"
-> & {
-  createdAt: string;
-  updatedAt: string;
-  emailVerified: string | null;
-} & {
+export type SafeUser = {
+  name?: string | null;
+  email?: string | null;
+  image?: string | null;
+  createdAt?: string;
+  updatedAt?: string;
+  emailVerified?: string | null;
   isHost?: boolean;
 };
