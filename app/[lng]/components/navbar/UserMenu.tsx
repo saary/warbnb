@@ -13,6 +13,7 @@ import { SafeUser } from "@/app/types";
 import MenuItem from "./MenuItem";
 import Avatar from "../Avatar";
 import { useTranslation } from "@/app/i18n/client";
+import useBecomeHostModal from "@/app/hooks/useBecomeHostModal";
 
 interface UserMenuProps {
   currentUser?: SafeUser | null;
@@ -25,6 +26,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
 
   const loginModal = useLoginModal();
   const rentModal = useRentModal();
+  const becomeHostModal = useBecomeHostModal();
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -34,10 +36,10 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
 
   const handleClickOutside = () => {
     setIsOpen(false);
-  }
+  };
   const ref = useRef(null);
-  useOnClickOutside(ref, handleClickOutside)
-  
+  useOnClickOutside(ref, handleClickOutside);
+
   const onRent = useCallback(() => {
     if (!currentUser) {
       return loginModal.onOpen();
@@ -45,6 +47,14 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
 
     rentModal.onOpen();
   }, [loginModal, rentModal, currentUser]);
+
+  const onRegisterHost = useCallback(() => {
+    if (!currentUser) {
+      return becomeHostModal.onOpen();
+    }
+
+    becomeHostModal.onOpen();
+  }, [becomeHostModal, currentUser]);
 
   if (!currentUser) {
     //<MenuItem label={t('login')} onClick={loginModal.onOpen} />
@@ -64,7 +74,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
         border-[1px]
         `}
       >
-        {t('login')}
+        {t("login")}
       </button>
     );
   }
@@ -73,27 +83,48 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
   return (
     <div className="relative">
       <div className="md:flex flex-row items-center md:gap-3">
-      <div className="hidden lg:block">
-      <button
-          onClick={onRent}
-          className={`
-          font-base 
-          py-2 
-          rounded
-          bg-sky-500
-          text-white
-          hover:opacity-80
-          transition 
-          cursor-pointer
-          border-slate-400
-          border-[1px]
-          w-40
-        ${currentUser?.isHost ? "visible" : "invisible"}
-          `}
-        >
-          {t('wishToHost')}
-        </button>
-
+        <div className="hidden lg:block">
+          {currentUser?.isHost ? (
+              <button
+                onClick={onRent}
+                className={`
+                font-base 
+                py-2 
+                rounded
+                bg-sky-500
+                text-white
+                hover:opacity-80
+                transition 
+                cursor-pointer
+                border-slate-400
+                border-[1px]
+                w-40
+                ${currentUser?.isHost ? "visible" : "invisible"}
+                `}
+              >
+                {t("wishToHost")}
+              </button>
+            ) : (
+              <div
+              onClick={onRegisterHost}
+              className={`
+              hidden
+              md:block
+              text-sm 
+              font-semibold 
+              py-3 
+              px-4 
+              rounded-full 
+              hover:bg-slate-100 
+              transition 
+              cursor-pointer
+              ${!currentUser?.isHost ? "visible" : "invisible"}
+              border-b-[1px]
+              `}
+              >
+              {t("signupHost")}
+            </div>
+            )}
         </div>
         <div
           onClick={toggleOpen}
@@ -111,7 +142,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
           transition
           "
         >
-          <AiOutlineMenu className="sm:h-4 sm:w-4"/>
+          <AiOutlineMenu className="sm:h-4 sm:w-4" />
           <div
             className="hidden sm:block"
             style={{
@@ -123,8 +154,10 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
           </div>
         </div>
       </div>
+
       {isOpen && (
-        <div ref={ref}
+        <div
+          ref={ref}
           className="
             absolute 
             rounded 
@@ -141,23 +174,32 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
           <div className="flex flex-col cursor-pointer">
             {currentUser ? (
               <>
-                <MenuItem
-                  label={currentUser!.name || ""}
-                />
+                <MenuItem label={currentUser!.name || ""} />
                 <hr />
                 <MenuItem
                   label={t("myListings")}
-                  onClick={() => { setIsOpen(false); router.push(`/${lng}/properties`)}}
+                  onClick={() => {
+                    setIsOpen(false);
+                    router.push(`/${lng}/properties`);
+                  }}
                 />
-                {currentUser?.isHost && (
-                  <MenuItem label={t('wishToHost')} onClick={rentModal.onOpen} />
+                {currentUser?.isHost ? (
+                  <MenuItem
+                    label={t("wishToHost")}
+                    onClick={rentModal.onOpen}
+                  />
+                ) : (
+                  <MenuItem
+                    label={t("signupHost")}
+                    onClick={onRegisterHost}
+                  />
                 )}
                 <hr />
-                <MenuItem label={t('disconnect')} onClick={() => signOut()} />
+                <MenuItem label={t("disconnect")} onClick={() => signOut()} />
               </>
             ) : (
               <>
-                <MenuItem label={t('login')} onClick={loginModal.onOpen} />
+                <MenuItem label={t("login")} onClick={loginModal.onOpen} />
               </>
             )}
           </div>
