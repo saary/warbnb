@@ -9,6 +9,7 @@ import { eachDayOfInterval } from "date-fns";
 
 import useLoginModal from "@/app/hooks/useLoginModal";
 import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
+import { TbArrowBigLeftFilled } from "react-icons/tb";
 
 import Container from "@/app/[lng]/components/Container";
 import { allCategories } from "@/app/[lng]/components/navbar/Categories";
@@ -16,6 +17,7 @@ import ListingHead from "@/app/[lng]/components/listings/ListingHead";
 import ListingInfo from "@/app/[lng]/components/listings/ListingInfo";
 import ListingReservation from "@/app/[lng]/components/listings/ListingReservation";
 import { useTranslation } from "@/app/i18n/client";
+import Button from "../../components/Button";
 
 const initialDateRange = {
   startDate: new Date(),
@@ -99,6 +101,23 @@ const ListingClient: React.FC<ListingClientProps> = ({
           mx-auto
         "
       >
+        <div className="inline-flex">
+          <button
+            type="button"
+            data-te-ripple-init
+            data-te-ripple-color="light"
+            className="g-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-8 rounded-l"
+            onClick={() => router.back()}
+          >
+            <TbArrowBigLeftFilled
+              fill="currentColor"
+              className="mr-1 h-4 w-4"
+              viewBox="0 0 24 24"
+            />
+            {t("getBack")}
+          </button>
+        </div>
+
         <div className="flex flex-col gap-6">
           <ListingHead
             title={listing.title}
@@ -128,6 +147,23 @@ const ListingClient: React.FC<ListingClientProps> = ({
                 lng={lng}
                 phoneNumber={listing.phoneNumber}
               />
+              <div
+                className="
+                order-first 
+                mb-10 
+                md:order-last 
+                md:col-span-3
+              "
+              >
+                <ListingReservation
+                  onChangeDate={(value) => setDateRange(value)}
+                  dateRange={dateRange}
+                  onSubmit={onCreateReservation}
+                  disabled={isLoading}
+                  disabledDates={disabledDates}
+                  lng={lng}
+                />
+              </div>
             </div>
           ) : (
             <div>{t("unauthorized")}</div>
