@@ -1,47 +1,63 @@
 'use client';
 
 import { usePathname, useSearchParams } from 'next/navigation';
-import { TbMoodKid, TbAccessible, TbJewishStar, TbDog, TbSmokingNo, TbParking } from 'react-icons/tb';
-import { FaPersonShelter } from "react-icons/fa6";
 import CategoryBox from "../CategoryBox";
 import Container from '../Container';
 
+import { ICategory } from '../types';
+import Image from 'next/image';
 
-export const allCategories = [
+
+const mkIconElement = (name: string) => {
+  return (
+    <Image className="hidden md:block cursor-pointer"
+    src={`/icons/${name}.svg`}
+    height="24"
+    width="24"
+    alt=""
+    />
+  )};
+
+ export const allCategories: ICategory[] = [
   {
+    icon: mkIconElement('accessibility'),
     label: 'accessible',
-    icon: TbAccessible,
     description: 'accessibleProperty',
   },
   {
+    icon: mkIconElement('kids'),
     label: 'children',
-    icon: TbMoodKid,
     description: 'childrenFriendly',
   },
   {
+    icon: mkIconElement('kosher'),
     label: 'kosher',
-    icon: TbJewishStar,
     description: 'kosherKeeping'
   },
   {
+    icon: mkIconElement('pets'),
     label: 'pets',
-    icon: TbDog,
     description: 'petsFriendly'
   },
   {
+    icon: mkIconElement('noSmoking'),
     label: 'noSmoking',
-    icon: TbSmokingNo,
     description: 'noSmoking'
   },
   {
+    icon: mkIconElement('parking'),
     label: 'parking',
-    icon: TbParking,
     description: 'parkingAvailable'
   },
   {
+    icon: mkIconElement('shelter'),
     label: 'shelter',
-    icon: FaPersonShelter,
-    description: 'indoorShelter'
+    description: 'indoorShelter',
+  },
+  {
+    icon: mkIconElement('shelter-near-by'),
+    label: 'nearbyShelter',
+    description: 'nearbyShelterDesc',
   },
 ]
 
@@ -59,7 +75,6 @@ const Categories = ({ lng }: { lng: string }) => {
     <Container>
       <div
         className="
-          pt-4
           flex 
           flex-row 
           items-center 

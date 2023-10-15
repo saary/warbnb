@@ -1,0 +1,117 @@
+{
+  "welcome": "Bienvenus sur mon site internet!",
+
+  "about": "A propos de nous",
+
+  "orderFrom": "Commander de",
+
+  "beHostedAt": "Rester à",
+
+  "guests": "Invités",
+
+  "bedrooms": "Chambres",
+
+  "bathrooms": "Salles de bain",
+
+  "accessible": "Accessible",
+
+  "children": "Enfants",
+
+  "kosher": "Casher",
+
+  "pets": "Animaux",
+
+  "noSmoking": "Non-fumeurs",
+
+  "parking": "Stationnement",
+
+  "shelter": "Abri",
+
+  "accessibleProperty": "Propriété accessible",
+
+  "childrenFriendly": "Adapté aux enfants",
+
+  "kosherKeeping": "Casher",
+
+  "petsFriendly": "Animaux accéptés",
+
+  "parkingAvailable": "Stationnement disponible",
+
+  "cancelOrder": "Supprimer la commande",
+
+  "unauthorized": "Chers usagers, pour préserver votre vie privée, vous devez vous connecter avant de pouvoir voire vos détails personnels",
+
+  "requestBooking": "Demander une réservation",
+
+  "categories": "Catégories",
+
+  "selectCategories": "Choisir le type de logement",
+
+  "propertyDetails": "Détails du logement",
+
+  "propertyCapacity": "Capacité du logement",
+
+  "indoorShelter": "Abris intérieur",
+
+  "nearbyShelter": "Abris (ext.)",
+  
+  "nearbyShelterDesc": "Abris extérieurs",
+
+  "contactPhone": "Numero de téléphone à contacter",
+
+  "listingSuccessfullyAddedToast": "Réservation ajoutée avec succès. Merci!",
+
+  "somethingWentWrongToast": "Quelque chose n'a pas fonctionné",
+
+  "createLabel": "Créer",
+
+  "nextLabel": "Suivant",
+
+  "backLabel": "Retour",
+
+  "rentModalLocationTitle": "Où se situe la maison?",
+
+  "rentModalCapacitySubtitle": "Nombre d'invités que vous pouvez héberger",
+
+  "bedroomTitle": "Chambres",
+
+  "rentModalBedroomSubtitle": "Nombre de pièces disponibles pour héberger?",
+
+  "bathroomTitle": "Salles de bain",
+
+  "rentModalBathroomSubtitle": "Nombre de salles de bain disponibles",
+
+  "title": "Titre",
+
+  "listingTitle": "Titre de l'annonce",
+
+  "phoneNumber": "Numéro de téléphone",
+
+  "phoneNumberLabel": "Numéro de téléphone pour contacter l'hôte",
+
+  "listingDescription": "Description de l'annonce",
+
+  "rentModalMainTitle": "Je veux héberger",
+
+  "LoginSuccessToast": "Connecté",
+
+  "googleLoginTitle": "Connexion avec Google",
+
+  "loginModalTitle": "S'inscrire",
+
+  "searchModalHeading": "Région en Israël?",
+
+  "searchModalDateTitle": "Dates",
+
+  "searchModalDateSubtitle": "Trouver des logements disponibles",
+
+  "searchModalNeedsTitle": "Besoins additionnels",
+
+  "searchModalNeedsPeople": "Nombre de personnes",
+
+  "searchModalNeedsBedrooms": "Nombre de chambres requis?",
+
+  "searchModalNeedsBathrooms": "Nombre de salles de bain requis?",
+
+  "searchModalTitle": "Rechercher"
+}

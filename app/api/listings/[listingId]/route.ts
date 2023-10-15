@@ -55,8 +55,9 @@ export async function PATCH(
     throw new Error('Invalid ID');
   }
 
-  const listing = await prisma.listing.update({
+  const listing = await prisma.listing.updateMany({
     where: {
+      userId: currentUser.id,
       id: listingId,
     },
     data: {

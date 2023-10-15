@@ -38,11 +38,15 @@ export const authOptions: AuthOptions = {
         token.name = user?.name || profile?.name;
         // @ts-expect-error
         token.picture = profile?.image || profile?.picture || user?.image;
+        // @ts-expect-error
+        token.isHost = user.isHost;
         token.id = user.id;
-        const uniqueHosts = await getAuthorizedHosts();
-        if (uniqueHosts.has(token.email)) {
-          token.isHost = true;
-        }  
+        if (!token.isHost) {
+          const uniqueHosts = await getAuthorizedHosts();
+          if (uniqueHosts.has(token.email)) {
+            token.isHost = true;
+          }  
+        }
       }
       return token
     },    

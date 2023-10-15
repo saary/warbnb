@@ -46,56 +46,79 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
     rentModal.onOpen();
   }, [loginModal, rentModal, currentUser]);
 
+  if (!currentUser) {
+    //<MenuItem label={t('login')} onClick={loginModal.onOpen} />
+    return (
+      <button
+        onClick={loginModal.onOpen}
+        className={`
+        md:block
+        text-sm 
+        font-semibold 
+        p-1
+        rounded-md 
+        hover:bg-slate-100 
+        transition 
+        cursor-pointer
+        border-slate-400
+        border-[1px]
+        `}
+      >
+        {t('login')}
+      </button>
+    );
+  }
+
   // Hide listing creation button from non-hosts (for fixed width rendering). Actual authorization is checked in api.
   return (
     <div className="relative">
-      <div className="flex flex-row items-center gap-3">
-        <div
+      <div className="md:flex flex-row items-center md:gap-3">
+      <div className="hidden lg:block">
+      <button
           onClick={onRent}
           className={`
-            hidden
-            md:block
-            text-sm 
-            font-semibold 
-            py-3 
-            px-4 
-            rounded-full 
-            hover:bg-slate-100 
-            transition 
-            cursor-pointer
-            ${currentUser?.isHost ? "visible" : "invisible"}
+          font-base 
+          py-2 
+          rounded
+          bg-sky-500
+          text-white
+          hover:opacity-80
+          transition 
+          cursor-pointer
+          border-slate-400
+          border-[1px]
+          w-40
+        ${currentUser?.isHost ? "visible" : "invisible"}
           `}
         >
           {t('wishToHost')}
+        </button>
+
         </div>
         <div
           onClick={toggleOpen}
           className="
-          p-4
+          p-2
+          sm:p-4
           md:py-1
           md:px-2
-          border-[1px] 
-          border-slate-400 
           flex 
           flex-row 
           items-center 
           gap-3 
-          rounded-full 
           cursor-pointer 
           hover:shadow-md 
           transition
           "
         >
-          <AiOutlineMenu />
+          <AiOutlineMenu className="sm:h-4 sm:w-4"/>
           <div
-            className="hidden md:block"
+            className="hidden sm:block"
             style={{
-              display: "flex",
               alignItems: "center",
               justifyContent: "center",
             }}
           >
-            <p style={{ paddingLeft: "10px" }}>{currentUser?.name}</p>
             <Avatar src={currentUser?.image} />
           </div>
         </div>
@@ -104,7 +127,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
         <div ref={ref}
           className="
             absolute 
-            rounded-xl 
+            rounded 
             shadow-md
             w-[40vw]
             md:w-3/4 
@@ -118,6 +141,10 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
           <div className="flex flex-col cursor-pointer">
             {currentUser ? (
               <>
+                <MenuItem
+                  label={currentUser!.name || ""}
+                />
+                <hr />
                 <MenuItem
                   label={t("myListings")}
                   onClick={() => { setIsOpen(false); router.push(`/${lng}/properties`)}}

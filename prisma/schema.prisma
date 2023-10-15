@@ -20,6 +20,7 @@ model User {
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
   favoriteIds     String[] @db.ObjectId
+  isHost          Boolean?
 
   accounts Account[]
   listings Listing[]
