@@ -54,7 +54,8 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
     }
 
     becomeHostModal.onOpen();
-  }, [loginModal, becomeHostModal, currentUser]);
+  }, [becomeHostModal, currentUser]);
+
   if (!currentUser) {
     //<MenuItem label={t('login')} onClick={loginModal.onOpen} />
     return (
@@ -83,43 +84,47 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
     <div className="relative">
       <div className="md:flex flex-row items-center md:gap-3">
         <div className="hidden lg:block">
-          <button
-            onClick={onRent}
-            className={`
-          font-base 
-          py-2 
-          rounded
-          bg-sky-500
-          text-white
-          hover:opacity-80
-          transition 
-          cursor-pointer
-          border-slate-400
-          border-[1px]
-          w-40
-        ${currentUser?.isHost ? "visible" : "invisible"}
-          `}
-          >
-            {t("wishToHost")}
-          </button>
-        </div>
-        <div
-          onClick={onRegisterHost}
-          className={`
-            hidden
-            md:block
-            text-sm 
-            font-semibold 
-            py-3 
-            px-4 
-            rounded-full 
-            hover:bg-slate-100 
-            transition 
-            cursor-pointer
-            ${!currentUser?.isHost ? "visible" : "invisible"}
-          `}
-        >
-          {t("signupHost")}
+          {currentUser?.isHost ? (
+              <button
+                onClick={onRent}
+                className={`
+                font-base 
+                py-2 
+                rounded
+                bg-sky-500
+                text-white
+                hover:opacity-80
+                transition 
+                cursor-pointer
+                border-slate-400
+                border-[1px]
+                w-40
+                ${currentUser?.isHost ? "visible" : "invisible"}
+                `}
+              >
+                {t("wishToHost")}
+              </button>
+            ) : (
+              <div
+              onClick={onRegisterHost}
+              className={`
+              hidden
+              md:block
+              text-sm 
+              font-semibold 
+              py-3 
+              px-4 
+              rounded-full 
+              hover:bg-slate-100 
+              transition 
+              cursor-pointer
+              ${!currentUser?.isHost ? "visible" : "invisible"}
+              border-b-[1px]
+              `}
+              >
+              {t("signupHost")}
+            </div>
+            )}
         </div>
         <div
           onClick={toggleOpen}
@@ -186,7 +191,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
                 ) : (
                   <MenuItem
                     label={t("signupHost")}
-                    onClick={rentModal.onOpen}
+                    onClick={onRegisterHost}
                   />
                 )}
                 <hr />

@@ -15,6 +15,7 @@ import SlimModal from "./SlimModal";
 import Input from "../inputs/TextArea";
 import Heading from "../Heading";
 import TextArea from "../inputs/TextArea";
+import Button from "@mui/material/Button";
 
 const BecomeHostModal = ({ lng }: { lng: string }) => {
   const router = useRouter();
@@ -62,36 +63,12 @@ const BecomeHostModal = ({ lng }: { lng: string }) => {
       <label>
         {t('registerContactUs')}
       </label>
-      {/* <Input
-        id="title"
-        label={t("title")}
-        maxLength={40}
-        disabled={isLoading}
-        register={register}
-        errors={errors}
-        required
-      />
-      <hr />
-      <Input
-        id="title"
-        label={t("title")}
-        maxLength={40}
-        disabled={isLoading}
-        register={register}
-        errors={errors}
-        required
-      />
-      <hr />
-      <TextArea
-        id="description"
-        label={t("listingDescription")}
-        disabled={isLoading}
-        register={register}
-        errors={errors}
-        maxLength={500}
-      />
-      <div className="-my-6"></div> */}
-      <a href="mailto:help@safebnb.co"><IoIosMail /></a>
+      <div className="flex flex-row items-center gap-2 justify-center">
+        <IoIosMail /> <a href="mailto:help@safebnb.co">help@safebnb.co</a>
+      </div>
+      <div className="flex items-center gap-2 justify-center">
+        <Button onClick={becomeHostModal.onClose}>{t('ok')}</Button>
+      </div>
     </div>
   );
 

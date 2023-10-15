@@ -1,4 +1,6 @@
 {
+  "ok": "OK",
+  "cancel": "Cancel",
   "about": "About Us",
   "orderFrom": "Order from",
   "beHostedAt": "Stay at",
@@ -93,7 +95,7 @@
   "becomeHostTitle": "Host registration form",
   "hostRegistrationTile": "Security notice",
   "hostRegistrationNotice": "Dear users, for security concerns you are required to register with verifiable details in order to sign up as a potential host.",
-  "registerContactUs": "To register please contact us at help@safebnb.co so that we can verify your identity.",
+  "registerContactUs": "To register please contact us to verified at the following address:",
   "freezePropertyLabel": "Mark unavailable",
   "unfreezePropertyLabel": "Mark available",
   "gotoMainPage": "See all places",
