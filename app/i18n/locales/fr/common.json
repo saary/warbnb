@@ -98,7 +98,7 @@
   "googleLoginTitle": "Connexion avec Google",
 
   "loginModalTitle": "S'inscrire",
-
+  "loginModalBody": "La connexion est autorisée uniquement via Google pour des raisons de sécurité",
   "searchModalHeading": "Région en Israël?",
 
   "searchModalDateTitle": "Dates",
@@ -146,6 +146,5 @@
   "freezePropertyLabel": "Marquer comme non disponible",
   "unfreezePropertyLabel": "Marquer comme disponible",
   "gotoMainPage": "Voir tous les hébergements",
-  "gotoMyPropertiesPage": "Voir mes hébergements",
-  "loginModalBody": ""
+  "gotoMyPropertiesPage": "Voir mes hébergements"
 }
