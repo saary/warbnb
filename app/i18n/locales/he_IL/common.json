@@ -24,6 +24,8 @@
   "propertyDetails": "פרטי הבית",
   "propertyCapacity": "תפוסה",
   "indoorShelter": "ממ״ד בבית",
+  "nearbyShelter": "מקלט",
+  "nearbyShelterDesc": "מקלט קרוב",
   "phoneNumberLabel": "טלפון ליצירת קשר",
   "listingSuccessfullyAddedToast": "המודעה נקלטה. תודה!",
   "somethingWentWrongToast": "משהו השתבש.",
@@ -55,7 +57,7 @@
   "searchModalNeedsBathrooms": "כמה חדרי רחצה נחוצים?",
   "searchModalTitle": "חיפוש",
   "select": "בחירה",
-  "wishToHost": "הוסף מקום חדש",
+  "wishToHost": "הוספת מקום חדש",
   "reservationsHistory": "מקומות בהם התארחתי/אתארח",
   "hostRequests": "בקשות אירוח אצלי",
   "myListings": "המקומות שלי",
@@ -89,5 +91,9 @@
   "becomeHostTitle": "טופס רישם מארחים",
   "hostRegistrationTile": "מודעת אבטחה",
   "hostRegistrationNotice": "מטעמי אבטחה, הרשמה כמארח נעשית באמצעות אימות פרטי הנרשם.\nאנא מסרו מידע אמיתי לגביכם שניתן לאמת אותו.",
-  "registerContactUs": "למען הרשמה אנא צרו קשר עימנו במייל הבא בכדי שנוכל לאשר את זהותכם help@safebnb.co"
+  "registerContactUs": "למען הרשמה אנא צרו קשר עימנו במייל הבא בכדי שנוכל לאשר את זהותכם help@safebnb.co",
+  "freezePropertyLabel": "להקפיא זמינות",
+  "unfreezePropertyLabel": "להפוך לזמין",
+  "gotoMainPage": "צפייה בכל המקומות",
+  "gotoMyPropertiesPage": "צפייה במקומות שלי"
 }

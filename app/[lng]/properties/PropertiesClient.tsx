@@ -31,11 +31,11 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ({
   const rentModal = useRentModal();
 
   const { t } = useTranslation(lng);
-  const [deletingId, setDeletingId] = useState("");
+  const [updatedListingId, setUpdatedListingId] = useState("");
 
   const onDelete = useCallback(
     (id: string) => {
-      setDeletingId(id);
+      setUpdatedListingId(id);
 
       axios
         .delete(`/api/listings/${id}`)
@@ -47,7 +47,27 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ({
           toast.error(error?.response?.data?.error);
         })
         .finally(() => {
-          setDeletingId("");
+          setUpdatedListingId("");
+        });
+    },
+    [router]
+  );
+ 
+  const onFreeze = useCallback(
+    (id: string, available: boolean) => {
+      setUpdatedListingId(id);
+
+      axios
+        .patch(`/api/listings/${id}`, { available })
+        .then(() => {
+          toast.success("Listing updated");
+          router.refresh();
+        })
+        .catch((error) => {
+          toast.error(error?.response?.data?.error);
+        })
+        .finally(() => {
+          setUpdatedListingId("");
         });
     },
     [router]
@@ -68,22 +88,18 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ({
         <button
           onClick={onRent}
           className={`
-            relative
-            px-2
-            disabled:opacity-70
-            disabled:cursor-not-allowed
-            rounded-lg
-            hover:opacity-80
-            transition
-            w-full
-            bg-sky-500
-            border-sky-500
-            text-white
-            text-sm
-            py-1
-            font-light
-            border-[1px]
-            ${currentUser?.isHost ? "visible" : "invisible"}
+          md:block
+          text-sm 
+          font-semibold 
+          py-3 
+          px-4 
+          rounded-full 
+          hover:bg-slate-100 
+          transition 
+          cursor-pointer
+          border-slate-400
+          border-[1px]
+        ${currentUser?.isHost ? "visible" : "invisible"}
           `}
         >
           {t('wishToHost')}
@@ -109,8 +125,10 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ({
             data={listing}
             actionId={listing.id}
             onAction={onDelete}
-            disabled={deletingId === listing.id}
+            onFreeze={(id, available: boolean) => onFreeze(listing.id, available)}
+            disabled={updatedListingId === listing.id}
             actionLabel={t('removePropertyLabel')}
+            freezeLabel={listing.available ? t('freezePropertyLabel') : t('unfreezePropertyLabel')}
             currentUser={currentUser}
             lng={lng}
           />

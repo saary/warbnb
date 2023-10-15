@@ -8,7 +8,7 @@ import useSearchModal from '@/app/hooks/useSearchModal';
 import useBureaus from '@/app/hooks/useBureaus';
 import { useTranslation } from "@/app/i18n/client";
 
-import { STEPS } from '../modals/SearchModal';
+import { STEPS } from '../types';
 
 const Search = ({ lng }: { lng: string }) => {
   const searchModal = useSearchModal();
@@ -57,63 +57,51 @@ const Search = ({ lng }: { lng: string }) => {
     <div
       className="
         border-[1px] 
-        w-full 
-        md:w-auto 
-        py-2 
-        rounded-full 
+        h-auto
+        lg:w-auto
+        rounded
         shadow-sm 
         hover:shadow-md 
         transition 
         cursor-pointer
+        sm:block
       "
     >
       <div 
         className="
-        flex 
-        flex-row 
-        items-center 
-        justify-between
-        "
-        >
+          lg:flex
+          h-auto
+          flex-row
+          sm:shrink-0
+          p-0
+          md:p-2
+          gap-1 
+          md:gap-2
+          justify-center
+        ">
         <div 
           onClick={() => searchModal.onOpen(STEPS.LOCATION)}
           className="
-            text-sm 
-            font-semibold 
-            px-6
+            sm:inline-block w-40  h-6
+            text-base
+            text-gray-600
+            text-center
           "
         >
           {locationLabel}
         </div>
-        <div 
-          onClick={() => searchModal.onOpen(STEPS.DATE)}
-          className="
-            hidden 
-            sm:block 
-            text-sm 
-            font-semibold 
-            px-6 
-            border-x-[1px] 
-            flex-1 
-            text-center
-          "
-        >
-          {durationLabel}
-        </div>
+        <div className="hidden sm:inline-block text-slate- 100 md:text-slate-400 font-thin">|</div>
+        <div className="sm:hidden"><hr/></div>
         <div 
           onClick={() => searchModal.onOpen(STEPS.INFO)}
           className="
-            text-sm 
-            pl-6 
-            pr-2 
-            text-gray-600 
-            flex 
-            flex-row 
-            items-center 
-            gap-3
+            sm:inline-block w-40 h-6
+            text-base
+            text-gray-600
+            text-center
           "
         >
-          <div className="hidden sm:block">{guestLabel}</div>
+          {guestLabel}
         </div>
       </div>
     </div>

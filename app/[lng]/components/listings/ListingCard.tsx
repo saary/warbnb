@@ -15,9 +15,11 @@ interface ListingCardProps {
   data: SafeListing;
   reservation?: SafeReservation;
   onAction?: (id: string) => void;
-  disabled?: boolean;
   actionLabel?: string;
+  onFreeze?: (id: string, available: boolean) => void;
+  freezeLabel?: string;
   actionId?: string;
+  disabled?: boolean;
   currentUser?: SafeUser | null;
   lng: string;
 }
@@ -26,10 +28,12 @@ const ListingCard: React.FC<ListingCardProps> = ({
   data,
   reservation,
   onAction,
-  disabled,
   actionLabel,
+  onFreeze,
+  freezeLabel,
+  disabled,
   actionId = "",
-  currentUser = null,
+  currentUser,
   lng,
 }) => {
   const router = useRouter();
@@ -37,6 +41,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
 
   const { t } = useTranslation(lng);
   const location = getByValue(data.locationValue);
+  const { available } = data;  // ??????
 
   const handleCancel = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -49,6 +54,18 @@ const ListingCard: React.FC<ListingCardProps> = ({
       onAction?.(actionId);
     },
     [disabled, onAction, actionId]
+  );
+  
+  const handleFreeze = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.stopPropagation();
+
+      if (disabled) {
+        return;
+      }
+      onFreeze?.(actionId, !available);
+    },
+    [disabled, onFreeze, actionId, available]
   );
 
   const reservationDate = useMemo(() => {
@@ -89,6 +106,17 @@ const ListingCard: React.FC<ListingCardProps> = ({
             {reservation?.user.name} ({reservation?.user.email} )
           </div>
         )}
+        <hr />
+        {onFreeze && freezeLabel && 
+          <div className="mt-auto">
+          <Button 
+            disabled={disabled}
+            small
+            label={freezeLabel}
+            onClick={handleFreeze}
+          />
+          </div>
+        }
         {onAction && actionLabel && 
           <div className="mt-auto">
           <Button 

@@ -28,7 +28,7 @@ export async function POST(
     bathroomCount,
     guestCount,
     location,
-    phoneNumber
+    phoneNumber,
    } = body;
 
   Object.keys(body).forEach((value: any) => {
@@ -48,7 +48,8 @@ export async function POST(
       guestCount,
       locationValue: location.value,
       userId: currentUser.id,
-      phoneNumber
+      phoneNumber,
+      available: true
     }
   });
 

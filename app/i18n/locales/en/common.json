@@ -25,6 +25,8 @@
   "propertyDetails": "Property details",
   "propertyCapacity": "Property capacity",
   "indoorShelter": "Indoors shelter",
+  "nearbyShelter": "Shelter (outdoor)",
+  "nearbyShelterDesc": "Shelter nearby",
   "contactPhone": "Contact phone number",
   "listingSuccessfullyAddedToast": "Listing was successfully added. Thank You!",
   "somethingWentWrongToast": "Somthing went wrong",
@@ -91,5 +93,9 @@
   "becomeHostTitle": "Host registration form",
   "hostRegistrationTile": "Security notice",
   "hostRegistrationNotice": "Dear users, for security concerns you are required to register with verifiable details in order to sign up as a potential host.",
-  "registerContactUs": "To register please contact us at help@safebnb.co so that we can verify your identity."
+  "registerContactUs": "To register please contact us at help@safebnb.co so that we can verify your identity.",
+  "freezePropertyLabel": "Mark unavailable",
+  "unfreezePropertyLabel": "Mark available",
+  "gotoMainPage": "See all places",
+  "gotoMyPropertiesPage": "See my places"
 }

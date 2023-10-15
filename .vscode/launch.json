@@ -19,10 +19,13 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
             "program": "${file}",
+            "skipFiles": [
+                "${workspaceFolder}/node_modules/**/*.js",
+                "${workspaceFolder}\\node_modules\\**\\*.js",
+                "<node_internals>/**/*.js",
+                "<node_internals>\\**\\*.js",
+            ],            
             "outFiles": [
                 "${workspaceFolder}/**/*.js"
             ]
