@@ -54,7 +54,7 @@
   "indoorShelter": "Abris intérieur",
 
   "nearbyShelter": "Abris (ext.)",
-  
+
   "nearbyShelterDesc": "Abris extérieurs",
 
   "contactPhone": "Numero de téléphone à contacter",
@@ -98,7 +98,7 @@
   "googleLoginTitle": "Connexion avec Google",
 
   "loginModalTitle": "S'inscrire",
-
+  "loginModalBody": "La connexion est autorisée uniquement via Google pour des raisons de sécurité",
   "searchModalHeading": "Région en Israël?",
 
   "searchModalDateTitle": "Dates",
@@ -113,5 +113,38 @@
 
   "searchModalNeedsBathrooms": "Nombre de salles de bain requis?",
 
-  "searchModalTitle": "Rechercher"
+  "searchModalTitle": "Rechercher",
+  "select": "Choisir",
+  "wishToHost": "Ajouter une nouvelle hébergement",
+  "reservationsHistory": "Endroits que j'ai visités / visiterai",
+  "myListings": "Mes maisons",
+  "disconnect": "Déconnecter",
+  "login": "Se connecter",
+  "days": "jours",
+  "searchBarRegion": "Choisissez une région",
+  "searchBarDates": "Sélectionnez des dates",
+  "searchBarGuests": "Nombre d'invités",
+  "homeBannerPreLoginTitle": "",
+  "homeBannerPreLoginText": "En ces temps difficiles, de nombreuses personnes des zones touchées par l'attaque sur Israël ont besoin d'un endroit sûr où séjourner.\nSAFEbnb est une plateforme créée pour faciliter la connexion entre les résidents ayant besoin d'un lieu sûr et les résidents désireux d'aider en offrant leur hébergement.",
+  "homeBannerHostPostLoginTitle": "Cher hôte",
+  "homeBannerHostPostLoginText": "Tout d'abord, nous tenons à vous féliciter d'ouvrir votre cœur et votre maison.\nAfin de garantir que l'hébergement conviendra à toutes les parties, veuillez sélectionner des options appropriées pour le lieu d'accueil.",
+  "homeBannerGuestPostLoginTitle": "Cher(e) Client(e)",
+  "homeBannerGuestPostLoginText ": "Nous espérons pouvoir vous aider à trouver rapidement un endroit sûr où séjourner.\nPour trouver un lieu qui correspond à vos besoins, veuillez utiliser les options de recherche et de filtrage en haut de la page.",
+  "propertiesEmptyTitle": "Aucune option d'hébergement n'a été trouvée",
+  "propertiesEmptySubtitle": "Il semble que vous n'ayez pas encore publié d'annonce d'hébergement",
+  "emptyStateTitle": "Aucune correspondance trouvée",
+  "emptyStateSubtitle": "Veuillez modifier ou supprimer les filtres",
+  "emptyStateReset": "Supprimer tous les filtres",
+  "tripsEmptyStateTitle": "Aucune réservation trouvée",
+  "tripsEmptyStateSubtitle": "Il semble que vous n'ayez pas encore effectué de réservation.",
+  "reservationEmptyStateTitle": "Aucune demande de réservation trouvée",
+  "reservationEmptyStateSubtitle": "Il semble qu'il n'y ait pas encore de demandes de réservation pour vous.",
+  "propertiesTitle": "Hébergements",
+  "propertiesSubtitle": "Liste d'hébergements",
+  "removePropertyLabel": "Supprimer",
+  "noMatchFound": "Aucune correspondance n'a été trouvée",
+  "freezePropertyLabel": "Marquer comme non disponible",
+  "unfreezePropertyLabel": "Marquer comme disponible",
+  "gotoMainPage": "Voir tous les hébergements",
+  "gotoMyPropertiesPage": "Voir mes hébergements"
 }
