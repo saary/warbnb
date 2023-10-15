@@ -77,7 +77,6 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
       <button
           onClick={onRent}
           className={`
-          md:block
           font-base 
           py-2 
           rounded
