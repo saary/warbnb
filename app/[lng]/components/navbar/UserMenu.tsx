@@ -55,8 +55,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
         md:block
         text-sm 
         font-semibold 
-        py-2
-        px-2 
+        p-1
         rounded-md 
         hover:bg-slate-100 
         transition 
@@ -78,7 +77,6 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
       <button
           onClick={onRent}
           className={`
-          md:block
           font-base 
           py-2 
           rounded
@@ -100,7 +98,8 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
         <div
           onClick={toggleOpen}
           className="
-          p-4
+          p-2
+          sm:p-4
           md:py-1
           md:px-2
           flex 
@@ -112,9 +111,9 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
           transition
           "
         >
-          <AiOutlineMenu />
+          <AiOutlineMenu className="sm:h-4 sm:w-4"/>
           <div
-            className="hidden md:block"
+            className="hidden sm:block"
             style={{
               alignItems: "center",
               justifyContent: "center",
