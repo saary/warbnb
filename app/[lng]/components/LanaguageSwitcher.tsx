@@ -33,7 +33,7 @@ const languagesToIcons: Record<
 > = {
   he_IL: { unic: "IL", text: "עברית" },
   en: { unic: "US", text: "English" },
-  fr: { unic: "FR", text: "Français" },
+  // fr: { unic: "FR", text: "Français" },
 };
 
 export const LanaguageSwitcher: React.FC<Props> = ({ lng }) => {
