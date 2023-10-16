@@ -94,13 +94,17 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
             />
           ))}
       </div>
-      <hr />
-      <div
-        className="
-      text-lg font-light text-neutral-500 break-words whitespace-pre-wrap"
-      >
-        {description}
+      {description && 
+      <div>
+        <hr />
+        <div
+          className="
+        text-lg font-light text-neutral-500 break-words whitespace-pre-wrap"
+        >
+          {description}
+        </div>
       </div>
+      }
       {phoneNumber && 
       <div className="flex flex-col gap-8">
         <hr />
