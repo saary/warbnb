@@ -74,7 +74,9 @@ const Categories = ({ lng }: { lng: string }) => {
   return (
       <div
         className={`"
-          grid grid-cols-${allCategories.length}
+          grid
+          grid-cols-${allCategories.length}
+          grid-flow-col
           items-center 
           justify-center
           gap-1
