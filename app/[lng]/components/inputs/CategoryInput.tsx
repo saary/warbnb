@@ -10,7 +10,7 @@ interface CategoryBoxProps extends Omit<ICategory, "description"> {
 }
 
 const CategoryBox: React.FC<CategoryBoxProps> = ({
-  icon: Icon,
+  renderIcon,
   label,
   selected,
   onClick,
@@ -34,7 +34,7 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
         ${selected ? 'border-black' : 'border-neutral-200'}
       `}
     >
-      {Icon}
+      {renderIcon()}
       <div className="font-semibold">
         {t(label)}
       </div>
