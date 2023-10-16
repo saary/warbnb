@@ -106,7 +106,8 @@ const ListingCard: React.FC<ListingCardProps> = ({
             {reservation?.user.name} ({reservation?.user.email} )
           </div>
         )}
-        <hr />
+        
+        {(onFreeze || onAction) && <hr />}
         {onFreeze && freezeLabel && 
           <div className="mt-auto">
           <Button 
