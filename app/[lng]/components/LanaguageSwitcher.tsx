@@ -14,7 +14,6 @@ import Link from "next/link";
 interface Props {
   lng: string;
 }
-<div        className="text-base font-extralight text-slate-400"></div>
 
 const LangButton = styled(Button)({
     textTransform: "none",

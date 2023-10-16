@@ -13,7 +13,7 @@ const StyledIcon = styled.div`
 `;
 
 const CategoryView: React.FC<CategoryViewProps> = ({
-  icon: Icon,
+  renderIcon,
   label,
   description,
   lng,
@@ -23,9 +23,7 @@ const CategoryView: React.FC<CategoryViewProps> = ({
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-row items-center gap-4">
-        <StyledIcon className="text-neutral-600">
-          {Icon}
-        </StyledIcon>
+          {renderIcon(40)}
         <div className="flex flex-col">
           <div className="text-lg font-semibold">{t(label)}</div>
           <div className="text-neutral-500 font-light">{t(description)}</div>

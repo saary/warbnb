@@ -1,3 +1,5 @@
+import { ReactElement } from "react";
+
 export enum STEPS {
   LOCATION = 0,
   DATE = 1,
@@ -5,7 +7,7 @@ export enum STEPS {
 }
 
 export interface ICategory {
-  icon: any,
   label: string;
   description: string;
+  renderIcon: (size?: number) => ReactElement,
 }

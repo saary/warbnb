@@ -2,60 +2,60 @@
 
 import { usePathname, useSearchParams } from 'next/navigation';
 import CategoryBox from "../CategoryBox";
-import Container from '../Container';
 
 import { ICategory } from '../types';
 import Image from 'next/image';
 
+// eslint-disable-next-line react/display-name
+const mkIconElement = (name: string) => (size: number  = 24) => (
+  <Image className="hidden md:block cursor-pointer"
+  src={`/icons/${name}.svg`}
+  alt={`${name}`}
+  height={`${size}`}
+  width={`${size}`}
+  />
+);
 
-const mkIconElement = (name: string) => {
-  return (
-    <Image className="hidden md:block cursor-pointer"
-    src={`/icons/${name}.svg`}
-    height="24"
-    width="24"
-    alt=""
-    />
-  )};
 
  export const allCategories: ICategory[] = [
   {
-    icon: mkIconElement('accessibility'),
+
+    renderIcon: mkIconElement('accessibility'),
     label: 'accessible',
     description: 'accessibleProperty',
   },
   {
-    icon: mkIconElement('kids'),
+    renderIcon: mkIconElement('kids'),
     label: 'children',
     description: 'childrenFriendly',
   },
   {
-    icon: mkIconElement('kosher'),
+    renderIcon: mkIconElement('kosher'),
     label: 'kosher',
     description: 'kosherKeeping'
   },
   {
-    icon: mkIconElement('pets'),
+    renderIcon: mkIconElement('pets'),
     label: 'pets',
     description: 'petsFriendly'
   },
   {
-    icon: mkIconElement('noSmoking'),
+    renderIcon: mkIconElement('noSmoking'),
     label: 'noSmoking',
     description: 'noSmoking'
   },
   {
-    icon: mkIconElement('parking'),
+    renderIcon: mkIconElement('parking'),
     label: 'parking',
     description: 'parkingAvailable'
   },
   {
-    icon: mkIconElement('shelter'),
+    renderIcon: mkIconElement('shelter'),
     label: 'shelter',
     description: 'indoorShelter',
   },
   {
-    icon: mkIconElement('shelter-near-by'),
+    renderIcon: mkIconElement('shelter-near-by'),
     label: 'nearbyShelter',
     description: 'nearbyShelterDesc',
   },
@@ -72,27 +72,24 @@ const Categories = ({ lng }: { lng: string }) => {
   }
 
   return (
-    <Container>
       <div
-        className="
-          flex 
-          flex-row 
+        className={`"
+          grid grid-cols-${allCategories.length}
           items-center 
           justify-center
-          overflow-x-auto
-        "
+          gap-1
+        "`}
       >
         {allCategories.map((item) => (
           <CategoryBox 
             key={item.label}
             label={item.label}
-            icon={item.icon}
+            renderIcon={item.renderIcon}
             selected={categories?.includes(item.label)}
             lng={lng}
           />
         ))}
       </div>
-    </Container>
   );
 }
  
