@@ -10,12 +10,7 @@ import ListingCategory from "./ListingCategory";
 import { useTranslation } from "@/app/i18n/client";
 import { formatPhoneNumber } from "react-phone-number-input";
 import { TbBrandWhatsapp } from "react-icons/tb";
-
-type Category = {
-  icon: IconType;
-  label: string;
-  description: string;
-};
+import { ICategory } from "../types";
 
 interface ListingInfoProps {
   user: SafeUser;
@@ -24,7 +19,7 @@ interface ListingInfoProps {
   guestCount: number;
   roomCount: number;
   bathroomCount: number;
-  categories: Category[];
+  categories: ICategory[];
   locationValue: string;
   lng: string;
   phoneNumber: string | null;
@@ -92,7 +87,7 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
           categories.map((category) => (
             <ListingCategory
               key={category.label}
-              icon={category.icon}
+              renderIcon={category.renderIcon}
               label={category?.label}
               description={category?.description}
               lng={lng}

@@ -144,7 +144,7 @@ const RentModal = ({ lng }: { lng: string }) => {
               }
               selected={filters.includes(item.label)}
               label={item.label}
-              icon={item.icon}
+              renderIcon={item.renderIcon}
               lng={lng}
             />
           </div>

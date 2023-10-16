@@ -23,16 +23,16 @@ export const toggleCategoryFilter = (filters: string[], category: string): strin
 }
 
 const CategoryBox: React.FC<CategoryBoxProps> = ({
-  icon,
+  renderIcon,
   label,
   selected,
   lng,
 
 }) => {
   const { t } = useTranslation(lng);
-  const router = useRouter();
   const params = useSearchParams();
-
+  
+  const router = useRouter();
   const handleClick = useCallback(() => {
     let currentQuery: ParsedQuery<string> = {};
     
@@ -63,8 +63,8 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
         flex-col 
         items-center 
         justify-center 
-        gap-2
-        p-3
+        gap-1
+        p-1
         border-b-2
         hover:text-neutral-800
         transition
@@ -73,9 +73,9 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
         ${selected ? 'text-neutral-800' : 'text-neutral-500'}
       `}
     >
-      {icon}
+      {renderIcon(24)}
       
-      <div className="font-medium text-sm">
+      <div className="font-medium text-xs sm:text-sm">
         {t(label)}
       </div>
     </div>
