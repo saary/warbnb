@@ -45,7 +45,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
       return loginModal.onOpen();
     }
 
-    rentModal.onOpen();
+    rentModal.onOpen(!!currentUser.isHost);
   }, [loginModal, rentModal, currentUser]);
 
   const onRegisterHost = useCallback(() => {
@@ -84,7 +84,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
     <div className="relative">
       <div className="md:flex flex-row items-center md:gap-3">
         <div className="hidden lg:block">
-          {currentUser?.isHost ? (
+          {currentUser && (
               <button
                 onClick={onRent}
                 className={`
@@ -99,31 +99,10 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
                 border-slate-400
                 border-[1px]
                 w-40
-                ${currentUser?.isHost ? "visible" : "invisible"}
                 `}
               >
                 {t("wishToHost")}
               </button>
-            ) : (
-              <div
-              onClick={onRegisterHost}
-              className={`
-              hidden
-              md:block
-              text-sm 
-              font-semibold 
-              py-3 
-              px-4 
-              rounded-full 
-              hover:bg-slate-100 
-              transition 
-              cursor-pointer
-              ${!currentUser?.isHost ? "visible" : "invisible"}
-              border-b-[1px]
-              `}
-              >
-              {t("signupHost")}
-            </div>
             )}
         </div>
         <div
@@ -182,17 +161,10 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser, lng }) => {
                     router.push(`/${lng}/properties`);
                   }}
                 />
-                {currentUser?.isHost ? (
-                  <MenuItem
-                    label={t("wishToHost")}
-                    onClick={rentModal.onOpen}
-                  />
-                ) : (
-                  <MenuItem
-                    label={t("signupHost")}
-                    onClick={onRegisterHost}
-                  />
-                )}
+                <MenuItem
+                  label={t("wishToHost")}
+                  onClick={() => rentModal.onOpen(!!currentUser.isHost)}
+                />
                 <hr />
                 <MenuItem label={t("disconnect")} onClick={() => signOut()} />
               </>

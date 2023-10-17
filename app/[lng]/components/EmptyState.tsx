@@ -51,11 +51,12 @@ const EmptyState: React.FC<EmptyStateProps> = ({
       />
       <div className="w-48 mt-4">
         {showReset && (
-          <Button
-            outline
-            label={resetLabel}
-            onClick={() => router.push(`/${lng}`)}
-          />
+          <a href={`/${lng}`}>
+            <Button
+              outline
+              label={resetLabel}
+            />
+          </a>
         )}
       </div>
     </div>

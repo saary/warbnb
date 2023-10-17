@@ -64,7 +64,7 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ({
           router.refresh();
         })
         .catch((error) => {
-          toast.error(error?.response?.data?.error);
+          toast.error("Freeze failed");
         })
         .finally(() => {
           setUpdatedListingId("");
@@ -78,7 +78,7 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ({
       return loginModal.onOpen();
     }
 
-    rentModal.onOpen();
+    rentModal.onOpen(!!currentUser.isHost);
   }, [loginModal, rentModal, currentUser]);
 
 
