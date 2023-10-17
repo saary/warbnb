@@ -20,21 +20,24 @@ import Heading from '../Heading';
 import { toggleCategoryFilter } from '../CategoryBox';
 import { useTranslation } from '@/app/i18n/client';
 import Banner from '@/app/[lng]/components/Banner';
+import { IoIosMail, IoMdWarning } from 'react-icons/io';
 
 enum STEPS {
-  CATEGORY = 0,
-  LOCATION = 1,
-  INFO = 2,
-  DESCRIPTION = 3,
+  HOST_NOTIFICATION= 0,
+  CATEGORY = 1,
+  LOCATION = 2,
+  INFO = 3,
+  DESCRIPTION = 4,
 }
 
 const RentModal = ({ lng }: { lng: string }) => {
   const { t } = useTranslation(lng);
   const router = useRouter();
   const rentModal = useRentModal();
-
+  
+  const isHost = useRentModal((state) => state.isHost);
   const [isLoading, setIsLoading] = useState(false);
-  const [step, setStep] = useState(STEPS.CATEGORY);
+  const [step, setStep] = useState(isHost ? STEPS.CATEGORY : STEPS.HOST_NOTIFICATION);
 
   const {
     register,
@@ -113,7 +116,7 @@ const RentModal = ({ lng }: { lng: string }) => {
   }, [step, t]);
 
   const secondaryActionLabel = useMemo(() => {
-    if (step === STEPS.CATEGORY) {
+    if ((step === STEPS.CATEGORY) || (step === STEPS.HOST_NOTIFICATION)) {
       return undefined;
     }
 
@@ -122,36 +125,52 @@ const RentModal = ({ lng }: { lng: string }) => {
 
   let bodyContent = (
     <div className="flex flex-col gap-8">
-      <Heading title={t('categories')} subtitle={t('selectCategories')} />
-      <div
-        className="
-          grid 
-          grid-cols-1 
-          md:grid-cols-2 
-          gap-3
-          max-h-[50vh]
-          overflow-y-auto
-        "
-      >
-        {allCategories.map((item) => (
-          <div key={item.label} className="col-span-1">
-            <CategoryInput
-              onClick={(category) =>
-                setCustomValue(
-                  'categories',
-                  toggleCategoryFilter(filters, category)
-                )
-              }
-              selected={filters.includes(item.label)}
-              label={item.label}
-              renderIcon={item.renderIcon}
-              lng={lng}
-            />
-          </div>
-        ))}
+      <Heading title={t("hostRegistrationTile")} icon={IoMdWarning} />
+      <div className="-my-6"></div>
+      <Banner title={undefined} text={t("hostRegistrationNotice")} />
+      <label>
+        {t('registerContactUs')}
+      </label>
+      <div className="flex flex-row items-center gap-2 justify-center">
+        <IoIosMail /> <a href="mailto:help@safebnb.co">help@safebnb.co</a>
       </div>
     </div>
-  );
+  )
+
+  if (step === STEPS.CATEGORY) {
+    bodyContent = (
+      <div className="flex flex-col gap-8">
+        <Heading title={t('categories')} subtitle={t('selectCategories')} />
+        <div
+          className="
+            grid 
+            grid-cols-1 
+            md:grid-cols-2 
+            gap-3
+            max-h-[50vh]
+            overflow-y-auto
+          "
+        >
+          {allCategories.map((item) => (
+            <div key={item.label} className="col-span-1">
+              <CategoryInput
+                onClick={(category) =>
+                  setCustomValue(
+                    'categories',
+                    toggleCategoryFilter(filters, category)
+                  )
+                }
+                selected={filters.includes(item.label)}
+                label={item.label}
+                renderIcon={item.renderIcon}
+                lng={lng}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   if (step === STEPS.LOCATION) {
     bodyContent = (

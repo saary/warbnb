@@ -14,10 +14,6 @@ export async function POST(
     return new NextResponse(null, { status: 401});
   }
 
-  if (!currentUser.isHost) {
-    return new NextResponse(null, { status: 403});
-  }
-
   const body = await request.json();
   const { 
     title,
@@ -49,7 +45,7 @@ export async function POST(
       locationValue: location.value,
       userId: currentUser.id,
       phoneNumber,
-      available: true
+      available: !!currentUser.isHost
     }
   });
 

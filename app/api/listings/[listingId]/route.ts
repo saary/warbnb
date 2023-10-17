@@ -46,7 +46,11 @@ export async function PATCH(
   const currentUser = await getCurrentUser();
 
   if (!currentUser) {
-    return NextResponse.error();
+    return new NextResponse(null, { status: 401});
+  }
+
+  if (!currentUser.isHost) {
+    return new NextResponse(null, { status: 403});
   }
 
   const { listingId } = params;
