@@ -41,7 +41,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
 
   const { t } = useTranslation(lng);
   const location = getByValue(data.locationValue);
-  const { available } = data;  // ??????
+  const { available } = data;
 
   const handleCancel = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
